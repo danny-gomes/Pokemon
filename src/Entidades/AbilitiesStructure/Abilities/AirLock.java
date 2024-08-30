@@ -12,6 +12,8 @@ public class AirLock extends AbilityOnEntry {
 
     @Override
     public void triggerEffect(Battle battle) {
-        battle.setWeather(Weather.NONE);
+
     }
+
+
 }

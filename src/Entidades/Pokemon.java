@@ -1,10 +1,13 @@
 package Entidades;
 
 import Entidades.AbilitiesStructure.Ability;
+import Entidades.Items.Item;
+import Entidades.Moves.Move;
 import Enums.Nature;
 import Enums.PokemonType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Pokemon {
@@ -34,11 +37,21 @@ public class Pokemon {
     private double weight;
     private int evolvesAt;
     private ArrayList<Pokemon> possibleEvolutions;
-    private ArrayList<Double> statModifiers;
+    private double[] statModifiers;
+    public static final int ATTACK = 0;
+    public static final int DEFENSE = 1;
+    public static final int SPECIAL_ATTACK = 2;
+    public static final int SPECIAL_DEFENSE = 3;
+    public static final int SPEED = 4;
+    public static final int ACCURACY = 5;
+    public static final int EVASIVENESS = 6;
     private StatusEffect statusEffect;
     private boolean isShiny;
+    private Item heldItem;
+    private Move[] currentMoves;
+    private ArrayList<Move> learnSet;
 
-    public Pokemon(int dexNumber, String name, PokemonType type1, PokemonType type2, int level, int baseHp, int baseAttack, int baseDefense, int baseSpecialAttack, int baseSpecialDefense, int baseSpeed, ArrayList<String> possibleAbilitiesString, String hiddenAbilityString, double height, double weight, int evolvesAt) {
+    public Pokemon(int dexNumber, String name, PokemonType type1, PokemonType type2, int level, int baseHp, int baseAttack, int baseDefense, int baseSpecialAttack, int baseSpecialDefense, int baseSpeed, ArrayList<String> possibleAbilitiesString, String hiddenAbilityString, double height, double weight, int evolvesAt, Move[] moves, ArrayList<Move> learnSet) {
         this.dexNumber = dexNumber;
         this.name = name;
         this.type1 = type1;
@@ -57,12 +70,19 @@ public class Pokemon {
         this.evolvesAt = evolvesAt;
         this.possibleEvolutions = new ArrayList<>();
 
+        // 0- Attack 1- Defense 2- SpAttack 3- SpDef 4- Speed 5- Accuracy 6- Evassiveness
+        this.statModifiers = new double[7];
+        Arrays.fill(statModifiers, 1);
+
         Nature[] natures = Nature.values();
         Random rd = new Random();
         int randomIndex = rd.nextInt(natures.length);
         this.nature = natures[randomIndex];
 
         calculateCurrentStats();
+
+        this.currentMoves = moves;
+        this.learnSet = learnSet;
     }
 
     private void calculateCurrentStats() {
@@ -74,6 +94,55 @@ public class Pokemon {
         this.specialAttack = (int) ((Math.floor(0.01 * (2 * this.baseSpecialAttack) * this.level) + 5) * this.nature.getSpecialAttackMultiplier());
         this.specialDefense = (int) ((Math.floor(0.01 * (2 * this.baseDefense) * this.level) + 5) * this.nature.getSpecialDefenseMultiplier());
         this.speed = (int) ((Math.floor(0.01 * (2 * this.baseSpeed) * this.level) + 5) * this.nature.getSpeedMultiplier());
+    }
+
+    public int getCurrentSpeed(){
+        return (int) Math.round(this.speed * statModifiers[SPEED]);
+    }
+
+    public boolean hasHeldItem(){
+        return heldItem != null;
+    }
+
+    public void addPossibleEvolution(Pokemon evo) {
+        this.possibleEvolutions.add(evo);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Move> getLearnSet() {
+        return learnSet;
+    }
+
+    public void setEvolvesAt(int evolvesAt) {
+        this.evolvesAt = evolvesAt;
+    }
+
+    public void healCurrentHP(int hpToHeal){
+        if(this.currentHp + hpToHeal > this.currentMaxHp){
+            this.currentHp = this.currentMaxHp;
+        } else {
+            this.currentHp = this.currentMaxHp + hpToHeal;
+        }
+    }
+
+    public Move[] getMoves() {
+        return this.currentMoves;
+    }
+
+    public String getMovesString(){
+        String moves = "";
+        for(int i = 0; i < currentMoves.length; i++){
+            moves = moves + i + " - " + currentMoves[i].getName() + "\n";
+        }
+
+        return moves;
+    }
+
+    public int getCurrentHp() {
+        return this.currentHp;
     }
 
     @Override
@@ -129,16 +198,32 @@ public class Pokemon {
         );
     }
 
+    public String pokemonBattleInfo(){
+        String typeInfo = type2 != null ? type1 + " / " + type2 : type1.toString();
 
-    public void addPossibleEvolution(Pokemon evo) {
-        this.possibleEvolutions.add(evo);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setEvolvesAt(int evolvesAt) {
-        this.evolvesAt = evolvesAt;
+        return String.format(
+                        "╔═══════════════════════════════════════════╗\n" +
+                        "║ %4d. Pokémon: %-26s ║\n" +
+                        "╠═══════════════════════════════════════════╣\n" +
+                        "║ Type: %-35s ║\n" +
+                        "║ Level: %-34d ║\n" +
+                        "║ Nature: %-33s ║\n" +
+                        "╠═══════════════════════════════════════════╣\n" +
+                        "║ HP: %4d / %-30d ║\n" +
+                        "║ Attack: %-20d (Base: %4d) ║\n" +
+                        "║ Defense: %-19d (Base: %4d) ║\n" +
+                        "║ Sp. Atk: %-19d (Base: %4d) ║\n" +
+                        "║ Sp. Def: %-19d (Base: %4d) ║\n" +
+                        "║ Speed: %-21d (Base: %4d) ║\n" +
+                        "╠═══════════════════════════════════════════╣\n" +
+                        "║ Ability: %-32s ║\n" +
+                        "║ Status Effect: %-26s ║\n" +
+                        "╚═══════════════════════════════════════════╝\n",
+                        dexNumber, name, typeInfo, level, nature,currentHp,
+                        currentMaxHp, attack, baseAttack, defense, baseDefense,
+                        specialAttack, baseSpecialAttack, specialDefense,
+                        baseSpecialDefense, speed, baseSpeed, ability,
+                        statusEffect == null ? "None" : statusEffect
+        );
     }
 }

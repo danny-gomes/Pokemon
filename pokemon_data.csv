@@ -102,8 +102,8 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 80,Slowbro-Galar,Poison,Psychic,0.5,0.5,95,100,95,100,70,30,0: Quick Draw 1: Own Tempo H: Regenerator,1.6,70.5,Pink,Slowpoke-Galar,Base,None
 81,Magnemite,Electric,Steel,0.5,0.5,25,35,70,95,55,45,0: Magnet Pull 1: Sturdy H: Analytic,0.3,6,Gray,None,Base,Magneton
 82,Magneton,Electric,Steel,0.5,0.5,50,60,95,120,70,70,0: Magnet Pull 1: Sturdy H: Analytic,1,60,Gray,Magnemite,30,Magnezone
-83,Farfetch\u2019d,Normal,Flying,0.5,0.5,52,90,55,58,62,60,0: Keen Eye 1: Inner Focus H: Defiant,0.8,15,Brown,None,Base,None
-83,Farfetch\u2019d-Galar,Fighting,null,0.5,0.5,52,95,55,58,62,55,0: Steadfast H: Scrappy,0.8,42,Brown,None,Base,Sirfetch\u2019d
+83,Farfetchd,Normal,Flying,0.5,0.5,52,90,55,58,62,60,0: Keen Eye 1: Inner Focus H: Defiant,0.8,15,Brown,None,Base,None
+83,Farfetchd-Galar,Fighting,null,0.5,0.5,52,95,55,58,62,55,0: Steadfast H: Scrappy,0.8,42,Brown,None,Base,Sirfetch\u2019d
 84,Doduo,Normal,Flying,0.5,0.5,35,85,45,35,35,75,0: Run Away 1: Early Bird H: Tangled Feet,1.4,39.2,Brown,None,Base,Dodrio
 85,Dodrio,Normal,Flying,0.5,0.5,60,110,70,60,60,110,0: Run Away 1: Early Bird H: Tangled Feet,1.8,85.2,Brown,Doduo,31,None
 86,Seel,Water,null,0.5,0.5,65,45,55,45,70,45,0: Thick Fat 1: Hydration H: Ice Body,1.1,90,White,None,Base,Dewgong
@@ -149,17 +149,17 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 119,Seaking,Water,null,0.5,0.5,80,92,65,65,80,68,0: Swift Swim 1: Water Veil H: Lightning Rod,1.3,39,Red,Goldeen,33,None
 120,Staryu,Water,null,0.5,0.5,30,45,55,70,55,85,0: Illuminate 1: Natural Cure H: Analytic,0.8,34.5,Brown,None,Base,Starmie
 121,Starmie,Water,Psychic,0.5,0.5,60,75,85,100,85,115,0: Illuminate 1: Natural Cure H: Analytic,1.1,80,Purple,Staryu,Base,None
-122,Mr. Mime,Psychic,Fairy,0.5,0.5,40,45,65,100,120,90,0: Soundproof 1: Filter H: Technician,1.3,54.5,Pink,Mime Jr.,Base,None
-122,Mr. Mime-Galar,Ice,Psychic,0.5,0.5,50,65,65,90,90,100,0: Vital Spirit 1: Screen Cleaner H: Ice Body,1.4,56.8,White,Mime Jr.,Base,Mr. Rime
+122,Mr-Mime,Psychic,Fairy,0.5,0.5,40,45,65,100,120,90,0: Soundproof 1: Filter H: Technician,1.3,54.5,Pink,Mime Jr.,Base,None
+122,Mr-Mime-Galar,Ice,Psychic,0.5,0.5,50,65,65,90,90,100,0: Vital Spirit 1: Screen Cleaner H: Ice Body,1.4,56.8,White,Mime Jr.,Base,Mr. Rime
 123,Scyther,Bug,Flying,0.5,0.5,70,110,80,55,80,105,0: Swarm 1: Technician H: Steadfast,1.5,56,Green,None,Base,Scizor
 124,Jynx,Ice,Psychic,0.5,0.5,65,50,35,115,95,95,0: Oblivious 1: Forewarn H: Dry Skin,1.4,40.6,Red,Smoochum,30,None
 125,Electabuzz,Electric,null,0.75,0.25,65,83,57,95,85,105,0: Static H: Vital Spirit,1.1,30,Yellow,Elekid,30,Electivire
 126,Magmar,Fire,null,0.75,0.25,65,95,57,100,85,93,0: Flame Body H: Vital Spirit,1.3,44.5,Red,Magby,30,Magmortar
 127,Pinsir,Bug,null,0.5,0.5,65,125,100,55,70,85,0: Hyper Cutter 1: Mold Breaker H: Moxie,1.5,55,Brown,None,Base,None
 128,Tauros,Normal,null,0.5,0.5,75,100,95,40,70,110,0: Intimidate 1: Anger Point H: Sheer Force,1.4,88.4,Brown,None,Base,None
-128,Tauros-Paldea-Combat,Fighting,null,0.5,0.5,75,110,105,30,70,100,0: Intimidate 1: Anger Point H: Cud Chew,1.4,115,Black,None,Base,None
-128,Tauros-Paldea-Blaze,Fighting,Fire,0.5,0.5,75,110,105,30,70,100,0: Intimidate 1: Anger Point H: Cud Chew,1.4,85,Black,None,Base,None
-128,Tauros-Paldea-Aqua,Fighting,Water,0.5,0.5,75,110,105,30,70,100,0: Intimidate 1: Anger Point H: Cud Chew,1.4,110,Black,None,Base,None
+128,Tauros-Paldea-Combat-Breed,Fighting,null,0.5,0.5,75,110,105,30,70,100,0: Intimidate 1: Anger Point H: Cud Chew,1.4,115,Black,None,Base,None
+128,Tauros-Paldea-Blaze-Breed,Fighting,Fire,0.5,0.5,75,110,105,30,70,100,0: Intimidate 1: Anger Point H: Cud Chew,1.4,85,Black,None,Base,None
+128,Tauros-Paldea-Aqua-Breed,Fighting,Water,0.5,0.5,75,110,105,30,70,100,0: Intimidate 1: Anger Point H: Cud Chew,1.4,110,Black,None,Base,None
 129,Magikarp,Water,null,0.5,0.5,20,10,55,15,20,80,0: Swift Swim H: Rattled,0.9,10,Red,None,Base,Gyarados
 130,Gyarados,Water,Flying,0.5,0.5,95,125,79,60,100,81,0: Intimidate H: Moxie,6.5,235,Blue,Magikarp,20,None
 131,Lapras,Water,Ice,0.5,0.5,130,85,80,85,95,60,0: Water Absorb 1: Shell Armor H: Hydration,2.5,220,Blue,None,Base,None
@@ -432,7 +432,7 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 383,Groudon,Ground,null,0.5,0.5,100,150,140,100,90,90,0: Drought,3.5,950,Red,None,Base,None
 384,Rayquaza,Dragon,Flying,0.5,0.5,105,150,90,150,90,95,0: Air Lock,7,206.5,Green,None,Base,None
 385,Jirachi,Steel,Psychic,0.5,0.5,100,100,100,100,100,100,0: Serene Grace,0.3,1.1,Yellow,None,Base,None
-386,Deoxys,Psychic,null,0.5,0.5,50,150,50,150,50,150,0: Pressure,1.7,60.8,Red,None,Base,None
+386,Deoxys-Normal,Psychic,null,0.5,0.5,50,150,50,150,50,150,0: Pressure,1.7,60.8,Red,None,Base,None
 386,Deoxys-Attack,Psychic,null,0.5,0.5,50,180,20,180,20,150,0: Pressure,1.7,60.8,Red,None,Base,None
 386,Deoxys-Defense,Psychic,null,0.5,0.5,50,70,160,70,160,90,0: Pressure,1.7,60.8,Red,None,Base,None
 386,Deoxys-Speed,Psychic,null,0.5,0.5,50,95,90,95,90,180,0: Pressure,1.7,60.8,Red,None,Base,None
@@ -462,7 +462,7 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 410,Shieldon,Rock,Steel,0.875,0.125,30,42,118,42,88,30,0: Sturdy H: Soundproof,0.5,57,Gray,None,Base,Bastiodon
 411,Bastiodon,Rock,Steel,0.875,0.125,60,52,168,47,138,30,0: Sturdy H: Soundproof,1.3,149.5,Gray,Shieldon,30,None
 412,Burmy,Bug,null,0.5,0.5,40,29,45,29,45,36,0: Shed Skin H: Overcoat,0.2,3.4,Green,None,Base,Wormadam
-413,Wormadam,Bug,Grass,0.5,0.5,60,59,85,79,105,36,0: Anticipation H: Overcoat,0.5,6.5,Green,Burmy,20,None
+413,Wormadam-Plant,Bug,Grass,0.5,0.5,60,59,85,79,105,36,0: Anticipation H: Overcoat,0.5,6.5,Green,Burmy,20,None
 413,Wormadam-Sandy,Bug,Ground,0.5,0.5,60,79,105,59,85,36,0: Anticipation H: Overcoat,0.5,6.5,Brown,Burmy,20,None
 413,Wormadam-Trash,Bug,Steel,0.5,0.5,60,69,95,69,95,36,0: Anticipation H: Overcoat,0.5,6.5,Red,Burmy,20,None
 414,Mothim,Bug,Flying,0.5,0.5,70,94,50,94,50,66,0: Swarm H: Tinted Lens,0.9,23.3,Yellow,Burmy,20,None
@@ -473,7 +473,6 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 419,Floatzel,Water,null,0.5,0.5,85,105,55,85,50,115,0: Swift Swim H: Water Veil,1.1,33.5,Brown,Buizel,26,None
 420,Cherubi,Grass,null,0.5,0.5,45,35,45,62,53,35,0: Chlorophyll,0.4,3.3,Pink,None,Base,Cherrim
 421,Cherrim,Grass,null,0.5,0.5,70,60,70,87,78,85,0: Flower Gift,0.5,9.3,Purple,Cherubi,25,None
-421,Cherrim-Sunshine,Grass,null,0.5,0.5,70,60,70,87,78,85,0: Flower Gift,0.5,9.3,Pink,None,Base,None
 422,Shellos,Water,null,0.5,0.5,76,48,48,57,62,34,0: Sticky Hold 1: Storm Drain H: Sand Force,0.3,6.3,Purple,None,Base,Gastrodon
 423,Gastrodon,Water,Ground,0.5,0.5,111,83,68,92,82,39,0: Sticky Hold 1: Storm Drain H: Sand Force,0.9,29.9,Purple,Shellos,30,None
 424,Ambipom,Normal,null,0.5,0.5,75,100,66,60,66,115,0: Technician 1: Pickup H: Skill Link,1.2,20.3,Purple,Aipom,Base,None
@@ -491,7 +490,7 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 436,Bronzor,Steel,Psychic,0.5,0.5,57,24,86,24,86,23,0: Levitate 1: Heatproof H: Heavy Metal,0.5,60.5,Green,None,Base,Bronzong
 437,Bronzong,Steel,Psychic,0.5,0.5,67,89,116,79,116,33,0: Levitate 1: Heatproof H: Heavy Metal,1.3,187,Green,Bronzor,33,None
 438,Bonsly,Rock,null,0.5,0.5,50,80,95,10,45,10,0: Sturdy 1: Rock Head H: Rattled,0.5,15,Brown,None,Base,Sudowoodo
-439,Mime Jr.,Psychic,Fairy,0.5,0.5,20,25,45,70,90,60,0: Soundproof 1: Filter H: Technician,0.6,13,Pink,None,Base,Mr. Mime
+439,Mime-Jr,Psychic,Fairy,0.5,0.5,20,25,45,70,90,60,0: Soundproof 1: Filter H: Technician,0.6,13,Pink,None,Base,Mr. Mime
 440,Happiny,Normal,null,0.5,0.5,100,5,5,15,65,30,0: Natural Cure 1: Serene Grace H: Friend Guard,0.6,24.4,Pink,None,Base,Chansey
 441,Chatot,Normal,Flying,0.5,0.5,76,65,45,92,42,91,0: Keen Eye 1: Tangled Feet H: Big Pecks,0.5,1.9,Black,None,Base,None
 442,Spiritomb,Ghost,Dark,0.5,0.5,50,92,108,92,108,35,0: Pressure H: Infiltrator,1,108,Purple,None,Base,None
@@ -546,13 +545,12 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 484,Palkia-Origin,Water,Dragon,0.5,0.5,90,100,100,150,120,120,0: Pressure H: Telepathy,6.3,660,Purple,None,Base,None
 485,Heatran,Fire,Steel,0.5,0.5,91,90,106,130,106,77,0: Flash Fire H: Flame Body,1.7,430,Brown,None,Base,None
 486,Regigigas,Normal,null,0.5,0.5,110,160,110,80,110,100,0: Slow Start,3.7,420,White,None,Base,None
-487,Giratina,Ghost,Dragon,0.5,0.5,150,100,120,100,120,90,0: Pressure H: Telepathy,4.5,750,Black,None,Base,None
 487,Giratina-Origin,Ghost,Dragon,0.5,0.5,150,120,100,120,100,90,0: Levitate,6.9,650,Black,None,Base,None
 488,Cresselia,Psychic,null,0.5,0.5,120,70,110,75,120,85,0: Levitate,1.5,85.6,Yellow,None,Base,None
 489,Phione,Water,null,0.5,0.5,80,80,80,80,80,80,0: Hydration,0.4,3.1,Blue,None,Base,None
 490,Manaphy,Water,null,0.5,0.5,100,100,100,100,100,100,0: Hydration,0.3,1.4,Blue,None,Base,None
 491,Darkrai,Dark,null,0.5,0.5,70,90,90,135,90,125,0: Bad Dreams,1.5,50.5,Black,None,Base,None
-492,Shaymin,Grass,null,0.5,0.5,100,100,100,100,100,100,0: Natural Cure,0.2,2.1,Green,None,Base,None
+492,Shaymin-Land,Grass,null,0.5,0.5,100,100,100,100,100,100,0: Natural Cure,0.2,2.1,Green,None,Base,None
 492,Shaymin-Sky,Grass,Flying,0.5,0.5,100,103,75,120,75,127,0: Serene Grace,0.4,5.2,Green,None,Base,None
 493,Arceus,Normal,null,0.5,0.5,120,120,120,120,120,120,0: Multitype,3.2,320,White,None,Base,None
 494,Victini,Psychic,Fire,0.5,0.5,100,100,100,100,100,100,0: Victory Star,0.4,4,Yellow,None,Base,None
@@ -613,7 +611,7 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 548,Petilil,Grass,null,0.5,0.5,45,35,50,70,50,30,0: Chlorophyll 1: Own Tempo H: Leaf Guard,0.5,6.6,Green,None,Base,Lilligant
 549,Lilligant,Grass,null,0.5,0.5,70,60,75,110,75,90,0: Chlorophyll 1: Own Tempo H: Leaf Guard,1.1,16.3,Green,Petilil,Base,None
 549,Lilligant-Hisui,Grass,Fighting,0.5,0.5,70,105,75,50,75,105,0: Chlorophyll 1: Hustle H: Leaf Guard,1.2,19.2,Green,Petilil,Base,None
-550,Basculin,Water,null,0.5,0.5,70,92,65,80,55,98,0: Reckless 1: Adaptability H: Mold Breaker,1,18,Green,None,Base,None
+550,Basculin-Red-Striped,Water,null,0.5,0.5,70,92,65,80,55,98,0: Reckless 1: Adaptability H: Mold Breaker,1,18,Green,None,Base,None
 550,Basculin-Blue-Striped,Water,null,0.5,0.5,70,92,65,80,55,98,0: Rock Head 1: Adaptability H: Mold Breaker,1,18,Green,None,Base,None
 550,Basculin-White-Striped,Water,null,0.5,0.5,70,92,65,80,55,98,0: Rattled 1: Adaptability H: Mold Breaker,1,18,Green,None,Base,Basculegion
 551,Sandile,Ground,Dark,0.5,0.5,50,72,35,35,35,65,0: Intimidate 1: Moxie H: Anger Point,0.7,15.2,Brown,None,Base,Krokorok
@@ -621,9 +619,9 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 553,Krookodile,Ground,Dark,0.5,0.5,95,117,80,65,70,92,0: Intimidate 1: Moxie H: Anger Point,1.5,96.3,Red,Krokorok,40,None
 554,Darumaka,Fire,null,0.5,0.5,70,90,45,15,45,50,0: Hustle H: Inner Focus,0.6,37.5,Red,None,Base,Darmanitan
 554,Darumaka-Galar,Ice,null,0.5,0.5,70,90,45,15,45,50,0: Hustle H: Inner Focus,0.7,40,White,None,Base,Darmanitan-Galar
-555,Darmanitan,Fire,null,0.5,0.5,105,140,55,30,55,95,0: Sheer Force H: Zen Mode,1.3,92.9,Red,Darumaka,35,None
+555,Darmanitan-Standard,Fire,null,0.5,0.5,105,140,55,30,55,95,0: Sheer Force H: Zen Mode,1.3,92.9,Red,Darumaka,35,None
 555,Darmanitan-Zen,Fire,Psychic,0.5,0.5,105,30,105,140,105,55,0: Zen Mode,1.3,92.9,Blue,None,Base,None
-555,Darmanitan-Galar,Ice,null,0.5,0.5,105,140,55,30,55,95,0: Gorilla Tactics H: Zen Mode,1.7,120,White,Darumaka-Galar,Base,None
+555,Darmanitan-Galar-Standard,Ice,null,0.5,0.5,105,140,55,30,55,95,0: Gorilla Tactics H: Zen Mode,1.7,120,White,Darumaka-Galar,Base,None
 555,Darmanitan-Galar-Zen,Ice,Fire,0.5,0.5,105,160,55,30,55,135,0: Zen Mode,1.7,120,White,None,Base,None
 556,Maractus,Grass,null,0.5,0.5,75,86,67,106,67,60,0: Water Absorb 1: Chlorophyll H: Storm Drain,1,28,Green,None,Base,None
 557,Dwebble,Bug,Rock,0.5,0.5,50,65,85,35,35,55,0: Sturdy 1: Shell Armor H: Weak Armor,0.3,14.5,Red,None,Base,Crustle
@@ -715,26 +713,22 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 638,Cobalion,Steel,Fighting,0.5,0.5,91,90,129,90,72,108,0: Justified,2.1,250,Blue,None,Base,None
 639,Terrakion,Rock,Fighting,0.5,0.5,91,129,90,72,90,108,0: Justified,1.9,260,Gray,None,Base,None
 640,Virizion,Grass,Fighting,0.5,0.5,91,90,72,90,129,108,0: Justified,2,200,Green,None,Base,None
-641,Tornadus,Flying,null,0.5,0.5,79,115,70,125,80,111,0: Prankster H: Defiant,1.5,63,Green,None,Base,None
+641,Tornadus-Incarnate,Flying,null,0.5,0.5,79,115,70,125,80,111,0: Prankster H: Defiant,1.5,63,Green,None,Base,None
 641,Tornadus-Therian,Flying,null,0.5,0.5,79,100,80,110,90,121,0: Regenerator,1.4,63,Green,None,Base,None
-642,Thundurus,Electric,Flying,0.5,0.5,79,115,70,125,80,111,0: Prankster H: Defiant,1.5,61,Blue,None,Base,None
+642,Thundurus-Incarnate,Electric,Flying,0.5,0.5,79,115,70,125,80,111,0: Prankster H: Defiant,1.5,61,Blue,None,Base,None
 642,Thundurus-Therian,Electric,Flying,0.5,0.5,79,105,70,145,80,101,0: Volt Absorb,3,61,Blue,None,Base,None
 643,Reshiram,Dragon,Fire,0.5,0.5,100,120,100,150,120,90,0: Turboblaze,3.2,330,White,None,Base,None
 644,Zekrom,Dragon,Electric,0.5,0.5,100,150,120,120,100,90,0: Teravolt,2.9,345,Black,None,Base,None
-645,Landorus,Ground,Flying,0.5,0.5,89,125,90,115,80,101,0: Sand Force H: Sheer Force,1.5,68,Brown,None,Base,None
+645,Landorus-Incarnate,Ground,Flying,0.5,0.5,89,125,90,115,80,101,0: Sand Force H: Sheer Force,1.5,68,Brown,None,Base,None
 645,Landorus-Therian,Ground,Flying,0.5,0.5,89,145,90,105,80,91,0: Intimidate,1.3,68,Brown,None,Base,None
 646,Kyurem,Dragon,Ice,0.5,0.5,125,130,90,130,90,95,0: Pressure,3,325,Gray,None,Base,None
 646,Kyurem-Black,Dragon,Ice,0.5,0.5,125,170,100,120,90,95,0: Teravolt,3.3,325,Gray,None,Base,None
 646,Kyurem-White,Dragon,Ice,0.5,0.5,125,120,90,170,100,95,0: Turboblaze,3.6,325,Gray,None,Base,None
-647,Keldeo,Water,Fighting,0.5,0.5,91,72,90,129,90,108,0: Justified,1.4,48.5,Yellow,None,Base,None
+647,Keldeo-Ordinary,Water,Fighting,0.5,0.5,91,72,90,129,90,108,0: Justified,1.4,48.5,Yellow,None,Base,None
 647,Keldeo-Resolute,Water,Fighting,0.5,0.5,91,72,90,129,90,108,0: Justified,1.4,48.5,Yellow,None,Base,None
-648,Meloetta,Normal,Psychic,0.5,0.5,100,77,77,128,128,90,0: Serene Grace,0.6,6.5,White,None,Base,None
+648,Meloetta-Aria,Normal,Psychic,0.5,0.5,100,77,77,128,128,90,0: Serene Grace,0.6,6.5,White,None,Base,None
 648,Meloetta-Pirouette,Normal,Fighting,0.5,0.5,100,128,90,77,77,128,0: Serene Grace,0.6,6.5,White,None,Base,None
 649,Genesect,Bug,Steel,0.5,0.5,71,120,95,120,95,99,0: Download,1.5,82.5,Purple,None,Base,None
-649,Genesect-Douse,Bug,Steel,0.5,0.5,71,120,95,120,95,99,0: Download,1.5,82.5,Purple,None,Base,None
-649,Genesect-Shock,Bug,Steel,0.5,0.5,71,120,95,120,95,99,0: Download,1.5,82.5,Purple,None,Base,None
-649,Genesect-Burn,Bug,Steel,0.5,0.5,71,120,95,120,95,99,0: Download,1.5,82.5,Purple,None,Base,None
-649,Genesect-Chill,Bug,Steel,0.5,0.5,71,120,95,120,95,99,0: Download,1.5,82.5,Purple,None,Base,None
 650,Chespin,Grass,null,0.875,0.125,56,61,65,48,45,38,0: Overgrow H: Bulletproof,0.4,9,Green,None,Base,Quilladin
 651,Quilladin,Grass,null,0.875,0.125,61,78,95,56,58,57,0: Overgrow H: Bulletproof,0.7,29,Green,Chespin,16,Chesnaught
 652,Chesnaught,Grass,Fighting,0.875,0.125,88,107,122,74,75,64,0: Overgrow H: Bulletproof,1.6,90,Green,Quilladin,36,None
@@ -744,7 +738,6 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 656,Froakie,Water,null,0.875,0.125,41,56,40,62,44,71,0: Torrent H: Protean,0.3,7,Blue,None,Base,Frogadier
 657,Frogadier,Water,null,0.875,0.125,54,63,52,83,56,97,0: Torrent H: Protean,0.6,10.9,Blue,Froakie,16,Greninja
 658,Greninja,Water,Dark,0.875,0.125,72,95,67,103,71,122,0: Torrent H: Protean S: Battle Bond,1.5,40,Blue,Frogadier,36,None
-658,Greninja-Bond,Water,Dark,0.5,0.5,72,95,67,103,71,122,0: Battle Bond,1.5,40,Blue,None,Base,None
 658,Greninja-Ash,Water,Dark,0.5,0.5,72,145,67,153,71,132,0: Battle Bond,1.5,40,Blue,None,Base,None
 659,Bunnelby,Normal,null,0.5,0.5,38,36,38,32,36,57,0: Pickup 1: Cheek Pouch H: Huge Power,0.4,5,Brown,None,Base,Diggersby
 660,Diggersby,Normal,Ground,0.5,0.5,85,56,77,50,77,78,0: Pickup 1: Cheek Pouch H: Huge Power,1,42.4,Brown,Bunnelby,20,None
@@ -754,11 +747,9 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 664,Scatterbug,Bug,null,0.5,0.5,38,35,40,27,25,35,0: Shield Dust 1: Compound Eyes H: Friend Guard,0.3,2.5,Black,None,Base,Spewpa
 665,Spewpa,Bug,null,0.5,0.5,45,22,60,27,30,29,0: Shed Skin H: Friend Guard,0.3,8.4,Black,Scatterbug,9,Vivillon
 666,Vivillon,Bug,Flying,0.5,0.5,80,52,50,90,50,89,0: Shield Dust 1: Compound Eyes H: Friend Guard,1.2,17,White,Spewpa,12,None
-666,Vivillon-Fancy,Bug,Flying,0.5,0.5,80,52,50,90,50,89,0: Shield Dust 1: Compound Eyes H: Friend Guard,1.2,17,Black,Spewpa,12,None
-666,Vivillon-Pokeball,Bug,Flying,0.5,0.5,80,52,50,90,50,89,0: Shield Dust 1: Compound Eyes H: Friend Guard,1.2,17,Black,None,Base,None
 667,Litleo,Fire,Normal,0.125,0.875,62,50,58,73,54,72,0: Rivalry 1: Unnerve H: Moxie,0.6,13.5,Brown,None,Base,Pyroar
 668,Pyroar,Fire,Normal,0.125,0.875,86,68,72,109,66,106,0: Rivalry 1: Unnerve H: Moxie,1.5,81.5,Brown,Litleo,35,None
-669,Flabe\u0301be\u0301,Fairy,null,0.5,0.5,44,38,39,61,79,42,0: Flower Veil H: Symbiosis,0.1,0.1,White,None,Base,Floette
+669,Flabebe,Fairy,null,0.5,0.5,44,38,39,61,79,42,0: Flower Veil H: Symbiosis,0.1,0.1,White,None,Base,Floette
 670,Floette,Fairy,null,0.5,0.5,54,45,47,75,98,52,0: Flower Veil H: Symbiosis,0.2,0.9,White,Flabe\u0301be\u0301,19,Florges
 670,Floette-Eternal,Fairy,null,0.5,0.5,74,65,67,125,128,92,0: Flower Veil,0.2,0.9,White,None,Base,None
 671,Florges,Fairy,null,0.5,0.5,78,65,68,112,154,75,0: Flower Veil H: Symbiosis,1.1,10,White,Floette,Base,None
@@ -768,11 +759,11 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 675,Pangoro,Fighting,Dark,0.5,0.5,95,124,78,69,71,58,0: Iron Fist 1: Mold Breaker H: Scrappy,2.1,136,White,Pancham,32,None
 676,Furfrou,Normal,null,0.5,0.5,75,80,60,65,90,102,0: Fur Coat,1.2,28,White,None,Base,None
 677,Espurr,Psychic,null,0.5,0.5,62,48,54,63,60,68,0: Keen Eye 1: Infiltrator H: Own Tempo,0.3,3.5,Gray,None,Base,Meowstic
-678,Meowstic,Psychic,null,0.5,0.5,74,48,76,83,81,104,0: Keen Eye 1: Infiltrator H: Prankster,0.6,8.5,Blue,Espurr,25,None
-678,Meowstic-F,Psychic,null,0.5,0.5,74,48,76,83,81,104,0: Keen Eye 1: Infiltrator H: Competitive,0.6,8.5,White,Espurr,25,None
+678,Meowstic-Male,Psychic,null,0.5,0.5,74,48,76,83,81,104,0: Keen Eye 1: Infiltrator H: Prankster,0.6,8.5,Blue,Espurr,25,None
+678,Meowstic-Female,Psychic,null,0.5,0.5,74,48,76,83,81,104,0: Keen Eye 1: Infiltrator H: Competitive,0.6,8.5,White,Espurr,25,None
 679,Honedge,Steel,Ghost,0.5,0.5,45,80,100,35,37,28,0: No Guard,0.8,2,Brown,None,Base,Doublade
 680,Doublade,Steel,Ghost,0.5,0.5,59,110,150,45,49,35,0: No Guard,0.8,4.5,Brown,Honedge,35,Aegislash
-681,Aegislash,Steel,Ghost,0.5,0.5,60,50,140,50,140,60,0: Stance Change,1.7,53,Brown,Doublade,Base,None
+681,Aegislash-Shield,Steel,Ghost,0.5,0.5,60,50,140,50,140,60,0: Stance Change,1.7,53,Brown,Doublade,Base,None
 681,Aegislash-Blade,Steel,Ghost,0.5,0.5,60,140,50,140,50,60,0: Stance Change,1.7,53,Brown,None,Base,None
 682,Spritzee,Fairy,null,0.5,0.5,78,52,60,63,65,23,0: Healer H: Aroma Veil,0.2,0.5,Pink,None,Base,Aromatisse
 683,Aromatisse,Fairy,null,0.5,0.5,101,72,72,99,89,29,0: Healer H: Aroma Veil,0.8,15.5,Pink,Spritzee,Base,None
@@ -804,11 +795,11 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 707,Klefki,Steel,Fairy,0.5,0.5,57,80,91,80,87,75,0: Prankster H: Magician,0.2,3,Gray,None,Base,None
 708,Phantump,Ghost,Grass,0.5,0.5,43,70,48,50,60,38,0: Natural Cure 1: Frisk H: Harvest,0.4,7,Brown,None,Base,Trevenant
 709,Trevenant,Ghost,Grass,0.5,0.5,85,110,76,65,82,56,0: Natural Cure 1: Frisk H: Harvest,1.5,71,Brown,Phantump,Base,None
-710,Pumpkaboo,Ghost,Grass,0.5,0.5,49,66,70,44,55,51,0: Pickup 1: Frisk H: Insomnia,0.4,5,Brown,None,Base,Gourgeist
+710,Pumpkaboo-Average,Ghost,Grass,0.5,0.5,49,66,70,44,55,51,0: Pickup 1: Frisk H: Insomnia,0.4,5,Brown,None,Base,Gourgeist
 710,Pumpkaboo-Small,Ghost,Grass,0.5,0.5,44,66,70,44,55,56,0: Pickup 1: Frisk H: Insomnia,0.3,3.5,Brown,None,Base,Gourgeist-Small
 710,Pumpkaboo-Large,Ghost,Grass,0.5,0.5,54,66,70,44,55,46,0: Pickup 1: Frisk H: Insomnia,0.5,7.5,Brown,None,Base,Gourgeist-Large
 710,Pumpkaboo-Super,Ghost,Grass,0.5,0.5,59,66,70,44,55,41,0: Pickup 1: Frisk H: Insomnia,0.8,15,Brown,None,Base,Gourgeist-Super
-711,Gourgeist,Ghost,Grass,0.5,0.5,65,90,122,58,75,84,0: Pickup 1: Frisk H: Insomnia,0.9,12.5,Brown,Pumpkaboo,Base,None
+711,Gourgeist-Average,Ghost,Grass,0.5,0.5,65,90,122,58,75,84,0: Pickup 1: Frisk H: Insomnia,0.9,12.5,Brown,Pumpkaboo,Base,None
 711,Gourgeist-Small,Ghost,Grass,0.5,0.5,55,85,122,58,75,99,0: Pickup 1: Frisk H: Insomnia,0.7,9.5,Brown,Pumpkaboo-Small,Base,None
 711,Gourgeist-Large,Ghost,Grass,0.5,0.5,75,95,122,58,75,69,0: Pickup 1: Frisk H: Insomnia,1.1,14,Brown,Pumpkaboo-Large,Base,None
 711,Gourgeist-Super,Ghost,Grass,0.5,0.5,85,100,122,58,75,54,0: Pickup 1: Frisk H: Insomnia,1.7,39,Brown,Pumpkaboo-Super,Base,None
@@ -818,10 +809,9 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 714,Noibat,Flying,Dragon,0.5,0.5,40,30,35,45,40,55,0: Frisk 1: Infiltrator H: Telepathy,0.5,8,Purple,None,Base,Noivern
 715,Noivern,Flying,Dragon,0.5,0.5,85,70,80,97,80,123,0: Frisk 1: Infiltrator H: Telepathy,1.5,85,Purple,Noibat,48,None
 716,Xerneas,Fairy,null,0.5,0.5,126,131,95,131,98,99,0: Fairy Aura,3,215,Blue,None,Base,None
-716,Xerneas-Neutral,Fairy,null,0.5,0.5,126,131,95,131,98,99,0: Fairy Aura,3,215,Blue,None,Base,None
 717,Yveltal,Dark,Flying,0.5,0.5,126,131,95,131,98,99,0: Dark Aura,5.8,203,Red,None,Base,None
-718,Zygarde,Dragon,Ground,0.5,0.5,108,100,121,81,95,95,0: Aura Break S: Power Construct,5,305,Green,None,Base,None
-718,Zygarde-10%,Dragon,Ground,0.5,0.5,54,100,71,61,85,115,0: Aura Break S: Power Construct,1.2,33.5,Black,None,Base,None
+718,Zygarde-50,Dragon,Ground,0.5,0.5,108,100,121,81,95,95,0: Aura Break S: Power Construct,5,305,Green,None,Base,None
+718,Zygarde-10,Dragon,Ground,0.5,0.5,54,100,71,61,85,115,0: Aura Break S: Power Construct,1.2,33.5,Black,None,Base,None
 718,Zygarde-Complete,Dragon,Ground,0.5,0.5,216,100,121,91,95,85,0: Power Construct,4.5,610,Black,None,Base,None
 719,Diancie,Rock,Fairy,0.5,0.5,50,100,150,100,150,50,0: Clear Body,0.7,8.8,Pink,None,Base,None
 720,Hoopa,Psychic,Ghost,0.5,0.5,80,110,60,150,130,70,0: Magician,0.5,9,Purple,None,Base,None
@@ -847,17 +837,15 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 738,Vikavolt,Bug,Electric,0.5,0.5,77,70,90,145,75,43,0: Levitate,1.5,45,Blue,Charjabug,Base,None
 739,Crabrawler,Fighting,null,0.5,0.5,47,82,57,42,47,63,0: Hyper Cutter 1: Iron Fist H: Anger Point,0.6,7,Purple,None,Base,Crabominable
 740,Crabominable,Fighting,Ice,0.5,0.5,97,132,77,62,67,43,0: Hyper Cutter 1: Iron Fist H: Anger Point,1.7,180,White,Crabrawler,Base,None
-741,Oricorio,Fire,Flying,0.25,0.75,75,70,70,98,70,93,0: Dancer,0.6,3.4,Red,None,Base,None
 741,Oricorio-Pom-Pom,Electric,Flying,0.25,0.75,75,70,70,98,70,93,0: Dancer,0.6,3.4,Yellow,None,Base,None
-741,Oricorio-Pa'u,Psychic,Flying,0.25,0.75,75,70,70,98,70,93,0: Dancer,0.6,3.4,Pink,None,Base,None
 741,Oricorio-Sensu,Ghost,Flying,0.25,0.75,75,70,70,98,70,93,0: Dancer,0.6,3.4,Purple,None,Base,None
 742,Cutiefly,Bug,Fairy,0.5,0.5,40,45,40,55,40,84,0: Honey Gather 1: Shield Dust H: Sweet Veil,0.1,0.2,Yellow,None,Base,Ribombee
 743,Ribombee,Bug,Fairy,0.5,0.5,60,55,60,95,70,124,0: Honey Gather 1: Shield Dust H: Sweet Veil,0.2,0.5,Yellow,Cutiefly,25,None
 744,Rockruff,Rock,null,0.5,0.5,45,65,40,30,40,60,0: Keen Eye 1: Vital Spirit H: Steadfast S: Own Tempo,0.5,9.2,Brown,None,Base,Lycanroc
-745,Lycanroc,Rock,null,0.5,0.5,75,115,65,55,65,112,0: Keen Eye 1: Sand Rush H: Steadfast,0.8,25,Brown,Rockruff,25,None
+745,Lycanroc-Midday,Rock,null,0.5,0.5,75,115,65,55,65,112,0: Keen Eye 1: Sand Rush H: Steadfast,0.8,25,Brown,Rockruff,25,None
 745,Lycanroc-Midnight,Rock,null,0.5,0.5,85,115,75,55,75,82,0: Keen Eye 1: Vital Spirit H: No Guard,1.1,25,Red,Rockruff,25,None
 745,Lycanroc-Dusk,Rock,null,0.5,0.5,75,117,65,55,65,110,0: Tough Claws,0.8,25,Brown,Rockruff,25,None
-746,Wishiwashi,Water,null,0.5,0.5,45,20,20,25,25,40,0: Schooling,0.2,0.3,Blue,None,Base,None
+746,Wishiwashi-Solo,Water,null,0.5,0.5,45,20,20,25,25,40,0: Schooling,0.2,0.3,Blue,None,Base,None
 746,Wishiwashi-School,Water,null,0.5,0.5,45,140,130,140,135,30,0: Schooling,8.2,78.6,Blue,None,Base,None
 747,Mareanie,Poison,Water,0.5,0.5,50,53,62,43,52,45,0: Merciless 1: Limber H: Regenerator,0.4,8,Blue,None,Base,Toxapex
 748,Toxapex,Poison,Water,0.5,0.5,50,63,152,53,142,35,0: Merciless 1: Limber H: Regenerator,0.7,14.5,Blue,Mareanie,38,None
@@ -884,14 +872,13 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 769,Sandygast,Ghost,Ground,0.5,0.5,55,55,80,70,45,15,0: Water Compaction H: Sand Veil,0.5,70,Brown,None,Base,Palossand
 770,Palossand,Ghost,Ground,0.5,0.5,85,75,110,100,75,35,0: Water Compaction H: Sand Veil,1.3,250,Brown,Sandygast,42,None
 771,Pyukumuku,Water,null,0.5,0.5,55,60,130,30,130,5,0: Innards Out H: Unaware,0.3,1.2,Black,None,Base,None
-772,Type,Normal,null,0.5,0.5,95,95,95,95,95,59,0: Battle Armor,1.9,120.5,Gray,None,Base,Silvally
+772,Type-Null,Normal,null,0.5,0.5,95,95,95,95,95,59,0: Battle Armor,1.9,120.5,Gray,None,Base,Silvally
 773,Silvally,Normal,null,0.5,0.5,95,95,95,95,95,95,0: RKS System,2.3,100.5,Gray,Type,Base,None
-774,Minior,Rock,Flying,0.5,0.5,60,100,60,100,60,120,0: Shields Down,0.3,0.3,Red,None,Base,None
-774,Minior-Meteor,Rock,Flying,0.5,0.5,60,60,100,60,100,60,0: Shields Down,0.3,40,Brown,None,Base,None
+774,Minior-Blue-Meteor,Rock,Flying,0.5,0.5,60,60,100,60,100,60,0: Shields Down,0.3,40,Brown,None,Base,None
 775,Komala,Normal,null,0.5,0.5,65,115,65,75,95,65,0: Comatose,0.4,19.9,Blue,None,Base,None
 776,Turtonator,Fire,Dragon,0.5,0.5,60,78,135,91,85,36,0: Shell Armor,2,212,Red,None,Base,None
 777,Togedemaru,Electric,Steel,0.5,0.5,65,98,63,40,73,96,0: Iron Barbs 1: Lightning Rod H: Sturdy,0.3,3.3,Gray,None,Base,None
-778,Mimikyu,Ghost,Fairy,0.5,0.5,55,90,80,50,105,96,0: Disguise,0.2,0.7,Yellow,None,Base,None
+778,Mimikyu-Disguised,Ghost,Fairy,0.5,0.5,55,90,80,50,105,96,0: Disguise,0.2,0.7,Yellow,None,Base,None
 778,Mimikyu-Busted,Ghost,Fairy,0.5,0.5,55,90,80,50,105,96,0: Disguise,0.2,0.7,Yellow,None,Base,None
 779,Bruxish,Water,Psychic,0.5,0.5,68,105,70,70,70,92,0: Dazzling 1: Strong Jaw H: Wonder Skin,0.9,19,Pink,None,Base,None
 780,Drampa,Normal,Dragon,0.5,0.5,78,60,85,135,91,36,0: Berserk 1: Sap Sipper H: Cloud Nine,3,185,White,None,Base,None
@@ -899,10 +886,10 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 782,Jangmo-o,Dragon,null,0.5,0.5,45,55,65,45,45,45,0: Bulletproof 1: Soundproof H: Overcoat,0.6,29.7,Gray,None,Base,Hakamo-o
 783,Hakamo-o,Dragon,Fighting,0.5,0.5,55,75,90,65,70,65,0: Bulletproof 1: Soundproof H: Overcoat,1.2,47,Gray,Jangmo-o,35,Kommo-o
 784,Kommo-o,Dragon,Fighting,0.5,0.5,75,110,125,100,105,85,0: Bulletproof 1: Soundproof H: Overcoat,1.6,78.2,Gray,Hakamo-o,45,None
-785,Tapu Koko,Electric,Fairy,0.5,0.5,70,115,85,95,75,130,0: Electric Surge H: Telepathy,1.8,20.5,Yellow,None,Base,None
-786,Tapu Lele,Psychic,Fairy,0.5,0.5,70,85,75,130,115,95,0: Psychic Surge H: Telepathy,1.2,18.6,Pink,None,Base,None
-787,Tapu Bulu,Grass,Fairy,0.5,0.5,70,130,115,85,95,75,0: Grassy Surge H: Telepathy,1.9,45.5,Red,None,Base,None
-788,Tapu Fini,Water,Fairy,0.5,0.5,70,75,115,95,130,85,0: Misty Surge H: Telepathy,1.3,21.2,Purple,None,Base,None
+785,Tapu-Koko,Electric,Fairy,0.5,0.5,70,115,85,95,75,130,0: Electric Surge H: Telepathy,1.8,20.5,Yellow,None,Base,None
+786,Tapu-Lele,Psychic,Fairy,0.5,0.5,70,85,75,130,115,95,0: Psychic Surge H: Telepathy,1.2,18.6,Pink,None,Base,None
+787,Tapu-Bulu,Grass,Fairy,0.5,0.5,70,130,115,85,95,75,0: Grassy Surge H: Telepathy,1.9,45.5,Red,None,Base,None
+788,Tapu-Fini,Water,Fairy,0.5,0.5,70,75,115,95,130,85,0: Misty Surge H: Telepathy,1.3,21.2,Purple,None,Base,None
 789,Cosmog,Psychic,null,0.5,0.5,43,29,31,29,31,37,0: Unaware,0.2,0.1,Blue,None,Base,Cosmoem
 790,Cosmoem,Psychic,null,0.5,0.5,43,29,131,29,131,37,0: Sturdy,0.1,999.9,Blue,Cosmog,43,Solgaleo
 791,Solgaleo,Psychic,Steel,0.5,0.5,137,137,107,113,89,97,0: Full Metal Body,3.4,230,White,Cosmoem,53,None
@@ -915,8 +902,8 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 798,Kartana,Grass,Steel,0.5,0.5,59,181,131,59,31,109,0: Beast Boost,0.3,0.1,White,None,Base,None
 799,Guzzlord,Dark,Dragon,0.5,0.5,223,101,53,97,53,43,0: Beast Boost,5.5,888,Black,None,Base,None
 800,Necrozma,Psychic,null,0.5,0.5,97,107,101,127,89,79,0: Prism Armor,2.4,230,Black,None,Base,None
-800,Necrozma-Dusk-Mane,Psychic,Steel,0.5,0.5,97,157,127,113,109,77,0: Prism Armor,3.8,460,Yellow,None,Base,None
-800,Necrozma-Dawn-Wings,Psychic,Ghost,0.5,0.5,97,113,109,157,127,77,0: Prism Armor,4.2,350,Blue,None,Base,None
+800,Necrozma-Dusk,Psychic,Steel,0.5,0.5,97,157,127,113,109,77,0: Prism Armor,3.8,460,Yellow,None,Base,None
+800,Necrozma-Dawn,Psychic,Ghost,0.5,0.5,97,113,109,157,127,77,0: Prism Armor,4.2,350,Blue,None,Base,None
 800,Necrozma-Ultra,Psychic,Dragon,0.5,0.5,97,167,97,167,97,129,0: Neuroforce,7.5,230,Yellow,None,Base,None
 801,Magearna,Steel,Fairy,0.5,0.5,80,95,115,130,115,65,0: Soul-Heart,1,80.5,Gray,None,Base,None
 801,Magearna-Original,Steel,Fairy,0.5,0.5,80,95,115,130,115,65,0: Soul-Heart,1,80.5,Red,None,Base,None
@@ -969,16 +956,14 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 846,Arrokuda,Water,null,0.5,0.5,41,63,40,40,30,66,0: Swift Swim H: Propeller Tail,0.5,1,Brown,None,Base,Barraskewda
 847,Barraskewda,Water,null,0.5,0.5,61,123,60,60,50,136,0: Swift Swim H: Propeller Tail,1.3,30,Brown,Arrokuda,26,None
 848,Toxel,Electric,Poison,0.5,0.5,40,38,35,54,35,40,0: Rattled 1: Static H: Klutz,0.4,11,Purple,None,Base,Toxtricity
-849,Toxtricity,Electric,Poison,0.5,0.5,75,98,70,114,70,75,0: Punk Rock 1: Plus H: Technician,1.6,40,Purple,Toxel,30,None
+849,Toxtricity-Amped,Electric,Poison,0.5,0.5,75,98,70,114,70,75,0: Punk Rock 1: Plus H: Technician,1.6,40,Purple,Toxel,30,None
 849,Toxtricity-Low-Key,Electric,Poison,0.5,0.5,75,98,70,114,70,75,0: Punk Rock 1: Minus H: Technician,1.6,40,Purple,Toxel,30,None
 850,Sizzlipede,Fire,Bug,0.5,0.5,50,65,45,50,50,45,0: Flash Fire 1: White Smoke H: Flame Body,0.7,1,Red,None,Base,Centiskorch
 851,Centiskorch,Fire,Bug,0.5,0.5,100,115,65,90,90,65,0: Flash Fire 1: White Smoke H: Flame Body,3,120,Red,Sizzlipede,28,None
 852,Clobbopus,Fighting,null,0.5,0.5,50,68,60,50,50,32,0: Limber H: Technician,0.6,4,Brown,None,Base,Grapploct
 853,Grapploct,Fighting,null,0.5,0.5,80,118,90,70,80,42,0: Limber H: Technician,1.6,39,Blue,Clobbopus,Base,None
 854,Sinistea,Ghost,null,0.5,0.5,40,45,45,74,54,50,0: Weak Armor H: Cursed Body,0.1,0.2,Purple,None,Base,Polteageist
-854,Sinistea-Antique,Ghost,null,0.5,0.5,40,45,45,74,54,50,0: Weak Armor H: Cursed Body,0.1,0.2,Purple,None,Base,Polteageist-Antique
 855,Polteageist,Ghost,null,0.5,0.5,60,65,65,134,114,70,0: Weak Armor H: Cursed Body,0.2,0.4,Purple,Sinistea,Base,None
-855,Polteageist-Antique,Ghost,null,0.5,0.5,60,65,65,134,114,70,0: Weak Armor H: Cursed Body,0.2,0.4,Purple,Sinistea-Antique,Base,None
 856,Hatenna,Psychic,null,0.5,0.5,42,30,45,56,53,39,0: Healer 1: Anticipation H: Magic Bounce,0.4,3.4,Pink,None,Base,Hattrem
 857,Hattrem,Psychic,null,0.5,0.5,57,40,65,86,73,49,0: Healer 1: Anticipation H: Magic Bounce,0.6,4.8,Pink,Hatenna,32,Hatterene
 858,Hatterene,Psychic,Fairy,0.5,0.5,57,90,95,136,103,29,0: Healer 1: Anticipation H: Magic Bounce,2.1,5.1,Pink,Hattrem,42,None
@@ -988,8 +973,8 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 862,Obstagoon,Dark,Normal,0.5,0.5,93,90,101,60,81,95,0: Reckless 1: Guts H: Defiant,1.6,46,Gray,Linoone-Galar,35,None
 863,Perrserker,Steel,null,0.5,0.5,70,110,100,50,60,50,0: Battle Armor 1: Tough Claws H: Steely Spirit,0.8,28,Brown,Meowth-Galar,28,None
 864,Cursola,Ghost,null,0.25,0.75,60,95,50,145,130,30,0: Weak Armor H: Perish Body,1,0.4,White,Corsola-Galar,38,None
-865,Sirfetch\u2019d,Fighting,null,0.5,0.5,62,135,95,68,82,65,0: Steadfast H: Scrappy,0.8,117,White,Farfetch\u2019d-Galar,Base,None
-866,Mr. Rime,Ice,Psychic,0.5,0.5,80,85,75,110,100,70,0: Tangled Feet 1: Screen Cleaner H: Ice Body,1.5,58.2,Purple,Mr. Mime-Galar,42,None
+865,Sirfetchd,Fighting,null,0.5,0.5,62,135,95,68,82,65,0: Steadfast H: Scrappy,0.8,117,White,Farfetch\u2019d-Galar,Base,None
+866,Mr-Rime,Ice,Psychic,0.5,0.5,80,85,75,110,100,70,0: Tangled Feet 1: Screen Cleaner H: Ice Body,1.5,58.2,Purple,Mr. Mime-Galar,42,None
 867,Runerigus,Ground,Ghost,0.5,0.5,58,95,145,50,105,30,0: Wandering Spirit,1.6,66.6,Gray,Yamask-Galar,Base,None
 868,Milcery,Fairy,null,0.5,0.5,45,40,40,50,61,34,0: Sweet Veil H: Aroma Veil,0.2,0.3,White,None,Base,Alcremie
 869,Alcremie,Fairy,null,0.5,0.5,65,60,75,110,121,64,0: Sweet Veil H: Aroma Veil,0.3,0.5,White,Milcery,Base,None
@@ -998,11 +983,11 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 872,Snom,Ice,Bug,0.5,0.5,30,25,35,45,30,20,0: Shield Dust H: Ice Scales,0.3,3.8,White,None,Base,Frosmoth
 873,Frosmoth,Ice,Bug,0.5,0.5,70,65,60,125,90,65,0: Shield Dust H: Ice Scales,1.3,42,White,Snom,Base,None
 874,Stonjourner,Rock,null,0.5,0.5,100,125,135,20,20,70,0: Power Spot,2.5,520,Gray,None,Base,None
-875,Eiscue,Ice,null,0.5,0.5,75,80,110,65,90,50,0: Ice Face,1.4,89,Blue,None,Base,None
+875,Eiscue-Ice,Ice,null,0.5,0.5,75,80,110,65,90,50,0: Ice Face,1.4,89,Blue,None,Base,None
 875,Eiscue-Noice,Ice,null,0.5,0.5,75,80,70,65,50,130,0: Ice Face,1.4,89,Blue,None,Base,None
-876,Indeedee,Psychic,Normal,0.5,0.5,60,65,55,105,95,95,0: Inner Focus 1: Synchronize H: Psychic Surge,0.9,28,Purple,None,Base,None
-876,Indeedee-F,Psychic,Normal,0.5,0.5,70,55,65,95,105,85,0: Own Tempo 1: Synchronize H: Psychic Surge,0.9,28,Purple,None,Base,None
-877,Morpeko,Electric,Dark,0.5,0.5,58,95,58,70,58,97,0: Hunger Switch,0.3,3,Yellow,None,Base,None
+876,Indeedee-Male,Psychic,Normal,0.5,0.5,60,65,55,105,95,95,0: Inner Focus 1: Synchronize H: Psychic Surge,0.9,28,Purple,None,Base,None
+876,Indeedee-Female,Psychic,Normal,0.5,0.5,70,55,65,95,105,85,0: Own Tempo 1: Synchronize H: Psychic Surge,0.9,28,Purple,None,Base,None
+877,Morpeko-Full-Belly,Electric,Dark,0.5,0.5,58,95,58,70,58,97,0: Hunger Switch,0.3,3,Yellow,None,Base,None
 877,Morpeko-Hangry,Electric,Dark,0.5,0.5,58,95,58,70,58,97,0: Hunger Switch,0.3,3,Purple,None,Base,None
 878,Cufant,Steel,null,0.5,0.5,72,80,49,40,49,40,0: Sheer Force H: Heavy Metal,1.2,100,Yellow,None,Base,Copperajah
 879,Copperajah,Steel,null,0.5,0.5,122,130,69,80,69,30,0: Sheer Force H: Heavy Metal,3,650,Green,Cufant,34,None
@@ -1021,7 +1006,7 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 890,Eternatus,Poison,Dragon,0.5,0.5,140,85,95,145,95,130,0: Pressure,20,950,Purple,None,Base,None
 890,Eternatus-Eternamax,Poison,Dragon,0.5,0.5,255,115,250,125,250,130,0: Pressure,100,0,Purple,None,Base,None
 891,Kubfu,Fighting,null,0.875,0.125,60,90,60,53,50,72,0: Inner Focus,0.6,12,Gray,None,Base,Urshifu
-892,Urshifu,Fighting,Dark,0.875,0.125,100,130,100,63,60,97,0: Unseen Fist,1.9,105,Gray,Kubfu,Base,None
+892,Urshifu-Single-Strike,Fighting,Dark,0.875,0.125,100,130,100,63,60,97,0: Unseen Fist,1.9,105,Gray,Kubfu,Base,None
 892,Urshifu-Rapid-Strike,Fighting,Water,0.875,0.125,100,130,100,63,60,97,0: Unseen Fist,1.9,105,Gray,Kubfu,Base,None
 893,Zarude,Dark,Grass,0.5,0.5,105,120,105,70,95,105,0: Leaf Guard,1.8,70,Black,None,Base,None
 893,Zarude-Dada,Dark,Grass,0.5,0.5,105,120,105,70,95,105,0: Leaf Guard,1.8,70,Black,None,Base,None
@@ -1036,11 +1021,11 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 900,Kleavor,Bug,Rock,0.5,0.5,70,135,95,45,70,85,0: Swarm 1: Sheer Force H: Sharpness,1.8,89,Brown,Scyther,Base,None
 901,Ursaluna,Ground,Normal,0.5,0.5,130,140,105,45,80,50,0: Guts 1: Bulletproof H: Unnerve,2.4,290,Brown,Ursaring,Base,None
 901,Ursaluna-Bloodmoon,Ground,Normal,0.5,0.5,113,70,120,135,65,52,0: Mind's Eye,2.7,333,Brown,None,Base,None
-902,Basculegion,Water,Ghost,0.5,0.5,120,112,65,80,75,78,0: Swift Swim 1: Adaptability H: Mold Breaker,3,110,Green,Basculin-White-Striped,Base,None
-902,Basculegion-F,Water,Ghost,0.5,0.5,120,92,65,100,75,78,0: Swift Swim 1: Adaptability H: Mold Breaker,3,110,Green,Basculin-White-Striped,Base,None
+902,Basculegion-Male,Water,Ghost,0.5,0.5,120,112,65,80,75,78,0: Swift Swim 1: Adaptability H: Mold Breaker,3,110,Green,Basculin-White-Striped,Base,None
+902,Basculegion-Female,Water,Ghost,0.5,0.5,120,92,65,100,75,78,0: Swift Swim 1: Adaptability H: Mold Breaker,3,110,Green,Basculin-White-Striped,Base,None
 903,Sneasler,Fighting,Poison,0.5,0.5,80,130,60,40,80,120,0: Pressure 1: Unburden H: Poison Touch,1.3,43,Blue,Sneasel-Hisui,Base,None
 904,Overqwil,Dark,Poison,0.5,0.5,85,115,95,65,65,85,0: Poison Point 1: Swift Swim H: Intimidate,2.5,60.5,Black,Qwilfish-Hisui,Base,None
-905,Enamorus,Fairy,Flying,0.5,0.5,74,115,70,135,80,106,0: Cute Charm H: Contrary,1.6,48,Pink,None,Base,None
+905,Enamorus-Incarnate,Fairy,Flying,0.5,0.5,74,115,70,135,80,106,0: Cute Charm H: Contrary,1.6,48,Pink,None,Base,None
 905,Enamorus-Therian,Fairy,Flying,0.5,0.5,74,115,110,135,100,46,0: Overcoat,1.6,48,Pink,None,Base,None
 906,Sprigatito,Grass,null,0.875,0.125,40,61,54,45,45,65,0: Overgrow H: Protean,0.4,4.1,Green,None,Base,Floragato
 907,Floragato,Grass,null,0.875,0.125,61,80,63,60,63,83,0: Overgrow H: Protean,0.9,12.2,Green,Sprigatito,16,Meowscarada
@@ -1053,7 +1038,7 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 914,Quaquaval,Water,Fighting,0.875,0.125,85,120,80,85,75,85,0: Torrent H: Moxie,1.8,61.9,Blue,Quaxwell,36,None
 915,Lechonk,Normal,null,0.5,0.5,54,45,40,35,45,35,0: Aroma Veil 1: Gluttony H: Thick Fat,0.5,10.2,Gray,None,Base,Oinkologne
 916,Oinkologne,Normal,null,0.5,0.5,110,100,75,59,80,65,0: Lingering Aroma 1: Gluttony H: Thick Fat,1,120,Gray,Lechonk,18,None
-916,Oinkologne-F,Normal,null,0.5,0.5,115,90,70,59,90,65,0: Aroma Veil 1: Gluttony H: Thick Fat,1,120,Brown,Lechonk,18,None
+916,Oinkologne-Female,Normal,null,0.5,0.5,115,90,70,59,90,65,0: Aroma Veil 1: Gluttony H: Thick Fat,1,120,Brown,Lechonk,18,None
 917,Tarountula,Bug,null,0.5,0.5,35,41,45,29,40,20,0: Insomnia H: Stakeout,0.3,4,White,None,Base,Spidops
 918,Spidops,Bug,null,0.5,0.5,60,79,92,52,86,35,0: Insomnia H: Stakeout,1,16.5,Green,Tarountula,15,None
 919,Nymble,Bug,null,0.5,0.5,33,46,40,21,25,45,0: Swarm H: Tinted Lens,0.2,1,Gray,None,Base,Lokix
@@ -1063,16 +1048,13 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 923,Pawmot,Electric,Fighting,0.5,0.5,70,115,70,70,60,105,0: Volt Absorb 1: Natural Cure H: Iron Fist,0.9,41,Yellow,Pawmo,Base,None
 924,Tandemaus,Normal,null,0.5,0.5,50,50,45,40,45,75,0: Run Away 1: Pickup H: Own Tempo,0.3,1.8,White,None,Base,Maushold
 925,Maushold,Normal,null,0.5,0.5,74,75,70,65,75,111,0: Friend Guard 1: Cheek Pouch H: Technician,0.3,2.3,White,Tandemaus,25,None
-925,Maushold-Four,Normal,null,0.5,0.5,74,75,70,65,75,111,0: Friend Guard 1: Cheek Pouch H: Technician,0.3,2.8,White,Tandemaus,25,None
+925,Maushold-Family-of-Three,Normal,null,0.5,0.5,74,75,70,65,75,111,0: Friend Guard 1: Cheek Pouch H: Technician,0.3,2.8,White,Tandemaus,25,None
 926,Fidough,Fairy,null,0.5,0.5,37,55,70,30,55,65,0: Own Tempo H: Klutz,0.3,10.9,Yellow,None,Base,Dachsbun
 927,Dachsbun,Fairy,null,0.5,0.5,57,80,115,50,80,95,0: Well-Baked Body H: Aroma Veil,0.5,14.9,Brown,Fidough,26,None
 928,Smoliv,Grass,Normal,0.5,0.5,41,35,45,58,51,30,0: Early Bird H: Harvest,0.3,6.5,Green,None,Base,Dolliv
 929,Dolliv,Grass,Normal,0.5,0.5,52,53,60,78,78,33,0: Early Bird H: Harvest,0.6,11.9,Green,Smoliv,25,Arboliva
 930,Arboliva,Grass,Normal,0.5,0.5,78,69,90,125,109,39,0: Seed Sower H: Harvest,1.4,48.2,Green,Dolliv,35,None
 931,Squawkabilly,Normal,Flying,0.5,0.5,82,96,51,45,51,92,0: Intimidate 1: Hustle H: Guts,0.6,2.4,Green,None,Base,None
-931,Squawkabilly-Blue,Normal,Flying,0.5,0.5,82,96,51,45,51,92,0: Intimidate 1: Hustle H: Guts,0.6,2.4,Blue,None,Base,None
-931,Squawkabilly-Yellow,Normal,Flying,0.5,0.5,82,96,51,45,51,92,0: Intimidate 1: Hustle H: Sheer Force,0.6,2.4,Yellow,None,Base,None
-931,Squawkabilly-White,Normal,Flying,0.5,0.5,82,96,51,45,51,92,0: Intimidate 1: Hustle H: Sheer Force,0.6,2.4,White,None,Base,None
 932,Nacli,Rock,null,0.5,0.5,55,55,75,35,35,25,0: Purifying Salt 1: Sturdy H: Clear Body,0.4,16,Brown,None,Base,Naclstack
 933,Naclstack,Rock,null,0.5,0.5,60,60,100,35,65,35,0: Purifying Salt 1: Sturdy H: Clear Body,0.6,105,Brown,Nacli,24,Garganacl
 934,Garganacl,Rock,null,0.5,0.5,100,100,130,45,90,35,0: Purifying Salt 1: Sturdy H: Clear Body,2.3,240,Brown,Naclstack,38,None
@@ -1127,18 +1109,18 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 982,Dudunsparce,Normal,null,0.5,0.5,125,100,80,85,75,55,0: Serene Grace 1: Run Away H: Rattled,3.6,39.2,Yellow,Dunsparce,Base,None
 982,Dudunsparce-Three-Segment,Normal,null,0.5,0.5,125,100,80,85,75,55,0: Serene Grace 1: Run Away H: Rattled,4.5,47.4,Yellow,Dunsparce,Base,None
 983,Kingambit,Dark,Steel,0.5,0.5,100,135,120,60,85,50,0: Defiant 1: Supreme Overlord H: Pressure,2,120,Black,Bisharp,Base,None
-984,Great Tusk,Ground,Fighting,0.5,0.5,115,131,131,53,53,87,0: Protosynthesis,2.2,320,Purple,None,Base,None
-985,Scream Tail,Fairy,Psychic,0.5,0.5,115,65,99,65,115,111,0: Protosynthesis,1.2,8,Pink,None,Base,None
-986,Brute Bonnet,Grass,Dark,0.5,0.5,111,127,99,79,99,55,0: Protosynthesis,1.2,21,White,None,Base,None
-987,Flutter Mane,Ghost,Fairy,0.5,0.5,55,55,55,135,135,135,0: Protosynthesis,1.4,4,Gray,None,Base,None
-988,Slither Wing,Bug,Fighting,0.5,0.5,85,135,79,85,105,81,0: Protosynthesis,3.2,92,White,None,Base,None
-989,Sandy Shocks,Electric,Ground,0.5,0.5,85,81,97,121,85,101,0: Protosynthesis,2.3,60,Gray,None,Base,None
-990,Iron Treads,Ground,Steel,0.5,0.5,90,112,120,72,70,106,0: Quark Drive,0.9,240,Gray,None,Base,None
-991,Iron Bundle,Ice,Water,0.5,0.5,56,80,114,124,60,136,0: Quark Drive,0.6,11,Red,None,Base,None
-992,Iron Hands,Fighting,Electric,0.5,0.5,154,140,108,50,68,50,0: Quark Drive,1.8,380.7,Gray,None,Base,None
-993,Iron Jugulis,Dark,Flying,0.5,0.5,94,80,86,122,80,108,0: Quark Drive,1.3,111,Blue,None,Base,None
-994,Iron Moth,Fire,Poison,0.5,0.5,80,70,60,140,110,110,0: Quark Drive,1.2,36,White,None,Base,None
-995,Iron Thorns,Rock,Electric,0.5,0.5,100,134,110,70,84,72,0: Quark Drive,1.6,303,Green,None,Base,None
+984,Great-Tusk,Ground,Fighting,0.5,0.5,115,131,131,53,53,87,0: Protosynthesis,2.2,320,Purple,None,Base,None
+985,Scream-Tail,Fairy,Psychic,0.5,0.5,115,65,99,65,115,111,0: Protosynthesis,1.2,8,Pink,None,Base,None
+986,Brute-Bonnet,Grass,Dark,0.5,0.5,111,127,99,79,99,55,0: Protosynthesis,1.2,21,White,None,Base,None
+987,Flutter-Mane,Ghost,Fairy,0.5,0.5,55,55,55,135,135,135,0: Protosynthesis,1.4,4,Gray,None,Base,None
+988,Slither-Wing,Bug,Fighting,0.5,0.5,85,135,79,85,105,81,0: Protosynthesis,3.2,92,White,None,Base,None
+989,Sandy-Shocks,Electric,Ground,0.5,0.5,85,81,97,121,85,101,0: Protosynthesis,2.3,60,Gray,None,Base,None
+990,Iron-Treads,Ground,Steel,0.5,0.5,90,112,120,72,70,106,0: Quark Drive,0.9,240,Gray,None,Base,None
+991,Iron-Bundle,Ice,Water,0.5,0.5,56,80,114,124,60,136,0: Quark Drive,0.6,11,Red,None,Base,None
+992,Iron-Hands,Fighting,Electric,0.5,0.5,154,140,108,50,68,50,0: Quark Drive,1.8,380.7,Gray,None,Base,None
+993,Iron-Jugulis,Dark,Flying,0.5,0.5,94,80,86,122,80,108,0: Quark Drive,1.3,111,Blue,None,Base,None
+994,Iron-Moth,Fire,Poison,0.5,0.5,80,70,60,140,110,110,0: Quark Drive,1.2,36,White,None,Base,None
+995,Iron-Thorns,Rock,Electric,0.5,0.5,100,134,110,70,84,72,0: Quark Drive,1.6,303,Green,None,Base,None
 996,Frigibax,Dragon,Ice,0.5,0.5,65,75,45,35,45,55,0: Thermal Exchange H: Ice Body,0.5,17,Gray,None,Base,Arctibax
 997,Arctibax,Dragon,Ice,0.5,0.5,90,95,66,45,65,62,0: Thermal Exchange H: Ice Body,0.8,30,Blue,Frigibax,35,Baxcalibur
 998,Baxcalibur,Dragon,Ice,0.5,0.5,115,145,92,75,86,87,0: Thermal Exchange H: Ice Body,2.1,210,Blue,Arctibax,54,None
@@ -1149,34 +1131,28 @@ Num,Name,Type1,Type2,GenderRatio (M),GenderRatio (F),BaseStats (HP),BaseStats (A
 1002,Chien-Pao,Dark,Ice,0.5,0.5,80,120,80,90,65,135,0: Sword of Ruin,1.9,152.2,White,None,Base,None
 1003,Ting-Lu,Dark,Ground,0.5,0.5,155,110,125,55,80,45,0: Vessel of Ruin,2.7,699.7,Brown,None,Base,None
 1004,Chi-Yu,Dark,Fire,0.5,0.5,55,80,80,135,120,100,0: Beads of Ruin,0.4,4.9,Red,None,Base,None
-1005,Roaring Moon,Dragon,Dark,0.5,0.5,105,139,71,55,101,119,0: Protosynthesis,2,380,Blue,None,Base,None
-1006,Iron Valiant,Fairy,Fighting,0.5,0.5,74,130,90,120,60,116,0: Quark Drive,1.4,35,White,None,Base,None
+1005,Roaring-Moon,Dragon,Dark,0.5,0.5,105,139,71,55,101,119,0: Protosynthesis,2,380,Blue,None,Base,None
+1006,Iron-Valiant,Fairy,Fighting,0.5,0.5,74,130,90,120,60,116,0: Quark Drive,1.4,35,White,None,Base,None
 1007,Koraidon,Fighting,Dragon,0.5,0.5,100,135,115,85,100,135,0: Orichalcum Pulse,2.5,303,Red,None,Base,None
 1008,Miraidon,Electric,Dragon,0.5,0.5,100,85,100,135,115,135,0: Hadron Engine,3.5,240,Purple,None,Base,None
-1009,Walking Wake,Water,Dragon,0.5,0.5,99,83,91,125,83,109,0: Protosynthesis,3.5,280,Blue,None,Base,None
-1010,Iron Leaves,Grass,Psychic,0.5,0.5,90,130,88,70,108,104,0: Quark Drive,1.5,125,Green,None,Base,None
+1009,Walking-Wake,Water,Dragon,0.5,0.5,99,83,91,125,83,109,0: Protosynthesis,3.5,280,Blue,None,Base,None
+1010,Iron-Leaves,Grass,Psychic,0.5,0.5,90,130,88,70,108,104,0: Quark Drive,1.5,125,Green,None,Base,None
 1011,Dipplin,Grass,Dragon,0.5,0.5,80,80,110,95,80,40,0: Supersweet Syrup 1: Gluttony H: Sticky Hold,0.4,4.4,Green,Applin,Base,Hydrapple
 1012,Poltchageist,Grass,Ghost,0.5,0.5,40,45,45,74,54,50,0: Hospitality H: Heatproof,0.1,1.1,Green,None,Base,Sinistcha
-1012,Poltchageist-Artisan,Grass,Ghost,0.5,0.5,40,45,45,74,54,50,0: Hospitality H: Heatproof,0.1,1.1,Green,None,Base,Sinistcha-Masterpiece
 1013,Sinistcha,Grass,Ghost,0.5,0.5,71,60,106,121,80,70,0: Hospitality H: Heatproof,0.2,2.2,Green,Poltchageist,Base,None
-1013,Sinistcha-Masterpiece,Grass,Ghost,0.5,0.5,71,60,106,121,80,70,0: Hospitality H: Heatproof,0.2,2.2,Green,Poltchageist-Artisan,Base,None
 1014,Okidogi,Poison,Fighting,0.5,0.5,88,128,115,58,86,80,0: Toxic Chain H: Guard Dog,1.8,92,Black,None,Base,None
 1015,Munkidori,Poison,Psychic,0.5,0.5,88,75,66,130,90,106,0: Toxic Chain H: Frisk,1,12.2,Black,None,Base,None
 1016,Fezandipiti,Poison,Fairy,0.5,0.5,88,91,82,70,125,99,0: Toxic Chain H: Technician,1.4,30.1,Black,None,Base,None
 1017,Ogerpon,Grass,null,0.5,0.5,80,120,84,60,96,110,0: Defiant,1.2,39.8,Green,None,Base,None
-1017,Ogerpon-Wellspring,Grass,Water,0.5,0.5,80,120,84,60,96,110,0: Water Absorb,1.2,39.8,Blue,None,Base,None
-1017,Ogerpon-Hearthflame,Grass,Fire,0.5,0.5,80,120,84,60,96,110,0: Mold Breaker,1.2,39.8,Red,None,Base,None
-1017,Ogerpon-Cornerstone,Grass,Rock,0.5,0.5,80,120,84,60,96,110,0: Sturdy,1.2,39.8,Gray,None,Base,None
-1017,Ogerpon-Teal-Tera,Grass,null,0.5,0.5,80,120,84,60,96,110,0: Embody Aspect (Teal),1.2,39.8,Green,None,Base,None
-1017,Ogerpon-Wellspring-Tera,Grass,Water,0.5,0.5,80,120,84,60,96,110,0: Embody Aspect (Wellspring),1.2,39.8,Blue,None,Base,None
-1017,Ogerpon-Hearthflame-Tera,Grass,Fire,0.5,0.5,80,120,84,60,96,110,0: Embody Aspect (Hearthflame),1.2,39.8,Red,None,Base,None
-1017,Ogerpon-Cornerstone-Tera,Grass,Rock,0.5,0.5,80,120,84,60,96,110,0: Embody Aspect (Cornerstone),1.2,39.8,Gray,None,Base,None
+1017,Ogerpon-Wellspring-Mask,Grass,Water,0.5,0.5,80,120,84,60,96,110,0: Water Absorb,1.2,39.8,Blue,None,Base,None
+1017,Ogerpon-Hearthflame-Mask,Grass,Fire,0.5,0.5,80,120,84,60,96,110,0: Mold Breaker,1.2,39.8,Red,None,Base,None
+1017,Ogerpon-Cornerstone-Mask,Grass,Rock,0.5,0.5,80,120,84,60,96,110,0: Sturdy,1.2,39.8,Gray,None,Base,None
 1018,Archaludon,Steel,Dragon,0.5,0.5,90,105,130,125,65,85,0: Stamina 1: Sturdy H: Stalwart,2,60,White,Duraludon,Base,None
 1019,Hydrapple,Grass,Dragon,0.5,0.5,106,80,110,120,80,44,0: Supersweet Syrup 1: Regenerator H: Sticky Hold,1.8,93,Green,Dipplin,Base,None
-1020,Gouging Fire,Fire,Dragon,0.5,0.5,105,115,121,65,93,91,0: Protosynthesis,3.5,590,Brown,None,Base,None
-1021,Raging Bolt,Electric,Dragon,0.5,0.5,125,73,91,137,89,75,0: Protosynthesis,5.2,480,Yellow,None,Base,None
-1022,Iron Boulder,Rock,Psychic,0.5,0.5,90,120,80,68,108,124,0: Quark Drive,1.5,162.5,Gray,None,Base,None
-1023,Iron Crown,Steel,Psychic,0.5,0.5,90,72,100,122,108,98,0: Quark Drive,1.6,156,Blue,None,Base,None
+1020,Gouging-Fire,Fire,Dragon,0.5,0.5,105,115,121,65,93,91,0: Protosynthesis,3.5,590,Brown,None,Base,None
+1021,Raging-Bolt,Electric,Dragon,0.5,0.5,125,73,91,137,89,75,0: Protosynthesis,5.2,480,Yellow,None,Base,None
+1022,Iron-Boulder,Rock,Psychic,0.5,0.5,90,120,80,68,108,124,0: Quark Drive,1.5,162.5,Gray,None,Base,None
+1023,Iron-Crown,Steel,Psychic,0.5,0.5,90,72,100,122,108,98,0: Quark Drive,1.6,156,Blue,None,Base,None
 1024,Terapagos,Normal,null,0.5,0.5,90,65,85,65,85,60,0: Tera Shift,0.2,6.5,Blue,None,Base,None
 1024,Terapagos-Terastal,Normal,null,0.5,0.5,95,95,110,105,110,85,0: Tera Shell,0.3,16,Blue,None,Base,None
 1024,Terapagos-Stellar,Normal,null,0.5,0.5,160,105,110,130,110,85,0: Teraform Zero,1.7,77,Blue,None,Base,None

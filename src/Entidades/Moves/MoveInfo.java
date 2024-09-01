@@ -4,6 +4,7 @@ import Enums.Ailment;
 import Enums.MoveType;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MoveInfo {
     private Ailment ailment;
@@ -115,5 +116,20 @@ public class MoveInfo {
 
     public int getStatChance() {
         return statChance;
+    }
+
+    public boolean isFlinch() {
+        Random rd = new Random();
+        int randomNumber = rd.nextInt(101);
+
+        if(randomNumber < this.flinchChance){
+            return true;
+        }
+
+        return false;
+    }
+
+    public Ailment getAilment() {
+        return ailment;
     }
 }

@@ -13,7 +13,6 @@ public class Battle {
     private Pokemon challengerCurrentPokemon;
     private int turnCount;
 
-
     public Battle(Trainer player, Pokemon playerCurrentPokemon, Trainer challenger, Pokemon challengerCurrentPokemon, int turnCount) {
         this.player = player;
         this.playerCurrentPokemon = playerCurrentPokemon;
@@ -29,23 +28,33 @@ public class Battle {
         boolean playerWin = false;
         boolean challengerWin = false;
         boolean isPlayerFirst = playerAttackFirst(playerMove, challengerMove);
+        int playerDamageDealt = 0;
+        int challengerDamageDealt = 0;
 
         if (isPlayerFirst) {
-            executeMove(playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
+            playerDamageDealt = executeMove(playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
             playerWin = checkChallengerFaint();
             Thread.sleep(2000);
             if (!playerWin) {
-                executeMove(challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
-                challengerWin = checkPlayerFaint();
-                Thread.sleep(2000);
+                if (playerDamageDealt > 0 && playerMove.getMoveInfo().isFlinch()) {
+                    System.out.println(challengerCurrentPokemon.getName() + " flinched!");
+                } else {
+                    executeMove(challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
+                    challengerWin = checkPlayerFaint();
+                    Thread.sleep(2000);
+                }
             }
         } else {
-            executeMove(challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
+            challengerDamageDealt = executeMove(challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
             challengerWin = checkPlayerFaint();
             Thread.sleep(2000);
             if (!challengerWin) {
-                executeMove(playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
-                playerWin = checkChallengerFaint();
+                if(challengerDamageDealt > 0 && challengerMove.getMoveInfo().isFlinch()){
+                    System.out.println(playerCurrentPokemon.getName() + " flinched!");
+                } else {
+                    executeMove(playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
+                    playerWin = checkChallengerFaint();
+                }
                 Thread.sleep(2000);
             }
         }
@@ -128,10 +137,11 @@ public class Battle {
         return null;
     }
 
-    private void executeMove(Pokemon attacker, Pokemon defender, Move moveUsed, Move opponentsMove) throws InterruptedException {
+    private int executeMove(Pokemon attacker, Pokemon defender, Move moveUsed, Move opponentsMove) throws InterruptedException {
         String effectivenessString = "";
         double effectiveness = defender.getEffectiveness(moveUsed);
         int defenderHpBeginTurn = defender.getCurrentHp();
+        int damageDealt = 0;
 
         if (effectiveness == 0.5) {
             effectivenessString = "it's not very effective.";
@@ -153,11 +163,11 @@ public class Battle {
 
         switch (moveUsed.getMoveType()) {
             case DAMAGE -> {
-                executeDamageMove(attacker, defender, moveUsed, opponentsMove);
+                damageDealt = executeDamageMove(attacker, defender, moveUsed, opponentsMove);
                 System.out.println("\n" + defender.getName() + ": " + defenderHpBeginTurn + "/" + defender.getCurrentMaxHp() + " --> " + defender.getCurrentHp() + "/" + defender.getCurrentMaxHp() + "\n");
             }
             case DAMAGE_HEAL -> {
-                int damageDealt = executeDamageMove(attacker, defender, moveUsed, opponentsMove);
+                damageDealt = executeDamageMove(attacker, defender, moveUsed, opponentsMove);
                 if (damageDealt > 0) {
                     drainMove(attacker, moveUsed, damageDealt);
                 }
@@ -173,7 +183,7 @@ public class Battle {
             case NET_GOOD_STATS -> {
                 if (moveUsed.getTarget().equals(Target.USER)) {
                     attacker.updateStatModifiers(attackChange, defenseChange, spAttackChange, spDefChange, speedChange, accuracyChange, evasionChange);
-                } else if(moveUsed.getTarget().equals(Target.SELECTED_POKEMON)){
+                } else if (moveUsed.getTarget().equals(Target.SELECTED_POKEMON)) {
                     defender.updateStatModifiers(attackChange, defenseChange, spAttackChange, spDefChange, speedChange, accuracyChange, evasionChange);
                 }
             }
@@ -181,20 +191,27 @@ public class Battle {
                 executeUniqueMove(attacker, defender, moveUsed);
             }
         }
+
+        return damageDealt;
     }
 
     private void executeUniqueMove(Pokemon attacker, Pokemon defender, Move moveUsed) {
-        switch (moveUsed.getName()){
+        switch (moveUsed.getName()) {
             case "acupressure":
                 int[] statArray = new int[7];
                 Random rd = new Random();
                 int randomStatIndex = rd.nextInt(7);
-                if(statArray[randomStatIndex] == 7) {
+                if (statArray[randomStatIndex] == 7) {
                     System.out.println("Acupressure failed.");
                 } else {
                     statArray[randomStatIndex] += 2;
                 }
-                attacker.updateStatModifiers(statArray[0], statArray[1], statArray[2], statArray[3],statArray[4],statArray[5],statArray[6]);
+                attacker.updateStatModifiers(statArray[0], statArray[1], statArray[2], statArray[3], statArray[4], statArray[5], statArray[6]);
+                break;
+            case "ally-switch":
+                System.out.println("Not implemented, I didn't even implement double battles, why you using this ?");
+            default:
+                System.out.println("Oops, not implemented, let me know.");
         }
     }
 
@@ -229,8 +246,8 @@ public class Battle {
                 }
             }
 
-            if(moveUsed.getName().equalsIgnoreCase("acrobatics")){
-                if(!attacker.hasHeldItem()){
+            if (moveUsed.getName().equalsIgnoreCase("acrobatics")) {
+                if (!attacker.hasHeldItem()) {
                     return totalDamage * 2;
                 }
             }

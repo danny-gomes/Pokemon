@@ -1,5 +1,6 @@
 import Entidades.*;
 import Entidades.Moves.Move;
+import Enums.Ailment;
 import Enums.MoveCategory;
 import Enums.MoveType;
 import Ficheiros.ReadPokemons;
@@ -16,7 +17,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Pokedex pokedex = new Pokedex();
         ArrayList<Move> allMoves = pokedex.getAllMoves();
-        Pokemon turtwig = pokedex.getPokemonByName("turtwig");
+        Pokemon turtwig = pokedex.getPokemonByName("chimchar");
         ArrayList<Pokemon> playerParty = new ArrayList<>();
         playerParty.add(turtwig);
         ArrayList<Pokemon> pc = new ArrayList<>();
@@ -27,11 +28,11 @@ public class Main {
 
         int count = 0;
         for (Move m : allMoves) {
-            if (m.getName().equalsIgnoreCase("aeroblast")) {
+            if (m.getName().equalsIgnoreCase("amnesia")) {
                 turtwig.learnNewMove(m);
             }
-            if (m.getMoveType().equals(MoveType.NET_GOOD_STATS)) {
-               // System.out.println(m.getName());
+            if (m.getMoveInfo().getAilment().equals(Ailment.TRAP)) {
+                System.out.println(m);
             }
         }
         System.out.println("TOTAL: " + count);
@@ -45,13 +46,14 @@ public class Main {
 
         int battleOver = 0;
         System.out.println(battle);
-        System.out.println(turtwig.getCurrentStatsString());
 
+        System.out.println(turtwig.getCurrentStatsString());
         while (battleOver == 0) {
 
             battleOver = battle.turn();
             System.out.println(turtwig.getCurrentStatsString());
             Thread.sleep(2000);
+            System.out.println(turtwig.getCurrentStatsString());
 
             System.out.println(battle);
         }

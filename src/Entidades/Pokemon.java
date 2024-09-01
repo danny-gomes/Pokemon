@@ -410,13 +410,16 @@ public class Pokemon {
 
     public void learnNewMove(Move m) {
         Scanner in = new Scanner(System.in);
+        String learntMoves = "";
         for (int i = 0; i < currentMoves.length; i++) {
             if (currentMoves[i] == null) {
                 currentMoves[i] = m;
                 return;
             }
-            System.out.println((i + 1) + " - " + currentMoves[i].getName());
+            learntMoves = learntMoves + (i+1) + " - " + currentMoves[i].getName() + "\n";
         }
+
+        System.out.println(learntMoves);
 
         System.out.println("Choose a move to replace:");
         int moveToReplace = in.nextInt();

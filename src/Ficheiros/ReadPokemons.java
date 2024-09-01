@@ -12,11 +12,10 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class ReadPokemons {
-    public static ArrayList<Pokemon> readAllPokemon(String pokemonFilePath) {
+    public static ArrayList<Pokemon> readAllPokemon(String pokemonFilePath, ArrayList<Move> allMoves) {
         Pokemon foundPokemon = null;
         ArrayList<Pokemon> allPokemon = new ArrayList<>();
         ArrayList<String> pokemonNames = new ArrayList<>();
-        ArrayList<Move> allMoves = readMoves();
         Map<String, ArrayList<String>> learnSetsString = readLearnSets();
 
         try {
@@ -208,7 +207,7 @@ public class ReadPokemons {
         return learnSets;
     }
 
-    private static ArrayList<Move> readMoves() {
+    public static ArrayList<Move> readMoves() {
         ArrayList<Move> movesList = new ArrayList<>();
         Map<String, MoveInfo> moveInfoMap = new HashMap<>();
 

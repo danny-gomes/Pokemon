@@ -42,7 +42,7 @@ public enum MoveType {
                 return WHOLE_FIELD_EFFECT;
             case "FIELD-EFFECT":
                 return FIELD_EFFECT;
-            case "FORCE-SWITCH":
+             case "FORCE-SWITCH":
                 return FORCE_SWITCH;
             case "UNIQUE":
                 return UNIQUE;

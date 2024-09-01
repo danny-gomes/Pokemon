@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public class MoveInfo {
     private Ailment ailment;
-    private MoveType moveCategory;
+    private MoveType moveType;
     private int minHits;
     private int maxHits;
-    private int min_turns;
-    private int max_turns;
+    private int minTurns;
+    private int maxTurns;
     private int drain;
     private int healing;
     private int critRate;
@@ -22,11 +22,11 @@ public class MoveInfo {
 
     public MoveInfo(Ailment ailment, MoveType moveCategory, int minHits, int maxHits, int min_turns, int max_turns, int drain, int healing, int critRate, int ailmentChance, int flinchChance, int statChance, ArrayList<Integer> statChanges) {
         this.ailment = ailment;
-        this.moveCategory = moveCategory;
+        this.moveType = moveCategory;
         this.minHits = minHits;
         this.maxHits = maxHits;
-        this.min_turns = min_turns;
-        this.max_turns = max_turns;
+        this.minTurns = min_turns;
+        this.maxTurns = max_turns;
         this.drain = drain;
         this.healing = healing;
         this.critRate = critRate;
@@ -74,11 +74,11 @@ public class MoveInfo {
                         "  Stat Chance: %d\n" +
                         "%s",
                 ailment,
-                moveCategory,
+                moveType,
                 minHits,
                 maxHits,
-                min_turns,
-                max_turns,
+                minTurns,
+                maxTurns,
                 drain,
                 healing,
                 critRate,
@@ -89,7 +89,31 @@ public class MoveInfo {
         );
     }
 
-    private int getStatChange(int index) {
+    public int getStatChange(int index) {
         return statChanges != null && index < statChanges.size() ? statChanges.get(index) : 0;
+    }
+
+    public MoveType getMoveType() {
+        return moveType;
+    }
+
+    public int getCritChance() {
+        return this.critRate;
+    }
+
+    public int getMinHits() {
+        return minHits;
+    }
+
+    public int getMaxHits() {
+        return maxHits;
+    }
+
+    public int getDrain() {
+        return drain;
+    }
+
+    public int getStatChance() {
+        return statChance;
     }
 }

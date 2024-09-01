@@ -3,12 +3,15 @@ package Entidades;
 import Entidades.AbilitiesStructure.Ability;
 import Entidades.Items.Item;
 import Entidades.Moves.Move;
+import Enums.Ailment;
+import Enums.MoveCategory;
 import Enums.Nature;
 import Enums.PokemonType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Pokemon {
     private int dexNumber;
@@ -37,15 +40,15 @@ public class Pokemon {
     private double weight;
     private int evolvesAt;
     private ArrayList<Pokemon> possibleEvolutions;
-    private double[] statModifiers;
-    public static final int ATTACK = 0;
-    public static final int DEFENSE = 1;
-    public static final int SPECIAL_ATTACK = 2;
-    public static final int SPECIAL_DEFENSE = 3;
-    public static final int SPEED = 4;
-    public static final int ACCURACY = 5;
-    public static final int EVASIVENESS = 6;
-    private StatusEffect statusEffect;
+    private int[] statModifiers;
+    public static final int ATTACK_INDEX = 0;
+    public static final int DEFENSE_INDEX = 1;
+    public static final int SPECIAL_ATTACK_INDEX = 2;
+    public static final int SPECIAL_DEFENSE_INDEX = 3;
+    public static final int SPEED_INDEX = 4;
+    public static final int ACCURACY_INDEX = 5;
+    public static final int EVASIVENESS_INDEX = 6;
+    private Ailment ailment;
     private boolean isShiny;
     private Item heldItem;
     private Move[] currentMoves;
@@ -71,7 +74,7 @@ public class Pokemon {
         this.possibleEvolutions = new ArrayList<>();
 
         // 0- Attack 1- Defense 2- SpAttack 3- SpDef 4- Speed 5- Accuracy 6- Evassiveness
-        this.statModifiers = new double[7];
+        this.statModifiers = new int[7];
         Arrays.fill(statModifiers, 1);
 
         Nature[] natures = Nature.values();
@@ -96,11 +99,7 @@ public class Pokemon {
         this.speed = (int) ((Math.floor(0.01 * (2 * this.baseSpeed) * this.level) + 5) * this.nature.getSpeedMultiplier());
     }
 
-    public int getCurrentSpeed(){
-        return (int) Math.round(this.speed * statModifiers[SPEED]);
-    }
-
-    public boolean hasHeldItem(){
+    public boolean hasHeldItem() {
         return heldItem != null;
     }
 
@@ -120,8 +119,8 @@ public class Pokemon {
         this.evolvesAt = evolvesAt;
     }
 
-    public void healCurrentHP(int hpToHeal){
-        if(this.currentHp + hpToHeal > this.currentMaxHp){
+    public void healCurrentHP(int hpToHeal) {
+        if (this.currentHp + hpToHeal > this.currentMaxHp) {
             this.currentHp = this.currentMaxHp;
         } else {
             this.currentHp = this.currentMaxHp + hpToHeal;
@@ -132,10 +131,12 @@ public class Pokemon {
         return this.currentMoves;
     }
 
-    public String getMovesString(){
+    public String getMovesString() {
         String moves = "";
-        for(int i = 0; i < currentMoves.length; i++){
-            moves = moves + i + " - " + currentMoves[i].getName() + "\n";
+        for (int i = 0; i < currentMoves.length; i++) {
+            if (currentMoves[i] != null) {
+                moves = moves + (i + 1) + " - " + currentMoves[i].getName() + "\n";
+            }
         }
 
         return moves;
@@ -151,7 +152,7 @@ public class Pokemon {
         String typeInfo = type2 != null ? type1 + " / " + type2 : type1.toString();
         String evolutions = "Fully Evolved";
         for (int i = 0; i < possibleEvolutions.size(); i++) {
-            if (i == 0){
+            if (i == 0) {
                 evolutions = "";
             }
             if (i == possibleEvolutions.size() - 1) {
@@ -194,15 +195,15 @@ public class Pokemon {
                 speed, baseSpeed,
                 ability, height, "",
                 weight, "",
-                evolvesAt == 0 ? "Fully Evolved" : evolvesAt, evolutions, statusEffect == null ? "None" : statusEffect, shinyStatus
+                evolvesAt == 0 ? "Fully Evolved" : evolvesAt, evolutions, ailment == null ? "None" : ailment, shinyStatus
         );
     }
 
-    public String pokemonBattleInfo(){
+    public String pokemonBattleInfo() {
         String typeInfo = type2 != null ? type1 + " / " + type2 : type1.toString();
 
         return String.format(
-                        "╔═══════════════════════════════════════════╗\n" +
+                "╔═══════════════════════════════════════════╗\n" +
                         "║ %4d. Pokémon: %-26s ║\n" +
                         "╠═══════════════════════════════════════════╣\n" +
                         "║ Type: %-35s ║\n" +
@@ -219,11 +220,331 @@ public class Pokemon {
                         "║ Ability: %-32s ║\n" +
                         "║ Status Effect: %-26s ║\n" +
                         "╚═══════════════════════════════════════════╝\n",
-                        dexNumber, name, typeInfo, level, nature,currentHp,
-                        currentMaxHp, attack, baseAttack, defense, baseDefense,
-                        specialAttack, baseSpecialAttack, specialDefense,
-                        baseSpecialDefense, speed, baseSpeed, ability,
-                        statusEffect == null ? "None" : statusEffect
+                dexNumber, name, typeInfo, level, nature, currentHp,
+                currentMaxHp, attack, baseAttack, defense, baseDefense,
+                specialAttack, baseSpecialAttack, specialDefense,
+                baseSpecialDefense, speed, baseSpeed, ability,
+                ailment == null ? "None" : ailment
         );
     }
+
+    public Ailment getAilment() {
+        return ailment;
+    }
+
+    public int getCurrentMaxHp() {
+        return currentMaxHp;
+    }
+
+    public int getLevel() {
+        return this.level;
+    }
+
+    public int getStatForAttackMove(Pokemon attacker, Move move) {
+        if (move.getName().equalsIgnoreCase("body-press")) {
+            return (int) (this.defense * getStatMultiplier(statModifiers[DEFENSE_INDEX]));
+        }
+
+        if (move.getName().equalsIgnoreCase("foul-play")) {
+            return (int) (this.attack * getStatMultiplier(statModifiers[DEFENSE_INDEX]));
+        }
+
+        if (move.getCategory().equals(MoveCategory.PHYSICAL)) {
+            return (int) (this.attack * getStatMultiplier(statModifiers[ATTACK_INDEX]));
+        } else {
+            return (int) (this.specialAttack * getStatMultiplier(statModifiers[SPECIAL_ATTACK_INDEX]));
+        }
+    }
+
+    public int getStatForDefense(Pokemon attacker, Move moveUsed) {
+        if (moveUsed.getName().equalsIgnoreCase("secret-sword")) {
+            return (int) (this.defense * getStatMultiplier(statModifiers[DEFENSE_INDEX]));
+        }
+
+        if (moveUsed.getCategory().equals(MoveCategory.SPECIAL)) {
+            return (int) (this.specialDefense * getStatMultiplier(statModifiers[SPECIAL_DEFENSE_INDEX]));
+        } else {
+            return (int) (this.defense * getStatMultiplier(statModifiers[DEFENSE_INDEX]));
+        }
+    }
+
+
+    public double getStab(Move moveUsed) {
+        PokemonType moveType = moveUsed.getType();
+        if (moveType.equals(this.type1) || moveType.equals(this.type2)) {
+            return 1.5;
+        }
+
+        return 1;
+    }
+
+    public double getEffectiveness(Move moveUsed) {
+        PokemonType moveType = moveUsed.getType();
+
+        double effectiveness = getEffectivenessAgainstType(moveType, this.type1);
+
+        if (this.type2 != null) {
+            effectiveness *= getEffectivenessAgainstType(moveType, this.type2);
+        }
+
+        return effectiveness;
+    }
+
+    private double getEffectivenessAgainstType(PokemonType moveType, PokemonType targetType) {
+        switch (moveType) {
+            case NORMAL:
+                if (targetType == PokemonType.ROCK || targetType == PokemonType.STEEL) return 0.5;
+                if (targetType == PokemonType.GHOST) return 0.0;
+                break;
+            case FIRE:
+                if (targetType == PokemonType.GRASS || targetType == PokemonType.ICE || targetType == PokemonType.BUG || targetType == PokemonType.STEEL)
+                    return 2.0;
+                if (targetType == PokemonType.FIRE || targetType == PokemonType.WATER || targetType == PokemonType.ROCK || targetType == PokemonType.DRAGON)
+                    return 0.5;
+                break;
+            case WATER:
+                if (targetType == PokemonType.FIRE || targetType == PokemonType.GROUND || targetType == PokemonType.ROCK)
+                    return 2.0;
+                if (targetType == PokemonType.WATER || targetType == PokemonType.GRASS || targetType == PokemonType.DRAGON)
+                    return 0.5;
+                break;
+            case ELECTRIC:
+                if (targetType == PokemonType.WATER || targetType == PokemonType.FLYING) return 2.0;
+                if (targetType == PokemonType.ELECTRIC || targetType == PokemonType.GRASS || targetType == PokemonType.DRAGON)
+                    return 0.5;
+                if (targetType == PokemonType.GROUND) return 0.0;
+                break;
+            case GRASS:
+                if (targetType == PokemonType.WATER || targetType == PokemonType.GROUND || targetType == PokemonType.ROCK)
+                    return 2.0;
+                if (targetType == PokemonType.FIRE || targetType == PokemonType.GRASS || targetType == PokemonType.POISON || targetType == PokemonType.FLYING || targetType == PokemonType.BUG || targetType == PokemonType.DRAGON || targetType == PokemonType.STEEL)
+                    return 0.5;
+                break;
+            case ICE:
+                if (targetType == PokemonType.GRASS || targetType == PokemonType.GROUND || targetType == PokemonType.FLYING || targetType == PokemonType.DRAGON)
+                    return 2.0;
+                if (targetType == PokemonType.FIRE || targetType == PokemonType.WATER || targetType == PokemonType.ICE || targetType == PokemonType.STEEL)
+                    return 0.5;
+                break;
+            case FIGHTING:
+                if (targetType == PokemonType.NORMAL || targetType == PokemonType.ICE || targetType == PokemonType.ROCK || targetType == PokemonType.DARK || targetType == PokemonType.STEEL)
+                    return 2.0;
+                if (targetType == PokemonType.POISON || targetType == PokemonType.FLYING || targetType == PokemonType.PSYCHIC || targetType == PokemonType.BUG || targetType == PokemonType.FAIRY)
+                    return 0.5;
+                if (targetType == PokemonType.GHOST) return 0.0;
+                break;
+            case POISON:
+                if (targetType == PokemonType.GRASS || targetType == PokemonType.FAIRY) return 2.0;
+                if (targetType == PokemonType.POISON || targetType == PokemonType.GROUND || targetType == PokemonType.ROCK || targetType == PokemonType.GHOST)
+                    return 0.5;
+                if (targetType == PokemonType.STEEL) return 0.0;
+                break;
+            case GROUND:
+                if (targetType == PokemonType.FIRE || targetType == PokemonType.ELECTRIC || targetType == PokemonType.POISON || targetType == PokemonType.ROCK || targetType == PokemonType.STEEL)
+                    return 2.0;
+                if (targetType == PokemonType.GRASS || targetType == PokemonType.BUG) return 0.5;
+                if (targetType == PokemonType.FLYING) return 0.0;
+                break;
+            case FLYING:
+                if (targetType == PokemonType.GRASS || targetType == PokemonType.FIGHTING || targetType == PokemonType.BUG)
+                    return 2.0;
+                if (targetType == PokemonType.ELECTRIC || targetType == PokemonType.ROCK || targetType == PokemonType.STEEL)
+                    return 0.5;
+                break;
+            case PSYCHIC:
+                if (targetType == PokemonType.FIGHTING || targetType == PokemonType.POISON) return 2.0;
+                if (targetType == PokemonType.PSYCHIC || targetType == PokemonType.STEEL) return 0.5;
+                if (targetType == PokemonType.DARK) return 0.0;
+                break;
+            case BUG:
+                if (targetType == PokemonType.GRASS || targetType == PokemonType.PSYCHIC || targetType == PokemonType.DARK)
+                    return 2.0;
+                if (targetType == PokemonType.FIRE || targetType == PokemonType.FIGHTING || targetType == PokemonType.POISON || targetType == PokemonType.FLYING || targetType == PokemonType.GHOST || targetType == PokemonType.STEEL || targetType == PokemonType.FAIRY)
+                    return 0.5;
+                break;
+            case ROCK:
+                if (targetType == PokemonType.FIRE || targetType == PokemonType.ICE || targetType == PokemonType.FLYING || targetType == PokemonType.BUG)
+                    return 2.0;
+                if (targetType == PokemonType.FIGHTING || targetType == PokemonType.GROUND || targetType == PokemonType.STEEL)
+                    return 0.5;
+                break;
+            case GHOST:
+                if (targetType == PokemonType.PSYCHIC || targetType == PokemonType.GHOST) return 2.0;
+                if (targetType == PokemonType.DARK) return 0.5;
+                if (targetType == PokemonType.NORMAL) return 0.0;
+                break;
+            case DRAGON:
+                if (targetType == PokemonType.DRAGON) return 2.0;
+                if (targetType == PokemonType.STEEL) return 0.5;
+                if (targetType == PokemonType.FAIRY) return 0.0;
+                break;
+            case DARK:
+                if (targetType == PokemonType.PSYCHIC || targetType == PokemonType.GHOST) return 2.0;
+                if (targetType == PokemonType.FIGHTING || targetType == PokemonType.DARK || targetType == PokemonType.FAIRY)
+                    return 0.5;
+                break;
+            case STEEL:
+                if (targetType == PokemonType.ICE || targetType == PokemonType.ROCK || targetType == PokemonType.FAIRY)
+                    return 2.0;
+                if (targetType == PokemonType.FIRE || targetType == PokemonType.WATER || targetType == PokemonType.ELECTRIC || targetType == PokemonType.STEEL)
+                    return 0.5;
+                break;
+            case FAIRY:
+                if (targetType == PokemonType.FIGHTING || targetType == PokemonType.DRAGON || targetType == PokemonType.DARK)
+                    return 2.0;
+                if (targetType == PokemonType.FIRE || targetType == PokemonType.POISON || targetType == PokemonType.STEEL)
+                    return 0.5;
+                break;
+        }
+
+        // If the move is neutral
+        return 1.0;
+    }
+
+    public void takeDamage(int finalDamage) {
+        this.currentHp = this.currentHp - finalDamage;
+        if (this.currentHp < 0) {
+            this.currentHp = 0;
+        }
+    }
+
+    public void learnNewMove(Move m) {
+        Scanner in = new Scanner(System.in);
+        for (int i = 0; i < currentMoves.length; i++) {
+            if (currentMoves[i] == null) {
+                currentMoves[i] = m;
+                return;
+            }
+            System.out.println((i + 1) + " - " + currentMoves[i].getName());
+        }
+
+        System.out.println("Choose a move to replace:");
+        int moveToReplace = in.nextInt();
+        while (moveToReplace < 1 || moveToReplace > 4) {
+            System.out.println("Choose a move to replace: (1-4)");
+            moveToReplace = in.nextInt();
+        }
+
+        currentMoves[moveToReplace] = m;
+    }
+
+    public double getEvasiness() {
+        return statModifiers[EVASIVENESS_INDEX];
+    }
+
+    public double getAccuracy() {
+        return statModifiers[ACCURACY_INDEX];
+    }
+
+    public void updateStatModifiers(int attackChange, int defenseChange, int spAttackChange, int spDefChange, int speedChange, int accuracyChange, int evasionChange) {
+        for (int i = 0; i < statModifiers.length; i++) {
+            switch (i) {
+                case 0:
+                    updateStatModifier(0, attackChange, "Attack");
+                    break;
+                case 1:
+                    updateStatModifier(1, defenseChange, "Defense");
+                    break;
+                case 2:
+                    updateStatModifier(2, spAttackChange, "Special Attack");
+                    break;
+                case 3:
+                    updateStatModifier(3, spDefChange, "Special Defense");
+                    break;
+                case 4:
+                    updateStatModifier(4, speedChange, "Speed");
+                    break;
+                case 5:
+                    updateStatModifier(5, accuracyChange, "Accuracy");
+                    break;
+                case 6:
+                    updateStatModifier(6, evasionChange, "Evasion");
+                    break;
+            }
+        }
+    }
+
+    private void updateStatModifier(int i, int change, String stat) {
+        if(change > 0){
+            System.out.println(stat + " raised by " + change);
+        }
+
+        if(change < 0){
+            System.out.println(stat + " lowered by " + change);
+        }
+
+        if (statModifiers[i] + change > 7) {
+            System.out.println("Stat won't go higher!");
+        } else if (statModifiers[i] + change < -5) {
+            System.out.println("Stat won't go lower!");
+        } else {
+            statModifiers[i] = statModifiers[i] + change;
+        }
+    }
+
+    public String getCurrentStatsString() {
+        return String.format(
+                        "╔═══════════════════════════════════════════╗\n" +
+                        "║ %-40s ║\n" +
+                        "╠═══════════════════════════════════════════╣\n" +
+                        "║ %-40s ║\n" +
+                        "║ %-40s ║\n" +
+                        "╠═══════════════════════════════════════════╣\n" +
+                        "║ HP:           %-4d / %-25d ║\n" +
+                        "║ Attack:       %-4d                       ║\n" +
+                        "║ Defense:      %-4d                       ║\n" +
+                        "║ Sp. Attack:   %-4d                       ║\n" +
+                        "║ Sp. Defense:  %-4d                       ║\n" +
+                        "║ Speed:        %-4d                       ║\n" +
+                        "╚═══════════════════════════════════════════╝",
+                "Pokémon Stats",
+                "Name: " + name,
+                "Level: " + level + "   Nature: " + nature,
+                (int) currentHp, (int) currentMaxHp,
+                (int) (attack * getStatMultiplier(statModifiers[ATTACK_INDEX])),
+                (int) (defense * getStatMultiplier(statModifiers[DEFENSE_INDEX])),
+                (int) (specialAttack * getStatMultiplier(statModifiers[SPECIAL_ATTACK_INDEX])),
+                (int) (specialDefense * getStatMultiplier(statModifiers[SPECIAL_DEFENSE_INDEX])),
+                (int) (speed * getStatMultiplier(statModifiers[SPEED_INDEX]))
+        );
+    }
+
+    public int getCurrentSpeed() {
+        return (int) Math.round(this.speed * getStatMultiplier(statModifiers[SPEED_INDEX]));
+    }
+
+    private double getStatMultiplier(int statModifier) {
+        switch (statModifier){
+            case -5:
+                return (double) 1 /4;
+            case -4:
+                return 1/3.5;
+            case -3:
+                return 1/3;
+            case -2:
+                return 1/2.5;
+            case -1:
+                return (double) 1 /2;
+            case 0:
+                return 1/1.5;
+            case 1:
+                return 1;
+            case 2:
+                return 1.5;
+            case 3:
+                return 2;
+            case 4:
+                return 2.5;
+            case 5:
+                return 3;
+            case 6:
+                return 3.5;
+            case 7:
+                return 4;
+            default:
+                return 1;
+        }
+    }
+
+
 }

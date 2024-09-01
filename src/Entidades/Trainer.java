@@ -39,4 +39,8 @@ public class Trainer {
 
         return nonFaintedPokemon;
     }
+
+    public String getName() {
+        return name;
+    }
 }

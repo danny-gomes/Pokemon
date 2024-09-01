@@ -1,31 +1,66 @@
+import Entidades.*;
 import Entidades.Moves.Move;
-import Entidades.Pokedex;
-import Entidades.Pokemon;
+import Enums.MoveCategory;
+import Enums.MoveType;
 import Ficheiros.ReadPokemons;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Array;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Pokedex pokedex = new Pokedex();
+        ArrayList<Move> allMoves = pokedex.getAllMoves();
+        Pokemon turtwig = pokedex.getPokemonByName("turtwig");
+        ArrayList<Pokemon> playerParty = new ArrayList<>();
+        playerParty.add(turtwig);
+        ArrayList<Pokemon> pc = new ArrayList<>();
 
-        Pokemon dreepy = pokedex.getPokemonByName("turtwig");
+        Pokemon piplup = pokedex.getPokemonByName("piplup");
+        ArrayList<Pokemon> opponentParty = new ArrayList<>();
+        opponentParty.add(piplup);
 
-        System.out.println(dreepy);
-
-        ArrayList<Move> learnSet = dreepy.getLearnSet();
-
-        for(Move m : learnSet){
-            System.out.println(m.getName());
-        }
-
-        Move[] moves = dreepy.getMoves();
-
-        for(int i = 0; i < moves.length; i++){
-            if(moves[i] != null){
-                System.out.println(i + " - " + moves[i].getName());
+        int count = 0;
+        for (Move m : allMoves) {
+            if (m.getName().equalsIgnoreCase("aeroblast")) {
+                turtwig.learnNewMove(m);
+            }
+            if (m.getMoveType().equals(MoveType.NET_GOOD_STATS)) {
+               // System.out.println(m.getName());
             }
         }
+        System.out.println("TOTAL: " + count);
+
+        Bag playerBag = new Bag();
+
+        Trainer player = new Trainer("Danny", playerBag, playerParty, pc, 500);
+        Trainer opponent = new Trainer("Isa", playerBag, opponentParty, pc, 500);
+
+        Battle battle = new Battle(player, playerParty.get(0), opponent, opponentParty.get(0), 0);
+
+        int battleOver = 0;
+        System.out.println(battle);
+        System.out.println(turtwig.getCurrentStatsString());
+
+        while (battleOver == 0) {
+
+            battleOver = battle.turn();
+            System.out.println(turtwig.getCurrentStatsString());
+            Thread.sleep(2000);
+
+            System.out.println(battle);
+        }
+
+        if (battleOver == -1) {
+            System.out.println(opponent.getName() + " wins.");
+        } else {
+            System.out.println(player.getName() + " wins.");
+        }
+
     }
 }

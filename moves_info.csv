@@ -675,7 +675,7 @@ laser-focus,none,0,unique,0,0,0,0,null,null,null,null,0,0,0,0,0,0,0,0
 gear-up,none,0,net-good-stats,0,0,0,0,null,null,null,null,0,1,0,1,0,0,0,0
 throat-chop,silence,100,damage+ailment,0,0,0,0,null,null,2,2,0,0,0,0,0,0,0,0
 pollen-puff,none,0,damage,0,0,0,0,null,null,null,null,0,0,0,0,0,0,0,0
-anchor-shot,trap,100,damage,0,0,0,0,null,null,null,null,0,0,0,0,0,0,0,0
+anchor-shot,trap,100,damage+ailment,0,0,0,0,null,null,null,null,0,0,0,0,0,0,0,0
 psychic-terrain,none,0,whole-field-effect,0,0,0,0,null,null,null,null,0,0,0,0,0,0,0,0
 lunge,none,0,damage+lower,0,0,0,0,null,null,null,null,100,-1,0,0,0,0,0,0
 fire-lash,none,0,damage+lower,0,0,0,0,null,null,null,null,100,0,-1,0,0,0,0,0

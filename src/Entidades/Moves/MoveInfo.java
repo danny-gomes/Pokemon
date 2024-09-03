@@ -132,4 +132,8 @@ public class MoveInfo {
     public Ailment getAilment() {
         return ailment;
     }
+
+    public int getAilmentChance() {
+        return ailmentChance;
+    }
 }

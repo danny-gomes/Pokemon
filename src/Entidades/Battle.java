@@ -1,6 +1,7 @@
 package Entidades;
 
 import Entidades.Moves.Move;
+import Enums.Ailment;
 import Enums.Target;
 
 import java.util.ArrayList;
@@ -68,6 +69,10 @@ public class Battle {
 
     private boolean switchOut() {
         Scanner in = new Scanner(System.in);
+        if(playerCurrentPokemon.isTrapped()){
+            System.out.println("Player is trapped.");
+            return false;
+        }
         ArrayList<String> pokemonNames = new ArrayList<>();
         int count = 1;
         for (Pokemon p : player.nonFaintedPokemon()) {
@@ -272,6 +277,19 @@ public class Battle {
                     attacker.updateStatModifiers(attackChange, defenseChange, spAttackChange, spDefChange, speedChange, accuracyChange, evasionChange);
                 } else if (moveUsed.getTarget().equals(Target.SELECTED_POKEMON)) {
                     defender.updateStatModifiers(attackChange, defenseChange, spAttackChange, spDefChange, speedChange, accuracyChange, evasionChange);
+                }
+            }
+            case DAMAGE_AILMENT -> {
+                executeDamageMove(attacker, defender, moveUsed, opponentsMove);
+                int ailmentChance = moveUsed.getMoveInfo().getAilmentChance();
+                if(rd.nextInt(101) < ailmentChance){
+                    Ailment moveAilment = moveUsed.getMoveInfo().getAilment();
+                    boolean addedAilment = defender.addAilment(moveAilment);
+                    if(addedAilment){
+                        System.out.println(defender.getName() + " was inflicted with " + moveAilment);
+                    } else {
+                        System.out.println(defender.getName() + " can not be inflicted with " + moveAilment);
+                    }
                 }
             }
             case UNIQUE -> {

@@ -30,8 +30,8 @@ public class Main {
 
         int count = 0;
         for (Move m : allMoves) {
-            if (m.getName().equalsIgnoreCase("amnesia")) {
-                //turtwig.learnNewMove(m);
+            if (m.getName().equalsIgnoreCase("anchor-shot")) {
+                piplup.learnNewMove(m);
             }
             if (m.getMoveInfo().getAilment().equals(Ailment.TRAP)) {
                // System.out.println(m);
@@ -48,7 +48,7 @@ public class Main {
 
         int battleOver = 0;
         System.out.println(battle);
-        System.out.println(piplup);
+
         while (battleOver == 0) {
 
             battleOver = battle.turn();

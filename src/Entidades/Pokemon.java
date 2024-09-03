@@ -598,15 +598,15 @@ public class Pokemon {
         }
     }
 
-    public void addAilment(Ailment ailment) {
+    public boolean addAilment(Ailment ailment) {
         if (ailment == Ailment.NONE || ailment == Ailment.UNKNOWN) {
-            return;
+            return false;
         }
 
         if (isPrimaryStatusAilment(ailment)) {
             for (Ailment a : ailments) {
                 if (isPrimaryStatusAilment(a)) {
-                    return;
+                    return false;
                 }
             }
         } else {
@@ -614,6 +614,7 @@ public class Pokemon {
         }
 
         ailments.add(ailment);
+        return true;
     }
 
     private boolean isPrimaryStatusAilment(Ailment ailment) {
@@ -751,5 +752,15 @@ public class Pokemon {
             }
         }
         return true;
+    }
+
+    public boolean isTrapped(){
+        for(Ailment a : ailments){
+            if(a.equals(Ailment.TRAP)){
+                return true;
+            }
+        }
+
+        return false;
     }
 }

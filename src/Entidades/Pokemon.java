@@ -16,6 +16,7 @@ import java.util.Scanner;
 public class Pokemon {
     private int dexNumber;
     private String name;
+    private String gender;
     private PokemonType type1;
     private PokemonType type2;
     private int level;
@@ -48,11 +49,14 @@ public class Pokemon {
     public static final int SPEED_INDEX = 4;
     public static final int ACCURACY_INDEX = 5;
     public static final int EVASIVENESS_INDEX = 6;
-    private Ailment ailment;
     private boolean isShiny;
     private Item heldItem;
     private Move[] currentMoves;
     private ArrayList<Move> learnSet;
+    private ArrayList<Ailment> ailments;
+    private int confusionTurns;
+    private int sleepTurns;
+    private int toxicCounter;
 
     public Pokemon(int dexNumber, String name, PokemonType type1, PokemonType type2, int level, int baseHp, int baseAttack, int baseDefense, int baseSpecialAttack, int baseSpecialDefense, int baseSpeed, ArrayList<String> possibleAbilitiesString, String hiddenAbilityString, double height, double weight, int evolvesAt, Move[] moves, ArrayList<Move> learnSet) {
         this.dexNumber = dexNumber;
@@ -72,6 +76,10 @@ public class Pokemon {
         this.weight = weight;
         this.evolvesAt = evolvesAt;
         this.possibleEvolutions = new ArrayList<>();
+        this.confusionTurns = 0;
+        this.sleepTurns = 0;
+        this.toxicCounter = 0;
+
 
         // 0- Attack 1- Defense 2- SpAttack 3- SpDef 4- Speed 5- Accuracy 6- Evassiveness
         this.statModifiers = new int[7];
@@ -82,10 +90,17 @@ public class Pokemon {
         int randomIndex = rd.nextInt(natures.length);
         this.nature = natures[randomIndex];
 
+        if(rd.nextBoolean()){
+            this.gender = "Male";
+        } else {
+            this.gender = "Female";
+        }
+
         calculateCurrentStats();
 
         this.currentMoves = moves;
         this.learnSet = learnSet;
+        this.ailments = new ArrayList<>();
     }
 
     private void calculateCurrentStats() {
@@ -195,12 +210,31 @@ public class Pokemon {
                 speed, baseSpeed,
                 ability, height, "",
                 weight, "",
-                evolvesAt == 0 ? "Fully Evolved" : evolvesAt, evolutions, ailment == null ? "None" : ailment, shinyStatus
+                evolvesAt == 0 ? "Fully Evolved" : evolvesAt, evolutions, getAilmentsString(), shinyStatus
         );
     }
 
     public String pokemonBattleInfo() {
         String typeInfo = type2 != null ? type1 + " / " + type2 : type1.toString();
+
+        // Determine gender symbol
+        String genderSymbol = switch (gender) {
+            case "Male" -> "♂";
+            case "Female" -> "♀";
+            default -> "";
+        };
+
+        // Check for shininess
+        String shinyText = isShiny ? "⭐ Shiny" : "";
+
+        // Prepare moves information
+        StringBuilder movesInfo = new StringBuilder();
+        for (int i = 0; i < currentMoves.length && currentMoves[i] != null; i++) {
+            movesInfo.append(String.format(
+                    "║ %-7s PP: %2d / %-24d ║\n",
+                    currentMoves[i].getName(), currentMoves[i].getPP(), currentMoves[i].getCurrentPowerPoints()
+            ));
+        }
 
         return String.format(
                 "╔═══════════════════════════════════════════╗\n" +
@@ -209,6 +243,8 @@ public class Pokemon {
                         "║ Type: %-35s ║\n" +
                         "║ Level: %-34d ║\n" +
                         "║ Nature: %-33s ║\n" +
+                        "║ Gender: %-33s ║\n" +
+                        "║ %-41s ║\n" +
                         "╠═══════════════════════════════════════════╣\n" +
                         "║ HP: %4d / %-30d ║\n" +
                         "║ Attack: %-20d (Base: %4d) ║\n" +
@@ -219,17 +255,30 @@ public class Pokemon {
                         "╠═══════════════════════════════════════════╣\n" +
                         "║ Ability: %-32s ║\n" +
                         "║ Status Effect: %-26s ║\n" +
+                        "╠═══════════════════════════════════════════╣\n" +
+                        "%s" +
                         "╚═══════════════════════════════════════════╝\n",
-                dexNumber, name, typeInfo, level, nature, currentHp,
-                currentMaxHp, attack, baseAttack, defense, baseDefense,
+                dexNumber, name, typeInfo, level, nature, genderSymbol, shinyText,
+                currentHp, currentMaxHp, attack, baseAttack, defense, baseDefense,
                 specialAttack, baseSpecialAttack, specialDefense,
                 baseSpecialDefense, speed, baseSpeed, ability,
-                ailment == null ? "None" : ailment
+                getAilmentsString(), movesInfo
         );
     }
 
-    public Ailment getAilment() {
-        return ailment;
+    public String getAilmentsString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (Ailment ailment : ailments) {
+            if (ailment != Ailment.NONE) {
+                if (sb.length() > 0) {
+                    sb.append(", ");
+                }
+                sb.append(ailment.name().replace("_", " "));
+            }
+        }
+
+        return sb.length() > 0 ? sb.toString() : "No Ailments";
     }
 
     public int getCurrentMaxHp() {
@@ -549,5 +598,158 @@ public class Pokemon {
         }
     }
 
+    public void addAilment(Ailment ailment) {
+        if (ailment == Ailment.NONE || ailment == Ailment.UNKNOWN) {
+            return;
+        }
 
+        if (isPrimaryStatusAilment(ailment)) {
+            for (Ailment a : ailments) {
+                if (isPrimaryStatusAilment(a)) {
+                    return;
+                }
+            }
+        } else {
+            ailments.remove(ailment);
+        }
+
+        ailments.add(ailment);
+    }
+
+    private boolean isPrimaryStatusAilment(Ailment ailment) {
+        return ailment == Ailment.PARALYSIS || ailment == Ailment.SLEEP || ailment == Ailment.FREEZE ||
+                ailment == Ailment.BURN || ailment == Ailment.POISON || ailment == Ailment.TOXIC;
+    }
+
+    public boolean checkAilments(Pokemon opponent, boolean beforeMove) {
+        if (beforeMove) {
+            for (Ailment ailment : ailments) {
+                switch (ailment) {
+                    case PARALYSIS:
+                        this.speed /= 2;
+                        break;
+                    case BURN:
+                        this.attack /= 2;
+                        break;
+                    case FREEZE:
+                        if (Math.random() < 0.50) {
+                            System.out.println("The Pokemon thawed out!");
+                            ailments.remove(Ailment.FREEZE);
+                            return true;
+                        } else {
+                            System.out.println("The Pokemon is frozen and cannot move!");
+                            return false;
+                        }
+                    case SLEEP:
+                        sleepTurns++;
+                        if (sleepTurns == 1) {
+                            System.out.println("The Pokemon is fast asleep.");
+                            return false;
+                        } else if (sleepTurns == 2) {
+                            if (Math.random() < 0.5) {
+                                System.out.println("The Pokemon woke up!");
+                                ailments.remove(Ailment.SLEEP);
+                                return true;
+                            } else {
+                                System.out.println("The Pokemon is fast asleep.");
+                                return false;
+                            }
+                        } else if (sleepTurns >= 3) {
+                            System.out.println("The Pokemon woke up!");
+                            ailments.remove(Ailment.SLEEP);
+                            return true;
+                        }
+                        break;
+                    case CONFUSION:
+                        if (Math.random() < 0.50) {
+                            int confusionDamage = currentMaxHp * 4 / 16;
+                            System.out.println("The Pokemon hurt itself in its confusion!");
+                            currentHp -= confusionDamage;
+                            if (currentHp <= 0) {
+                                currentHp = 0;
+                                System.out.println("The Pokémon fainted!");
+                            }
+                            return false;
+                        } else {
+                            System.out.println("The Pokemon snapped out of its confusion!");
+                            ailments.remove(Ailment.CONFUSION);
+                            return true;
+                        }
+                    case INFATUATION:
+                        if (Math.random() < 0.50) {
+                            System.out.println("The Pokemon is immobilized by love!");
+                            return false;
+                        }
+                        break;
+                    // Add additional before-move effects here as needed
+                    default:
+                        break;
+                }
+            }
+        } else {
+            for (Ailment ailment : ailments) {
+                switch (ailment) {
+                    case BURN:
+                        int burnDamage = currentMaxHp / 16;
+                        currentHp -= burnDamage;
+                        System.out.println("The Pokemon is hurt by its burn!");
+                        if (currentHp <= 0) {
+                            currentHp = 0;
+                            System.out.println("The Pokemon fainted!");
+                        }
+                        break;
+                    case POISON:
+                        int poisonDamage = currentMaxHp / 16;
+                        currentHp -= poisonDamage;
+                        System.out.println("The Pokemon is hurt by poison!");
+                        if (currentHp <= 0) {
+                            currentHp = 0;
+                            System.out.println("The Pokemon fainted!");
+                        }
+                        break;
+                    case TOXIC:
+                        toxicCounter++;
+                        int toxicDamage = currentMaxHp * toxicCounter / 16;
+                        currentHp -= toxicDamage;
+                        System.out.println("The Pokemon is hurt by toxic poison!");
+                        if (currentHp <= 0) {
+                            currentHp = 0;
+                            System.out.println("The Pokemon fainted!");
+                        }
+                        break;
+                    case NIGHTMARE:
+                        if (ailments.contains(Ailment.SLEEP)) {
+                            int nightmareDamage = currentMaxHp / 4;
+                            currentHp -= nightmareDamage;
+                            System.out.println("The Pokemon is tormented by a nightmare!");
+                            if (currentHp <= 0) {
+                                currentHp = 0;
+                                System.out.println("The Pokemon fainted!");
+                            }
+                        }
+                        break;
+                    case LEECH_SEED:
+                        int leechSeedDamage = currentMaxHp / 16;
+                        currentHp -= leechSeedDamage;
+                        System.out.println("The Pokémon's energy is drained by Leech Seed!");
+                        opponent.healCurrentHP(leechSeedDamage / 2);
+                        if (currentHp <= 0) {
+                            currentHp = 0;
+                            System.out.println("The Pokemon fainted!");
+                        }
+                        break;
+                    case INGRAIN:
+                        int ingrainHeal = currentMaxHp / 16;
+                        currentHp += ingrainHeal;
+                        if (currentHp > currentMaxHp) currentHp = currentMaxHp;
+                        System.out.println("The Pokémon heals due to Ingrain!");
+                        break;
+                    // Add additional end-of-turn effects here as needed
+                    default:
+                        break;
+                }
+            }
+        }
+        return true;
+    }
 }

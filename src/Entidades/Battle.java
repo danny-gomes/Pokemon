@@ -3,6 +3,7 @@ package Entidades;
 import Entidades.Moves.Move;
 import Enums.Target;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -23,13 +24,96 @@ public class Battle {
 
     public int turn() throws InterruptedException {
         this.turnCount = this.turnCount + 1;
-        Move playerMove = selectPlayerMove();
-        Move challengerMove = selectChallengerMove();
+
+        Scanner in = new Scanner(System.in);
+        int option;
+        boolean hasNotSelected = true;
+        int outcome = 0;
+        do {
+            do {
+                System.out.println("1 - Fight 2 - Bag \n3 - Pokemon 4 - Run");
+                option = in.nextInt();
+            } while (option < 1 || option > 4);
+
+            switch (option) {
+                case 1:
+                    Move playerMove = selectPlayerMove();
+                    if (playerMove != null) {
+                        Move challengerMove = selectChallengerMove();
+                        outcome = battleTurn(playerMove, challengerMove);
+                        hasNotSelected = false;
+                    }
+                    break;
+                case 2:
+                    System.out.println("BAG STUFF");
+                    break;
+                case 3:
+                    boolean switched = switchOut();
+                    if (switched) {
+                        hasNotSelected = false;
+                        Move challengerMove = selectChallengerMove();
+                        outcome = battleTurn(null, challengerMove);
+                    }
+                    break;
+                case 4:
+                    System.out.println("TRY RUN");
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+            }
+        } while (hasNotSelected);
+
+        return outcome;
+    }
+
+    private boolean switchOut() {
+        Scanner in = new Scanner(System.in);
+        ArrayList<String> pokemonNames = new ArrayList<>();
+        int count = 1;
+        for (Pokemon p : player.nonFaintedPokemon()) {
+            if (!p.getName().equalsIgnoreCase(playerCurrentPokemon.getName())) {
+                System.out.println("\n" + count + ".\n" + p.pokemonBattleInfo());
+                pokemonNames.add(p.getName());
+                count++;
+            }
+        }
+        int pokemonOption = 0;
+
+        if (count == 1) {
+            System.out.println("Party empty.");
+        } else {
+            do {
+                System.out.println("Choose pokemon to switch in. 0 to go back");
+                pokemonOption = in.nextInt();
+            } while (pokemonOption < -1 && pokemonOption > count);
+        }
+
+        if (pokemonOption != 0) {
+            playerCurrentPokemon = player.getNonFaintedPokemon(pokemonNames.get(pokemonOption - 1));
+            System.out.println("Go, " + playerCurrentPokemon.getName() + "!");
+        } else {
+            return false;
+        }
+
+        return true;
+    }
+
+    private int battleTurn(Move playerMove, Move challengerMove) throws InterruptedException {
         boolean playerWin = false;
         boolean challengerWin = false;
         boolean isPlayerFirst = playerAttackFirst(playerMove, challengerMove);
         int playerDamageDealt = 0;
         int challengerDamageDealt = 0;
+
+        if (playerMove == null) {
+            executeMove(challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
+            challengerWin = checkPlayerFaint();
+            if (challengerWin) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }
 
         if (isPlayerFirst) {
             playerDamageDealt = executeMove(playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
@@ -49,7 +133,7 @@ public class Battle {
             challengerWin = checkPlayerFaint();
             Thread.sleep(2000);
             if (!challengerWin) {
-                if(challengerDamageDealt > 0 && challengerMove.getMoveInfo().isFlinch()){
+                if (challengerDamageDealt > 0 && challengerMove.getMoveInfo().isFlinch()) {
                     System.out.println(playerCurrentPokemon.getName() + " flinched!");
                 } else {
                     executeMove(playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
@@ -69,6 +153,9 @@ public class Battle {
     }
 
     public boolean playerAttackFirst(Move playerMove, Move challengerMove) {
+        if (playerMove == null) {
+            return false;
+        }
         if (playerMove.getPriority() > challengerMove.getPriority()) {
             return true;
         } else if (challengerMove.getPriority() > playerMove.getPriority()) {
@@ -325,15 +412,15 @@ public class Battle {
     private Move selectPlayerMove() {
         Scanner in = new Scanner(System.in);
         Move[] moves = playerCurrentPokemon.getMoves();
-        System.out.println("Choose move 1, 2, 3 or 4");
+        System.out.println("Choose move 1, 2, 3 or 4. 5 to go Back");
         System.out.println(playerCurrentPokemon.getMovesString());
         int moveSelection = in.nextInt() - 1;
-        while (moveSelection < 0 || moveSelection > 3) {
-            System.out.println("Choose move 1, 2, 3 or 4");
+        while (moveSelection < 0 || moveSelection > 4) {
+            System.out.println("Choose move 1, 2, 3 or 4. 5 to go Back");
             moveSelection = in.nextInt() - 1;
         }
 
-        return moves[moveSelection];
+        return moveSelection == 4 ? null : moves[moveSelection];
     }
 
     @Override
@@ -343,18 +430,14 @@ public class Battle {
         battleDisplay.append(String.format("Opponent: %s\n", challenger.getName()));
         battleDisplay.append(String.format("Pokémon: %s\n", challengerCurrentPokemon.getName()));
         battleDisplay.append(String.format("HP: %d/%d\n", challengerCurrentPokemon.getCurrentHp(), challengerCurrentPokemon.getCurrentMaxHp()));
-        if (challengerCurrentPokemon.getAilment() != null && !challengerCurrentPokemon.getAilment().equals("NONE")) {
-            battleDisplay.append(String.format("Status: %s\n", challengerCurrentPokemon.getAilment()));
-        }
+        battleDisplay.append(String.format("Status: %s\n", challengerCurrentPokemon.getAilmentsString()));
         battleDisplay.append("\n");
 
         battleDisplay.append("----------------------------------------------------\n");
         battleDisplay.append(String.format("Player: %s\n", player.getName()));
         battleDisplay.append(String.format("Pokémon: %s\n", playerCurrentPokemon.getName()));
         battleDisplay.append(String.format("HP: %d/%d\n", playerCurrentPokemon.getCurrentHp(), playerCurrentPokemon.getCurrentMaxHp()));
-        if (playerCurrentPokemon.getAilment() != null && !playerCurrentPokemon.getAilment().equals("NONE")) {
-            battleDisplay.append(String.format("Status: %s\n", playerCurrentPokemon.getAilment()));
-        }
+        battleDisplay.append(String.format("Status: %s\n", playerCurrentPokemon.getAilmentsString()));
         battleDisplay.append("\n");
 
         battleDisplay.append(String.format("Turn: %d\n", turnCount));

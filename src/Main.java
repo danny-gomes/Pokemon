@@ -17,9 +17,11 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Pokedex pokedex = new Pokedex();
         ArrayList<Move> allMoves = pokedex.getAllMoves();
-        Pokemon turtwig = pokedex.getPokemonByName("chimchar");
+        Pokemon turtwig = pokedex.getPokemonByName("turtwig");
+        Pokemon lugia = pokedex.getPokemonByName("lugia");
         ArrayList<Pokemon> playerParty = new ArrayList<>();
         playerParty.add(turtwig);
+        playerParty.add(lugia);
         ArrayList<Pokemon> pc = new ArrayList<>();
 
         Pokemon piplup = pokedex.getPokemonByName("piplup");
@@ -29,10 +31,10 @@ public class Main {
         int count = 0;
         for (Move m : allMoves) {
             if (m.getName().equalsIgnoreCase("amnesia")) {
-                turtwig.learnNewMove(m);
+                //turtwig.learnNewMove(m);
             }
             if (m.getMoveInfo().getAilment().equals(Ailment.TRAP)) {
-                System.out.println(m);
+               // System.out.println(m);
             }
         }
         System.out.println("TOTAL: " + count);
@@ -46,14 +48,11 @@ public class Main {
 
         int battleOver = 0;
         System.out.println(battle);
-
-        System.out.println(turtwig.getCurrentStatsString());
+        System.out.println(piplup);
         while (battleOver == 0) {
 
             battleOver = battle.turn();
-            System.out.println(turtwig.getCurrentStatsString());
             Thread.sleep(2000);
-            System.out.println(turtwig.getCurrentStatsString());
 
             System.out.println(battle);
         }

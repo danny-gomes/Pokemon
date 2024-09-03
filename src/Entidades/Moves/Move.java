@@ -14,6 +14,7 @@ public class Move {
     private MoveCategory category;
     private int power;
     private int powerpoints;
+    private int currentPowerPoints;
     private int accuracy;
     private int effectChance;
     private int priority;
@@ -31,6 +32,7 @@ public class Move {
         this.category = category;
         this.power = power;
         this.powerpoints = powerpoints;
+        this.currentPowerPoints = powerpoints;
         this.accuracy = accuracy;
         this.effectChance = effectChance;
         this.priority = priority;
@@ -173,6 +175,14 @@ public class Move {
 
     public Target getTarget() {
         return target;
+    }
+
+    public int getPP() {
+        return this.powerpoints;
+    }
+
+    public int getCurrentPowerPoints() {
+        return currentPowerPoints;
     }
 }
 

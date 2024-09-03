@@ -40,6 +40,18 @@ public class Trainer {
         return nonFaintedPokemon;
     }
 
+    public Pokemon getNonFaintedPokemon(String name){
+        ArrayList<Pokemon> nonFaintedPokemon = nonFaintedPokemon();
+
+        for(Pokemon p : nonFaintedPokemon){
+            if(p.getName().equalsIgnoreCase(name)){
+                return p;
+            }
+        }
+
+        return null;
+    }
+
     public String getName() {
         return name;
     }

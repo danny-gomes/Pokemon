@@ -22,7 +22,8 @@ public enum Ailment {
     PERISH_SONG,
     SILENCE,
     TAR_SHOT,
-    INGRAIN;
+    INGRAIN,
+    TOXIC;
 
     public static Ailment fromCsv(String field) {
         switch (field.trim().toUpperCase()) {

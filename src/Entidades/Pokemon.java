@@ -327,8 +327,7 @@ public class Pokemon {
         return 1;
     }
 
-    public double getEffectiveness(Move moveUsed) {
-        PokemonType moveType = moveUsed.getType();
+    public double getEffectiveness(PokemonType moveType) {
 
         double effectiveness = getEffectivenessAgainstType(moveType, this.type1);
 
@@ -339,7 +338,7 @@ public class Pokemon {
         return effectiveness;
     }
 
-    private double getEffectivenessAgainstType(PokemonType moveType, PokemonType targetType) {
+    public double getEffectivenessAgainstType(PokemonType moveType, PokemonType targetType) {
         switch (moveType) {
             case NORMAL:
                 if (targetType == PokemonType.ROCK || targetType == PokemonType.STEEL) return 0.5;
@@ -598,7 +597,7 @@ public class Pokemon {
         }
     }
 
-    public boolean addAilment(Pokemon attacker, Pokemon defender, Ailment ailment) {
+    public boolean addAilment(Pokemon attacker, Ailment ailment) {
         if (ailment == Ailment.NONE || ailment == Ailment.UNKNOWN) {
             return false;
         }
@@ -615,7 +614,7 @@ public class Pokemon {
 
         if (ailment.equals(Ailment.INGRAIN)) {
             ailments.add(ailment);
-            addAilment(attacker, defender, Ailment.TRAP);
+            this.addAilment(attacker, Ailment.TRAP);
         } else {
             if (ailments.contains(Ailment.INFATUATION)) {
                 System.out.println("Pokemon is already infatuated.");
@@ -624,13 +623,13 @@ public class Pokemon {
 
             if (ailment.equals(Ailment.INFATUATION)) {
                 String attackerGender = attacker.gender;
-                String defenderGender = defender.gender;
+                String defenderGender = this.gender;
 
                 if (attackerGender.equals(defenderGender)) {
                     System.out.println("Infatuation can not be added to same gender pokemon.");
                     return false;
                 } else {
-                    System.out.println(defender.getName() + " fell in love!");
+                    System.out.println(this.getName() + " fell in love!");
                 }
             }
 

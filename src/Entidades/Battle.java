@@ -1,5 +1,6 @@
 package Entidades;
 
+import Entidades.FieldEffects.FieldEffect;
 import Entidades.Moves.Move;
 import Enums.Ailment;
 import Enums.Target;
@@ -14,6 +15,7 @@ public class Battle {
     private Trainer challenger;
     private Pokemon challengerCurrentPokemon;
     private int turnCount;
+
 
     public Battle(Trainer player, Pokemon playerCurrentPokemon, Trainer challenger, Pokemon challengerCurrentPokemon, int turnCount) {
         this.player = player;
@@ -264,7 +266,7 @@ public class Battle {
 
     private int executeMove(Pokemon attacker, Pokemon defender, Move moveUsed, Move opponentsMove) throws InterruptedException {
         String effectivenessString = "";
-        double effectiveness = defender.getEffectiveness(moveUsed);
+        double effectiveness = defender.getEffectiveness(moveUsed.getType());
         int defenderHpBeginTurn = defender.getCurrentHp();
         int damageDealt = 0;
 
@@ -320,7 +322,7 @@ public class Battle {
                 int ailmentChance = moveUsed.getMoveInfo().getAilmentChance();
                 if (rd.nextInt(101) < ailmentChance && damageDealt > 0) {
                     Ailment moveAilment = moveUsed.getMoveInfo().getAilment();
-                    boolean addedAilment = defender.addAilment(attacker, defender, moveAilment);
+                    boolean addedAilment = defender.addAilment(attacker, moveAilment);
                     if (addedAilment) {
                         System.out.println(defender.getName() + " was inflicted with " + moveAilment);
                     } else {
@@ -337,14 +339,17 @@ public class Battle {
             }
             case AILMENT -> {
                 if(rd.nextInt(101) < moveUsed.getAccuracy()){
-                    if(defender.getEffectiveness(moveUsed) !=0){
-                        defender.addAilment(attacker, defender, moveUsed.getMoveInfo().getAilment());
+                    if(defender.getEffectiveness(moveUsed.getType()) !=0){
+                        defender.addAilment(attacker, moveUsed.getMoveInfo().getAilment());
                     } else {
                         System.out.println("Pokemon is not affected by this type.");
                     }
                 } else {
                     System.out.println("Move missed.");
                 }
+            }
+            case FIELD_EFFECT -> {
+
             }
             case UNIQUE -> {
                 executeUniqueMove(attacker, defender, moveUsed);
@@ -439,7 +444,7 @@ public class Battle {
 
         // Calculate base damage
         double randomMultiplier = (rand.nextInt(16) + 85) / 100.0;
-        double baseDamage = ((((double) (((2 * attacker.getLevel() * crit / 5) + 2) * moveUsed.getPower() * attacker.getStatForAttackMove(defender, moveUsed)) / defender.getStatForDefense(attacker, moveUsed) / 50) + 2) * attacker.getStab(moveUsed) * defender.getEffectiveness(moveUsed) * randomMultiplier);
+        double baseDamage = ((((double) (((2 * attacker.getLevel() * crit / 5) + 2) * moveUsed.getPower() * attacker.getStatForAttackMove(defender, moveUsed)) / defender.getStatForDefense(attacker, moveUsed) / 50) + 2) * attacker.getStab(moveUsed) * defender.getEffectiveness(moveUsed.getType()) * randomMultiplier);
 
         int finalDamage = (int) Math.floor(baseDamage);
 

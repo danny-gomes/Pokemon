@@ -33,8 +33,8 @@ public class Main {
             if (m.getName().equalsIgnoreCase("attract")) {
                 turtwig.learnNewMove(m);
             }
-            if (m.getMoveInfo().getMoveType().equals(MoveType.DAMAGE_RAISE)) {
-               //System.out.println(m);
+            if (m.getMoveInfo().getMoveType().equals(MoveType.FIELD_EFFECT)) {
+               System.out.println(m);
             }
         }
         System.out.println("TOTAL: " + count);

@@ -114,6 +114,10 @@ public class Move {
         return description;
     }
 
+    public int getEffectChance() {
+        return effectChance;
+    }
+
     public int getCrit() {
         boolean isCrit = false;
         int critRate = this.moveInfo.getCritChance(); // Assuming getCritChance() returns the crit stage

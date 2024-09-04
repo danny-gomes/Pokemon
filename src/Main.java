@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Pokedex pokedex = new Pokedex();
         ArrayList<Move> allMoves = pokedex.getAllMoves();
-        Pokemon turtwig = pokedex.getPokemonByName("turtwig");
+        Pokemon turtwig = pokedex.getPokemonByName("chimchar");
         Pokemon lugia = pokedex.getPokemonByName("lugia");
         ArrayList<Pokemon> playerParty = new ArrayList<>();
         playerParty.add(turtwig);
@@ -30,11 +30,11 @@ public class Main {
 
         int count = 0;
         for (Move m : allMoves) {
-            if (m.getName().equalsIgnoreCase("anchor-shot")) {
-                piplup.learnNewMove(m);
+            if (m.getName().equalsIgnoreCase("attract")) {
+                turtwig.learnNewMove(m);
             }
-            if (m.getMoveInfo().getAilment().equals(Ailment.TRAP)) {
-               // System.out.println(m);
+            if (m.getMoveInfo().getMoveType().equals(MoveType.DAMAGE_RAISE)) {
+               //System.out.println(m);
             }
         }
         System.out.println("TOTAL: " + count);

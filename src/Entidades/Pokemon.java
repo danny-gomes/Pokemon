@@ -90,7 +90,7 @@ public class Pokemon {
         int randomIndex = rd.nextInt(natures.length);
         this.nature = natures[randomIndex];
 
-        if(rd.nextBoolean()){
+        if (rd.nextBoolean()) {
             this.gender = "Male";
         } else {
             this.gender = "Female";
@@ -465,7 +465,7 @@ public class Pokemon {
                 currentMoves[i] = m;
                 return;
             }
-            learntMoves = learntMoves + (i+1) + " - " + currentMoves[i].getName() + "\n";
+            learntMoves = learntMoves + (i + 1) + " - " + currentMoves[i].getName() + "\n";
         }
 
         System.out.println(learntMoves);
@@ -517,11 +517,11 @@ public class Pokemon {
     }
 
     private void updateStatModifier(int i, int change, String stat) {
-        if(change > 0){
+        if (change > 0) {
             System.out.println(stat + " raised by " + change);
         }
 
-        if(change < 0){
+        if (change < 0) {
             System.out.println(stat + " lowered by " + change);
         }
 
@@ -536,7 +536,7 @@ public class Pokemon {
 
     public String getCurrentStatsString() {
         return String.format(
-                        "╔═══════════════════════════════════════════╗\n" +
+                "╔═══════════════════════════════════════════╗\n" +
                         "║ %-40s ║\n" +
                         "╠═══════════════════════════════════════════╣\n" +
                         "║ %-40s ║\n" +
@@ -566,19 +566,19 @@ public class Pokemon {
     }
 
     private double getStatMultiplier(int statModifier) {
-        switch (statModifier){
+        switch (statModifier) {
             case -5:
-                return (double) 1 /4;
+                return (double) 1 / 4;
             case -4:
-                return 1/3.5;
+                return 1 / 3.5;
             case -3:
-                return 1/3;
+                return 1 / 3;
             case -2:
-                return 1/2.5;
+                return 1 / 2.5;
             case -1:
-                return (double) 1 /2;
+                return (double) 1 / 2;
             case 0:
-                return 1/1.5;
+                return 1 / 1.5;
             case 1:
                 return 1;
             case 2:
@@ -598,7 +598,7 @@ public class Pokemon {
         }
     }
 
-    public boolean addAilment(Ailment ailment) {
+    public boolean addAilment(Pokemon attacker, Pokemon defender, Ailment ailment) {
         if (ailment == Ailment.NONE || ailment == Ailment.UNKNOWN) {
             return false;
         }
@@ -613,7 +613,30 @@ public class Pokemon {
             ailments.remove(ailment);
         }
 
-        ailments.add(ailment);
+        if (ailment.equals(Ailment.INGRAIN)) {
+            ailments.add(ailment);
+            addAilment(attacker, defender, Ailment.TRAP);
+        } else {
+            if (ailments.contains(Ailment.INFATUATION)) {
+                System.out.println("Pokemon is already infatuated.");
+                return false;
+            }
+
+            if (ailment.equals(Ailment.INFATUATION)) {
+                String attackerGender = attacker.gender;
+                String defenderGender = defender.gender;
+
+                if (attackerGender.equals(defenderGender)) {
+                    System.out.println("Infatuation can not be added to same gender pokemon.");
+                    return false;
+                } else {
+                    System.out.println(defender.getName() + " fell in love!");
+                }
+            }
+
+            ailments.add(ailment);
+        }
+
         return true;
     }
 
@@ -622,13 +645,18 @@ public class Pokemon {
                 ailment == Ailment.BURN || ailment == Ailment.POISON || ailment == Ailment.TOXIC;
     }
 
-    public boolean checkAilments(Pokemon opponent, boolean beforeMove) {
+    public boolean checkAilments(boolean beforeMove) {
         if (beforeMove) {
             for (Ailment ailment : ailments) {
                 switch (ailment) {
                     case PARALYSIS:
                         this.speed /= 2;
-                        break;
+                        if (Math.random() < 0.5) {
+                            return true;
+                        } else {
+                            System.out.println("The Pokemon is paralyzed.");
+                            return false;
+                        }
                     case BURN:
                         this.attack /= 2;
                         break;
@@ -663,26 +691,36 @@ public class Pokemon {
                         break;
                     case CONFUSION:
                         if (Math.random() < 0.50) {
-                            int confusionDamage = currentMaxHp * 4 / 16;
-                            System.out.println("The Pokemon hurt itself in its confusion!");
-                            currentHp -= confusionDamage;
-                            if (currentHp <= 0) {
-                                currentHp = 0;
-                                System.out.println("The Pokémon fainted!");
-                            }
-                            return false;
-                        } else {
                             System.out.println("The Pokemon snapped out of its confusion!");
                             ailments.remove(Ailment.CONFUSION);
                             return true;
+                        } else {
+                            if (Math.random() < 0.50) {
+                                int confusionDamage = currentMaxHp * 4 / 16;
+                                System.out.println("The Pokemon hurt itself in its confusion!");
+                                currentHp -= confusionDamage;
+                                if (currentHp <= 0) {
+                                    currentHp = 0;
+                                    System.out.println("The Pokémon fainted!");
+                                }
+                                return false;
+                            } else {
+                                System.out.println("The Pokemon overcame its confusion!");
+                                return true;
+                            }
                         }
                     case INFATUATION:
                         if (Math.random() < 0.50) {
-                            System.out.println("The Pokemon is immobilized by love!");
-                            return false;
+                            System.out.println("The Pokemon snapped out of its infatuation!");
+                            ailments.remove(Ailment.INFATUATION);
+                            return true;
+                        } else {
+                            if (Math.random() < 0.50) {
+                                System.out.println("The Pokemon is immobilized by love!");
+                                return false;
+                            }
                         }
                         break;
-                    // Add additional before-move effects here as needed
                     default:
                         break;
                 }
@@ -733,7 +771,7 @@ public class Pokemon {
                         int leechSeedDamage = currentMaxHp / 16;
                         currentHp -= leechSeedDamage;
                         System.out.println("The Pokémon's energy is drained by Leech Seed!");
-                        opponent.healCurrentHP(leechSeedDamage / 2);
+                        this.healCurrentHP(leechSeedDamage / 2);
                         if (currentHp <= 0) {
                             currentHp = 0;
                             System.out.println("The Pokemon fainted!");
@@ -754,13 +792,17 @@ public class Pokemon {
         return true;
     }
 
-    public boolean isTrapped(){
-        for(Ailment a : ailments){
-            if(a.equals(Ailment.TRAP)){
+    public boolean isTrapped() {
+        for (Ailment a : ailments) {
+            if (a.equals(Ailment.TRAP)) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    public String getGender() {
+        return gender;
     }
 }

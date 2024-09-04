@@ -804,4 +804,14 @@ public class Pokemon {
     public String getGender() {
         return gender;
     }
+
+    public void displayDamageDealt(int damageDealt) {
+        if(damageDealt > 0){
+            if(this.getCurrentHp() - damageDealt < 0){
+                System.out.println(this.getCurrentHp() + "/" + this.getCurrentMaxHp() + " --> " + 0 + "/" + this.getCurrentMaxHp());
+            } else {
+                System.out.println(this.getCurrentHp() + "/" + this.getCurrentMaxHp() + " --> " + (this.getCurrentHp() - damageDealt) + "/" + this.getCurrentMaxHp());
+            }
+        }
+    }
 }

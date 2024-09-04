@@ -3,6 +3,7 @@ package Entidades;
 import Entidades.FieldEffects.FieldEffect;
 import Entidades.Moves.Move;
 import Enums.Ailment;
+import Enums.MoveCategory;
 import Enums.Target;
 
 import java.util.ArrayList;
@@ -15,6 +16,8 @@ public class Battle {
     private Trainer challenger;
     private Pokemon challengerCurrentPokemon;
     private int turnCount;
+    private ArrayList<FieldEffect> playerFieldEffects;
+    private ArrayList<FieldEffect> challengerFieldEffects;
 
 
     public Battle(Trainer player, Pokemon playerCurrentPokemon, Trainer challenger, Pokemon challengerCurrentPokemon, int turnCount) {
@@ -23,6 +26,9 @@ public class Battle {
         this.challenger = challenger;
         this.challengerCurrentPokemon = challengerCurrentPokemon;
         this.turnCount = turnCount;
+
+        this.playerFieldEffects = new ArrayList<>();
+        this.challengerFieldEffects = new ArrayList<>();
     }
 
     public int turn() throws InterruptedException {
@@ -98,6 +104,9 @@ public class Battle {
         if (pokemonOption != 0) {
             playerCurrentPokemon = player.getNonFaintedPokemon(pokemonNames.get(pokemonOption - 1));
             System.out.println("Go, " + playerCurrentPokemon.getName() + "!");
+            for(FieldEffect fe : playerFieldEffects){
+                fe.checkEntryHazards(playerCurrentPokemon, challengerCurrentPokemon);
+            }
         } else {
             return false;
         }
@@ -113,12 +122,12 @@ public class Battle {
         int challengerDamageDealt = 0;
 
         if (playerMove == null) {
-            if(challengerCurrentPokemon.checkAilments(true)){
-                executeMove(challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
+            if (challengerCurrentPokemon.checkAilments(true)) {
+                executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
             }
             challengerCurrentPokemon.checkAilments(false);
             playerWin = checkChallengerFaint();
-            if(!playerWin){
+            if (!playerWin) {
                 challengerWin = checkPlayerFaint();
 
             }
@@ -130,12 +139,12 @@ public class Battle {
         }
 
         if (isPlayerFirst) {
-            if(playerCurrentPokemon.checkAilments(true)){
-                playerDamageDealt = executeMove(playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
+            if (playerCurrentPokemon.checkAilments(true)) {
+                playerDamageDealt = executeMove(challenger, player, playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
             }
             playerCurrentPokemon.checkAilments(true);
             challengerWin = checkPlayerFaint();
-            if(!challengerWin){
+            if (!challengerWin) {
                 playerWin = checkPlayerFaint();
             }
             Thread.sleep(2000);
@@ -143,12 +152,12 @@ public class Battle {
                 if (playerDamageDealt > 0 && playerMove.getMoveInfo().isFlinch()) {
                     System.out.println(challengerCurrentPokemon.getName() + " flinched!");
                 } else {
-                    if(challengerCurrentPokemon.checkAilments(true)){
-                        executeMove(challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
+                    if (challengerCurrentPokemon.checkAilments(true)) {
+                        executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
                     }
                     challengerCurrentPokemon.checkAilments(false);
                     playerWin = checkChallengerFaint();
-                    if(!playerWin){
+                    if (!playerWin) {
                         challengerWin = checkPlayerFaint();
 
                     }
@@ -156,12 +165,12 @@ public class Battle {
                 }
             }
         } else {
-            if(challengerCurrentPokemon.checkAilments(true)){
-                challengerDamageDealt = executeMove(challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
+            if (challengerCurrentPokemon.checkAilments(true)) {
+                challengerDamageDealt = executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
             }
             challengerCurrentPokemon.checkAilments(false);
             playerWin = checkChallengerFaint();
-            if(!playerWin){
+            if (!playerWin) {
                 challengerWin = checkPlayerFaint();
 
             }
@@ -170,12 +179,12 @@ public class Battle {
                 if (challengerDamageDealt > 0 && challengerMove.getMoveInfo().isFlinch()) {
                     System.out.println(playerCurrentPokemon.getName() + " flinched!");
                 } else {
-                    if(playerCurrentPokemon.checkAilments(true)){
-                        executeMove(playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
+                    if (playerCurrentPokemon.checkAilments(true)) {
+                        executeMove(challenger, player, playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
                     }
                     playerCurrentPokemon.checkAilments(true);
                     challengerWin = checkPlayerFaint();
-                    if(!challengerWin){
+                    if (!challengerWin) {
                         playerWin = checkPlayerFaint();
                     }
                 }
@@ -264,21 +273,24 @@ public class Battle {
         return null;
     }
 
-    private int executeMove(Pokemon attacker, Pokemon defender, Move moveUsed, Move opponentsMove) throws InterruptedException {
+    private int executeMove(Trainer attacker, Trainer defender, Pokemon attackerPokemon, Pokemon defenderPokemon, Move moveUsed, Move opponentsMove) throws InterruptedException {
         String effectivenessString = "";
-        double effectiveness = defender.getEffectiveness(moveUsed.getType());
-        int defenderHpBeginTurn = defender.getCurrentHp();
+        double effectiveness = defenderPokemon.getEffectiveness(moveUsed.getType());
+        int defenderHpBeginTurn = defenderPokemon.getCurrentHp();
         int damageDealt = 0;
 
-        if (effectiveness == 0.5) {
-            effectivenessString = "it's not very effective.";
-        } else if (effectiveness == 2) {
-            effectivenessString = "it's super effective!";
-        } else if (effectiveness == 4) {
-            effectivenessString = "it's extremely effective!!!";
+        if (!(moveUsed.getCategory().equals(MoveCategory.STATUS))) {
+            if (effectiveness == 0.5) {
+                effectivenessString = "it's not very effective.";
+            } else if (effectiveness == 2) {
+                effectivenessString = "it's super effective!";
+            } else if (effectiveness == 4) {
+                effectivenessString = "it's extremely effective!!!";
+            }
         }
 
-        System.out.println("\n" + attacker.getName() + " used " + moveUsed.getName() + " " + effectivenessString + "\n");
+
+        System.out.println("\n" + attackerPokemon.getName() + " used " + moveUsed.getName() + " " + effectivenessString + "\n");
         Random rd = new Random();
         int attackChange = moveUsed.getMoveInfo().getStatChange(0);
         int defenseChange = moveUsed.getMoveInfo().getStatChange(1);
@@ -290,57 +302,57 @@ public class Battle {
 
         switch (moveUsed.getMoveType()) {
             case DAMAGE -> {
-                damageDealt = executeDamageMove(attacker, defender, moveUsed, opponentsMove);
-                System.out.println("\n" + defender.getName() + ": " + defenderHpBeginTurn + "/" + defender.getCurrentMaxHp() + " --> " + defender.getCurrentHp() + "/" + defender.getCurrentMaxHp() + "\n");
+                damageDealt = executeDamageMove(attackerPokemon, defenderPokemon, moveUsed, opponentsMove);
+                System.out.println("\n" + defenderPokemon.getName() + ": " + defenderHpBeginTurn + "/" + defenderPokemon.getCurrentMaxHp() + " --> " + defenderPokemon.getCurrentHp() + "/" + defenderPokemon.getCurrentMaxHp() + "\n");
             }
             case DAMAGE_HEAL -> {
-                damageDealt = executeDamageMove(attacker, defender, moveUsed, opponentsMove);
-                System.out.println("\n" + defender.getName() + ": " + defenderHpBeginTurn + "/" + defender.getCurrentMaxHp() + " --> " + defender.getCurrentHp() + "/" + defender.getCurrentMaxHp() + "\n");
+                damageDealt = executeDamageMove(attackerPokemon, defenderPokemon, moveUsed, opponentsMove);
+                System.out.println("\n" + defenderPokemon.getName() + ": " + defenderHpBeginTurn + "/" + defenderPokemon.getCurrentMaxHp() + " --> " + defenderPokemon.getCurrentHp() + "/" + defenderPokemon.getCurrentMaxHp() + "\n");
                 if (damageDealt > 0) {
-                    drainMove(attacker, moveUsed, damageDealt);
+                    drainMove(attackerPokemon, moveUsed, damageDealt);
                 }
             }
             case DAMAGE_LOWER -> {
-                damageDealt = executeDamageMove(attacker, defender, moveUsed, opponentsMove);
-                System.out.println("\n" + defender.getName() + ": " + defenderHpBeginTurn + "/" + defender.getCurrentMaxHp() + " --> " + defender.getCurrentHp() + "/" + defender.getCurrentMaxHp() + "\n");
+                damageDealt = executeDamageMove(attackerPokemon, defenderPokemon, moveUsed, opponentsMove);
+                System.out.println("\n" + defenderPokemon.getName() + ": " + defenderHpBeginTurn + "/" + defenderPokemon.getCurrentMaxHp() + " --> " + defenderPokemon.getCurrentHp() + "/" + defenderPokemon.getCurrentMaxHp() + "\n");
                 int statLowerChance = moveUsed.getMoveInfo().getStatChance();
                 int randomValue = rd.nextInt(100);
                 if (randomValue < statLowerChance && damageDealt > 0) {
-                    defender.updateStatModifiers(attackChange, defenseChange, spAttackChange, spDefChange, speedChange, accuracyChange, evasionChange);
+                    defenderPokemon.updateStatModifiers(attackChange, defenseChange, spAttackChange, spDefChange, speedChange, accuracyChange, evasionChange);
                 }
             }
             case NET_GOOD_STATS -> {
                 if (moveUsed.getTarget().equals(Target.USER) || moveUsed.getTarget().equals(Target.ALLY)) {
-                    attacker.updateStatModifiers(attackChange, defenseChange, spAttackChange, spDefChange, speedChange, accuracyChange, evasionChange);
+                    attackerPokemon.updateStatModifiers(attackChange, defenseChange, spAttackChange, spDefChange, speedChange, accuracyChange, evasionChange);
                 } else if (moveUsed.getTarget().equals(Target.SELECTED_POKEMON)) {
-                    defender.updateStatModifiers(attackChange, defenseChange, spAttackChange, spDefChange, speedChange, accuracyChange, evasionChange);
+                    defenderPokemon.updateStatModifiers(attackChange, defenseChange, spAttackChange, spDefChange, speedChange, accuracyChange, evasionChange);
                 }
             }
             case DAMAGE_AILMENT -> {
-                damageDealt = executeDamageMove(attacker, defender, moveUsed, opponentsMove);
-                System.out.println("\n" + defender.getName() + ": " + defenderHpBeginTurn + "/" + defender.getCurrentMaxHp() + " --> " + defender.getCurrentHp() + "/" + defender.getCurrentMaxHp() + "\n");
+                damageDealt = executeDamageMove(attackerPokemon, defenderPokemon, moveUsed, opponentsMove);
+                System.out.println("\n" + defenderPokemon.getName() + ": " + defenderHpBeginTurn + "/" + defenderPokemon.getCurrentMaxHp() + " --> " + defenderPokemon.getCurrentHp() + "/" + defenderPokemon.getCurrentMaxHp() + "\n");
                 int ailmentChance = moveUsed.getMoveInfo().getAilmentChance();
                 if (rd.nextInt(101) < ailmentChance && damageDealt > 0) {
                     Ailment moveAilment = moveUsed.getMoveInfo().getAilment();
-                    boolean addedAilment = defender.addAilment(attacker, moveAilment);
+                    boolean addedAilment = defenderPokemon.addAilment(attackerPokemon, moveAilment);
                     if (addedAilment) {
-                        System.out.println(defender.getName() + " was inflicted with " + moveAilment);
+                        System.out.println(defenderPokemon.getName() + " was inflicted with " + moveAilment);
                     } else {
-                        System.out.println(defender.getName() + " can not be inflicted with " + moveAilment);
+                        System.out.println(defenderPokemon.getName() + " can not be inflicted with " + moveAilment);
                     }
                 }
             }
             case DAMAGE_RAISE -> {
-                damageDealt = executeDamageMove(attacker, defender, moveUsed, opponentsMove);
-                System.out.println("\n" + defender.getName() + ": " + defenderHpBeginTurn + "/" + defender.getCurrentMaxHp() + " --> " + defender.getCurrentHp() + "/" + defender.getCurrentMaxHp() + "\n");
+                damageDealt = executeDamageMove(attackerPokemon, defenderPokemon, moveUsed, opponentsMove);
+                System.out.println("\n" + defenderPokemon.getName() + ": " + defenderHpBeginTurn + "/" + defenderPokemon.getCurrentMaxHp() + " --> " + defenderPokemon.getCurrentHp() + "/" + defenderPokemon.getCurrentMaxHp() + "\n");
                 if (rd.nextInt(101) < moveUsed.getEffectChance() && damageDealt > 0) {
-                    attacker.updateStatModifiers(attackChange, defenseChange, spAttackChange, spDefChange, speedChange, accuracyChange, evasionChange);
+                    attackerPokemon.updateStatModifiers(attackChange, defenseChange, spAttackChange, spDefChange, speedChange, accuracyChange, evasionChange);
                 }
             }
             case AILMENT -> {
-                if(rd.nextInt(101) < moveUsed.getAccuracy()){
-                    if(defender.getEffectiveness(moveUsed.getType()) !=0){
-                        defender.addAilment(attacker, moveUsed.getMoveInfo().getAilment());
+                if (rd.nextInt(101) < moveUsed.getAccuracy()) {
+                    if (defenderPokemon.getEffectiveness(moveUsed.getType()) != 0) {
+                        defenderPokemon.addAilment(attackerPokemon, moveUsed.getMoveInfo().getAilment());
                     } else {
                         System.out.println("Pokemon is not affected by this type.");
                     }
@@ -349,10 +361,10 @@ public class Battle {
                 }
             }
             case FIELD_EFFECT -> {
-
+                addFieldEffect(attacker, defender, moveUsed);
             }
             case UNIQUE -> {
-                executeUniqueMove(attacker, defender, moveUsed);
+                executeUniqueMove(attackerPokemon, defenderPokemon, moveUsed);
             }
         }
 
@@ -521,5 +533,23 @@ public class Battle {
         battleDisplay.append("----------------------------------------------------\n");
 
         return battleDisplay.toString();
+    }
+
+
+    public void addFieldEffect(Trainer attacker, Trainer defender, Move moveUsed) {
+        FieldEffect fe = new FieldEffect(moveUsed.getName(), 5, moveUsed);
+        if (moveUsed.getTarget().equals(Target.USERS_FIELD)) {
+            if (attacker.isPlayer()) {
+                playerFieldEffects.add(fe);
+            } else {
+                challengerFieldEffects.add(fe);
+            }
+        } else if (moveUsed.getTarget().equals(Target.OPPONENTS_FIELD)) {
+            if (attacker.isPlayer()) {
+                challengerFieldEffects.add(fe);
+            } else {
+                playerFieldEffects.add(fe);
+            }
+        }
     }
 }

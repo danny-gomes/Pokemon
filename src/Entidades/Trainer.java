@@ -9,6 +9,7 @@ public class Trainer {
     ArrayList<Pokemon> party;
     ArrayList<Pokemon> pc;
     protected int money;
+    private boolean isPlayer;
 
     public Trainer(String name, Pokemon starter, int money) {
         this.name = name;
@@ -20,12 +21,13 @@ public class Trainer {
         this.party.add(starter);
     }
 
-    public Trainer(String name, Bag inventory, ArrayList<Pokemon> party, ArrayList<Pokemon> pc, int money) {
+    public Trainer(String name, Bag inventory, ArrayList<Pokemon> party, ArrayList<Pokemon> pc, int money, boolean isPlayer) {
         this.name = name;
         this.inventory = inventory;
         this.party = party;
         this.pc = pc;
         this.money = money;
+        this.isPlayer = isPlayer;
     }
 
     public ArrayList<Pokemon> nonFaintedPokemon() {
@@ -54,5 +56,9 @@ public class Trainer {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isPlayer() {
+        return isPlayer;
     }
 }

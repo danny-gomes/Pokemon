@@ -10,15 +10,17 @@ public class FieldEffect {
     private String name;
     private int turnsOnField;
     private int layers;
+    private Move move;
 
-    public FieldEffect(String name, int turnsOnField) {
+    public FieldEffect(String name, int turnsOnField, Move moveUsed) {
         this.name = name;
         this.turnsOnField = turnsOnField;
+        this.move = moveUsed;
         this.layers = 0;
     }
 
-    public void checkEntryHazards(Pokemon switchedInPokemon, Pokemon opponentPokemon, Move moveUsed) {
-        String moveName = moveUsed.getName();
+    public void checkEntryHazards(Pokemon switchedInPokemon, Pokemon opponentPokemon) {
+        String moveName = move.getName();
         int damageDealt = 0;
 
         switch (moveName) {
@@ -32,6 +34,9 @@ public class FieldEffect {
                     } else if (this.layers == 3) {
                         damageDealt = maxHp / 4;
                     }
+                }
+                if(damageDealt > 0){
+                    switchedInPokemon.displayDamageDealt(damageDealt);
                 }
 
                 switchedInPokemon.takeDamage(damageDealt);
@@ -56,6 +61,11 @@ public class FieldEffect {
                 } else if (rockWeakness == 4) {
                     damageDealt = (int) (damageDealt + switchedInPokemon.getCurrentMaxHp() * 0.5);
                 }
+
+                if(damageDealt > 0){
+                    switchedInPokemon.displayDamageDealt(damageDealt);
+                }
+
                 switchedInPokemon.takeDamage(damageDealt);
                 System.out.println("The pokemon was hurt by stealth rock.");
                 break;

@@ -30,19 +30,19 @@ public class Main {
 
         int count = 0;
         for (Move m : allMoves) {
-            if (m.getName().equalsIgnoreCase("attract")) {
-                turtwig.learnNewMove(m);
+            if (m.getName().equalsIgnoreCase("stealth-rock")) {
+                piplup.learnNewMove(m);
             }
             if (m.getMoveInfo().getMoveType().equals(MoveType.FIELD_EFFECT)) {
-               System.out.println(m);
+               //System.out.println(m);
             }
         }
         System.out.println("TOTAL: " + count);
 
         Bag playerBag = new Bag();
 
-        Trainer player = new Trainer("Danny", playerBag, playerParty, pc, 500);
-        Trainer opponent = new Trainer("Isa", playerBag, opponentParty, pc, 500);
+        Trainer player = new Trainer("Danny", playerBag, playerParty, pc, 500,true);
+        Trainer opponent = new Trainer("Isa", playerBag, opponentParty, pc, 500,false);
 
         Battle battle = new Battle(player, playerParty.get(0), opponent, opponentParty.get(0), 0);
 

@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: me-first
+Category: STATUS
+Power: -1
+Powerpoints: 20
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: If the target has selected a damaging move this turn  the user will copy that move and use it against the target  with a 50% increase in power.  If the target moves before the user  this move will fail.  This move cannot be copied by mirror move  nor selected by assist  metronome  or sleep talk.
+Target: SELECTED_POKEMON_ME_FIRST
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

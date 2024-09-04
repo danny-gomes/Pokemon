@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: stealth-rock
+Category: STATUS
+Power: -1
+Powerpoints: 20
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: Spreads sharp rocks around the opposing field  damaging any Pokémon that enters the field for 1/8 its max HP.  This damage is affected by the entering Pokémon's susceptibility to rock moves.  rapid spin removes this effect from its user's side of the field.
+Target: OPPONENTS_FIELD
+Type: Rock
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: FIELD_EFFECT        
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: imprison
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: Prevents any Pokémon on the opposing side of the field from using any move the user knows until the user leaves the field.  This effect is live; if the user obtains new moves while on the field  these moves become restricted.  If no opposing Pokémon knows any of the user's moves when this move is used  this move will fail.
+Target: USER
+Type: Psychic
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

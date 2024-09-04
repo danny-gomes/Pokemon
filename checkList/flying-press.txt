@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: flying-press
+Category: PHYSICAL
+Power: 100
+Powerpoints: 10
+Accuracy: 95
+Effect Chance: -1
+Priority: 0
+Description: Inflicts regular damage.  For the purposes of type effectiveness  this move is both fighting- and flying-type: its final effectiveness is determined by multiplying the effectiveness of each type against each of the target's types.  For all other purposes  this move is pure Fighting-type.  If this move's type is changed  its Fighting typing is overwritten  and its secondary type remains Flying.  If the target has used minimize since entering battle  this move has double power and will never miss.
+Target: SELECTED_POKEMON
+Type: Fighting
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

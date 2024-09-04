@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: block
+Category: STATUS
+Power: -1
+Powerpoints: 5
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: The target cannot switch out normally.  Ignores accuracy and evasion modifiers.  This effect ends when the user leaves the field.  The target may still escape by using baton pass  u turn  or a shed shell.  Both the user and the target pass on this effect with baton pass.
+Target: SELECTED_POKEMON
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

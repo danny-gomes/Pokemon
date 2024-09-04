@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: decorate
+Category: STATUS
+Power: -1
+Powerpoints: 15
+Accuracy: -1
+Effect Chance: 100
+Priority: 0
+Description: None
+Target: SELECTED_POKEMON
+Type: Fairy
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: NET_GOOD_STATS      
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 100
+  Attack Change: +2
+  Defense Change: +0
+  Sp. Attack Change: +2
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

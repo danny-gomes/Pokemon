@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: chatter
+Category: SPECIAL
+Power: 65
+Powerpoints: 20
+Accuracy: 100
+Effect Chance: 100
+Priority: 0
+Description: Inflicts regular damage.  Has either a 1%  11%  or 31% chance to confuse the target  based on the volume of the recording made for this move; louder recordings increase the chance of confusion.  If the user is not a chatot  this move will not cause confusion.  This move cannot be copied by mimic  mirror move  or sketch  nor selected by assist  metronome  or sleep talk.
+Target: SELECTED_POKEMON
+Type: Flying
+------------------------------------------------
+Move Info:
+  Ailment: CONFUSION           
+  Move Category: DAMAGE_AILMENT      
+  Hits: 0-0
+  Turns: 2-5
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 100
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

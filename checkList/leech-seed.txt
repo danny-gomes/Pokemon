@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: leech-seed
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: 90
+Effect Chance: -1
+Priority: 0
+Description: Plants a seed on the target that drains 1/8 of its max HP at the end of every turn and heals the user for the amount taken.  Has no effect on grass Pokémon.  The seed remains until the target leaves the field.  The user takes damage instead of being healed if the target has liquid ooze.  rapid spin will remove this effect.  This effect is passed on by baton pass.
+Target: SELECTED_POKEMON
+Type: Grass
+------------------------------------------------
+Move Info:
+  Ailment: LEECH_SEED          
+  Move Category: AILMENT             
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

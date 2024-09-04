@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: metronome
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: Selects any move at random and uses it.  Moves the user already knows are not eligible.  Assist  meta  protection  and reflection moves are also not eligible; specifically  assist  chatter  copycat  counter  covet  destiny bond  detect  endure  feint  focus punch  follow me  helping hand  me first  metronome  mimic  mirror coat  mirror move  protect  quick guard  sketch  sleep talk  snatch  struggle  switcheroo  thief  trick  and wide guard will not be selected by this move.  This move cannot be copied by mimic or mirror move  nor selected by assist  metronome  or sleep talk.
+Target: USER
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

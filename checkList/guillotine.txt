@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: guillotine
+Category: PHYSICAL
+Power: -1
+Powerpoints: 5
+Accuracy: 30
+Effect Chance: -1
+Priority: 0
+Description: Inflicts damage equal to the target's max HP.  Ignores accuracy and evasion modifiers.  This move's accuracy is 30% plus 1% for each level the user is higher than the target.  If the user is a lower level than the target  this move will fail.  Because this move inflicts a specific and finite amount of damage  endure still prevents the target from fainting.  The effects of lock on  mind reader  and no guard still apply  as long as the user is equal or higher level than the target.  However  they will not give this move a chance to break through detect or protect.
+Target: SELECTED_POKEMON
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: OHKO                
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

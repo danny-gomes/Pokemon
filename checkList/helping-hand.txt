@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: helping-hand
+Category: STATUS
+Power: -1
+Powerpoints: 20
+Accuracy: -1
+Effect Chance: -1
+Priority: 5
+Description: Boosts the power of the target's moves by 50% until the end of this turn.  This move cannot be copied by mirror move  nor selected by assist or metronome.
+Target: ALLY
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

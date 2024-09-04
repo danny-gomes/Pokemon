@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: spore
+Category: STATUS
+Power: -1
+Powerpoints: 15
+Accuracy: 100
+Effect Chance: -1
+Priority: 0
+Description: Puts the target to sleep.
+Target: SELECTED_POKEMON
+Type: Grass
+------------------------------------------------
+Move Info:
+  Ailment: SLEEP               
+  Move Category: AILMENT             
+  Hits: 0-0
+  Turns: 2-4
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

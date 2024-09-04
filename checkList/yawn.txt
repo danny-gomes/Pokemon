@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: yawn
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: Puts the target to sleep at the end of the next turn.  Ignores accuracy and evasion modifiers.  If the target leaves the field  this effect is canceled.  If the target has a status effect when this move is used  this move will fail.  If the target is protected by safeguard when this move is used  this move will fail.  insomnia and vital spirit prevent the sleep if the target has either at the end of the next turn  but will not cause this move to fail on use.
+Target: SELECTED_POKEMON
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: YAWN                
+  Move Category: AILMENT             
+  Hits: 0-0
+  Turns: 2-2
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

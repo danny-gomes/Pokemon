@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: disable
+Category: STATUS
+Power: -1
+Powerpoints: 20
+Accuracy: 100
+Effect Chance: -1
+Priority: 0
+Description: Disables the target's last used move  preventing its use for 4–7 turns  selected at random  or until the target leaves the field.  If the target hasn't used a move since entering the field  if it tried to use a move this turn and failed   if its last used move has 0 PP remaining  or if it already has a move disabled  this move will fail.
+Target: SELECTED_POKEMON
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: DISABLE             
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 4-4
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

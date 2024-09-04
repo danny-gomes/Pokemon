@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: fiery-dance
+Category: SPECIAL
+Power: 80
+Powerpoints: 10
+Accuracy: 100
+Effect Chance: 50
+Priority: 0
+Description: Inflicts regular damage.  Has a 50% chance to raise the user's Special Attack by one stage.
+Target: SELECTED_POKEMON
+Type: Fire
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE_RAISE        
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 50
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +1
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

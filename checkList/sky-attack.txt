@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: sky-attack
+Category: PHYSICAL
+Power: 140
+Powerpoints: 5
+Accuracy: 90
+Effect Chance: 30
+Priority: 0
+Description: Inflicts regular damage.  User charges for one turn before attacking.  Critical hit chance is one level higher than normal.  Has a 30% chance to make the target flinch.  This move cannot be selected by sleep talk.
+Target: SELECTED_POKEMON
+Type: Flying
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 1
+  Ailment Chance: 0
+  Flinch Chance: 30
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: magnet-rise
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: For five turns  the user is immune to ground moves.  If the user is under the effect of ingrain or has levitate  this move will fail.  This effect is temporarily disabled by and cannot be used during gravity.  This effect is passed on by baton pass.
+Target: USER
+Type: Electric
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

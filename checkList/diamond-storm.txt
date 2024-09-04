@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: diamond-storm
+Category: PHYSICAL
+Power: 100
+Powerpoints: 5
+Accuracy: 95
+Effect Chance: 50
+Priority: 0
+Description: Inflicts regular damage.  Has a 50% chance to raise the user's Defense by two stages for each target hit.
+Target: ALL_OPPONENTS
+Type: Rock
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE_RAISE        
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 50
+  Attack Change: +0
+  Defense Change: +2
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

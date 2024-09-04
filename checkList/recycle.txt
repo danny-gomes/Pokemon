@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: recycle
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: User recovers the last item consumed by the user or a Pokémon in its position on the field.  The item must be used again before it can be recovered by this move again.  If the user is holding an item  this move fails.  Items taken or given away by covet  knock off  switcheroo  thief  or trick may not be recovered.
+Target: USER
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

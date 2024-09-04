@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: hurricane
+Category: SPECIAL
+Power: 110
+Powerpoints: 10
+Accuracy: 70
+Effect Chance: 30
+Priority: 0
+Description: Inflicts regular damage.  Has a 30% chance to confuse the target.  This move can hit Pokémon under the effect of bounce  fly  or sky drop.  During rain dance  this move has 100% accuracy.  During sunny day  this move has 50% accuracy.
+Target: SELECTED_POKEMON
+Type: Flying
+------------------------------------------------
+Move Info:
+  Ailment: CONFUSION           
+  Move Category: DAMAGE_AILMENT      
+  Hits: 0-0
+  Turns: 2-5
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 30
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

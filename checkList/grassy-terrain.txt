@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: grassy-terrain
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: For five turns  heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their grass moves to 1.5× their power.  Changes nature power to energy ball.
+Target: ENTIRE_FIELD
+Type: Grass
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: WHOLE_FIELD_EFFECT  
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

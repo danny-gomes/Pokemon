@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: stockpile
+Category: STATUS
+Power: -1
+Powerpoints: 20
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: Raises the user's Defense and Special Defense by one stage each.  Stores energy for use with spit up and swallow.  Up to three levels of energy can be stored  and all are lost if the user leaves the field.  Energy is still stored even if the stat boosts cannot be applied.  If the user uses baton pass  the stat boosts are passed as normal  but the stored energy is not.
+Target: USER
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +1
+  Sp. Attack Change: +0
+  Sp. Defense Change: +1
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

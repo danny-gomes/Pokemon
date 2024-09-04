@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: dream-eater
+Category: SPECIAL
+Power: 100
+Powerpoints: 15
+Accuracy: 100
+Effect Chance: -1
+Priority: 0
+Description: Fails if not used on a sleeping Pokémon.  Inflicts regular damage.  Drains half the damage inflicted to heal the user.
+Target: SELECTED_POKEMON
+Type: Psychic
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE_HEAL         
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 50
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

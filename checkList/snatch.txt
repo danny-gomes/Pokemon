@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: snatch
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 4
+Description: The next time a Pokémon uses a beneficial move on itself or itself and its ally this turn  the user of this move will steal the move and use it itself.  Moves which may be stolen by this move are identified by the "snatchable" flag.  If two Pokémon use this move on the same turn  the faster Pokémon will steal the first beneficial move  and the slower Pokémon will then steal it again—thus  only the slowest Pokémon using this move ultimately gains a stolen move's effect.  If the user steals psych up  it will target the Pokémon that used psych up.  If the user was the original target of psych up  and the Pokémon that originally used it's affected by pressure  it will only lose 1 PP.  This move cannot be copied by mirror move  nor selected by assist or metronome.
+Target: USER
+Type: Dark
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

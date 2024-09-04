@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: rapid-spin
+Category: PHYSICAL
+Power: 50
+Powerpoints: 40
+Accuracy: 100
+Effect Chance: 100
+Priority: 0
+Description: Inflicts regular damage.  Removes leech seed from the user  frees the user from bind  clamp  fire spin  magma storm  sand tomb  whirlpool  and wrap  and clears spikes  stealth rock  and toxic spikes from the user's side of the field.  If this move misses or has no effect  its effect doesn't activate.
+Target: SELECTED_POKEMON
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE_RAISE        
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 100
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +1
+  Accuracy Change: +0
+  Evasiness Change: +0

@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: no-retreat
+Category: STATUS
+Power: -1
+Powerpoints: 5
+Accuracy: -1
+Effect Chance: 100
+Priority: 0
+Description: Inflicts regular damage.  Hits twice in one turn  with a 100% chance to make the target flinch.
+Target: USER
+Type: Fighting
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: NET_GOOD_STATS      
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 100
+  Attack Change: +1
+  Defense Change: +1
+  Sp. Attack Change: +1
+  Sp. Defense Change: +1
+  Speed Change: +1
+  Accuracy Change: +0
+  Evasiness Change: +0

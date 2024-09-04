@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: worry-seed
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: 100
+Effect Chance: -1
+Priority: 0
+Description: Changes the target's ability to insomnia.  If the target's ability is truant or multitype  this move will fail.
+Target: SELECTED_POKEMON
+Type: Grass
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: kowtow-cleave
+Category: PHYSICAL
+Power: 85
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: None
+Target: SELECTED_POKEMON
+Type: Dark
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

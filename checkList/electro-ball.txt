@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: electro-ball
+Category: SPECIAL
+Power: -1
+Powerpoints: 10
+Accuracy: 100
+Effect Chance: -1
+Priority: 0
+Description: Inflicts regular damage.  The greater the user's Speed compared to the target's  the higher power this move has  to a maximum of 150.  User's Speed                     | Power -------------------------------- | ----: Up to 2× the target's Speed      |    60 Up to 3× the target's Speed      |    80 Up to 4× the target's Speed      |   120 More than 4× the target's Speed  |   150 
+Target: SELECTED_POKEMON
+Type: Electric
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

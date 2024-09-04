@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: magnitude
+Category: PHYSICAL
+Power: -1
+Powerpoints: 30
+Accuracy: 100
+Effect Chance: -1
+Priority: 0
+Description: Inflicts regular damage.  Power is selected at random between 10 and 150  with an average of 71:  Magnitude | Power | Chance --------: | ----: | -----:         4 |    10 |     5%         5 |    30 |    10%         6 |    50 |    20%         7 |    70 |    30%         8 |    90 |    20%         9 |   110 |    10%        10 |   150 |     5%  This move has double power against Pokémon currently underground due to dig.
+Target: ALL_OTHER_POKEMON
+Type: Ground
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

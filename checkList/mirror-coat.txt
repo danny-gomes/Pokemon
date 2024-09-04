@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: mirror-coat
+Category: SPECIAL
+Power: -1
+Powerpoints: 20
+Accuracy: 100
+Effect Chance: -1
+Priority: -5
+Description: Targets the last opposing Pokémon to hit the user with a special move this turn.  Inflicts twice the damage that move did to the user.  If there is no eligible target  this move will fail.  Type immunity applies  but other type effects are ignored.  This move cannot be copied by mirror move  nor selected by assist or metronome.
+Target: SPECIFIC_MOVE
+Type: Psychic
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

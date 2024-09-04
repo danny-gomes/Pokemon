@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: ominous-wind
+Category: SPECIAL
+Power: 60
+Powerpoints: 5
+Accuracy: 100
+Effect Chance: 10
+Priority: 0
+Description: Inflicts regular damage. Has a 10% chance to raise all of the user's stats one stage.
+Target: SELECTED_POKEMON
+Type: Ghost
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE_RAISE        
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 10
+  Flinch Chance: 0
+  Stat Chance: 10
+  Attack Change: +1
+  Defense Change: +1
+  Sp. Attack Change: +1
+  Sp. Defense Change: +1
+  Speed Change: +1
+  Accuracy Change: +0
+  Evasiness Change: +0

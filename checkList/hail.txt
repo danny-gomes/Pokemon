@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: hail
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: Changes the weather to hail for five turns  during which non-ice Pokémon are damaged for 1/16 their max HP at the end of every turn.  If the user is holding icy rock  this effect lasts for eight turns.  blizzard has 100% accuracy.  If the target has used detect or protect  blizzard has a (100 - accuracy)% chance to break through the protection.  moonlight  morning sun  and synthesis heal only 1/4 of the user's max HP.  Pokémon with snow cloak are exempt from this effect's damage.
+Target: ENTIRE_FIELD
+Type: Ice
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: WHOLE_FIELD_EFFECT  
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

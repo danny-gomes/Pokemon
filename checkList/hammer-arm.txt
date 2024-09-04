@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: hammer-arm
+Category: PHYSICAL
+Power: 100
+Powerpoints: 10
+Accuracy: 90
+Effect Chance: 100
+Priority: 0
+Description: Inflicts regular damage  then lowers the user's Speed by one stage.
+Target: SELECTED_POKEMON
+Type: Fighting
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE_RAISE        
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 100
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: -1
+  Accuracy Change: +0
+  Evasiness Change: +0

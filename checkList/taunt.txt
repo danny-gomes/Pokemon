@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: taunt
+Category: STATUS
+Power: -1
+Powerpoints: 20
+Accuracy: 100
+Effect Chance: -1
+Priority: 0
+Description: Target is forced to only use damaging moves for the next 3–5 turns  selected at random.  Moves that select other moves not known in advance do not count as damaging.  assist  copycat  me first  metronome  mirror move  and sleep talk do not directly inflict damage and thus may not be used.  bide  counter  endeavor  metal burst  and mirror coat are allowed.
+Target: SELECTED_POKEMON
+Type: Dark
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

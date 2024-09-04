@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: grass-knot
+Category: SPECIAL
+Power: -1
+Powerpoints: 20
+Accuracy: 100
+Effect Chance: -1
+Priority: 0
+Description: Inflicts regular damage.  Power increases with the target's weight in kilograms  to a maximum of 120.  Target's weight | Power --------------- | ----: Up to 10kg      |    20 Up to 25kg      |    40 Up to 50kg      |    60 Up to 100kg     |    80 Up to 200kg     |   100 Above 200kg     |   120 
+Target: SELECTED_POKEMON
+Type: Grass
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

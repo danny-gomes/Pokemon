@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: trick-room
+Category: STATUS
+Power: -1
+Powerpoints: 5
+Accuracy: -1
+Effect Chance: -1
+Priority: -7
+Description: For five turns (including this one)  slower Pokémon will act before faster Pokémon.  Move priority is not affected.  Using this move when its effect is already active will end the effect.  Pokémon holding full incense  lagging tail  or quick claw and Pokémon with stall ignore this effect.
+Target: ENTIRE_FIELD
+Type: Psychic
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: WHOLE_FIELD_EFFECT  
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

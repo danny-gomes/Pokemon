@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: stuff-cheeks
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: 100
+Priority: 0
+Description: Inflicts regular damage  then (if successful) removes major status effects from every Pokémon in the user's party.
+Target: USER
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: NET_GOOD_STATS      
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 100
+  Attack Change: +0
+  Defense Change: +2
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

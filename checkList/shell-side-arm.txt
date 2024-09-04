@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: shell-side-arm
+Category: SPECIAL
+Power: 90
+Powerpoints: 10
+Accuracy: 100
+Effect Chance: 20
+Priority: 0
+Description: Inflicts regular damage.
+Target: SELECTED_POKEMON
+Type: Poison
+------------------------------------------------
+Move Info:
+  Ailment: POISON              
+  Move Category: DAMAGE_AILMENT      
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 20
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: mind-reader
+Category: STATUS
+Power: -1
+Powerpoints: 5
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: If the user targets the same target again before the end of the next turn  the move it uses is guaranteed to hit.  This move itself also ignores accuracy and evasion modifiers.  One-hit KO moves are also guaranteed to hit  as long as the user is equal or higher level than the target.  This effect also allows the user to hit Pokémon that are off the field due to moves such as dig or fly.  If the target uses detect or protect while under the effect of this move  the user is not guaranteed to hit  but has a (100 - accuracy)% chance to break through the protection.  This effect is passed on by baton pass.
+Target: SELECTED_POKEMON
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

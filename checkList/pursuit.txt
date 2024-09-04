@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: pursuit
+Category: PHYSICAL
+Power: 40
+Powerpoints: 20
+Accuracy: 100
+Effect Chance: -1
+Priority: 0
+Description: Inflicts regular damage.  If the target attempts to switch out this turn before the user acts  this move hits the target before it leaves and has double power.  This effect can still hit a Pokémon that switches out when it has a substitute up or when an ally has used follow me.
+Target: SELECTED_POKEMON
+Type: Dark
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

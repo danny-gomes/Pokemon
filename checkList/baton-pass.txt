@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: baton-pass
+Category: STATUS
+Power: -1
+Powerpoints: 40
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: User switches out  and the trainer selects a replacement Pokémon from the party.  Stat changes  confusion  and persistent move effects are passed along to the replacement Pokémon.  The following move effects are passed:  * aqua ring * both the user's and target's effect of block  mean look  and spider web * the curse effect of curse * embargo * focus energy or an activated lansat berry * gastro acid * ingrain * being sapped by leech seed * being targeted by lock on or mind reader * magnet rise * perish song's counter * power trick * substitute; the doll's HP is unchanged  The replacement Pokémon does not trigger effects that respond to Pokémon switching in.
+Target: USER
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

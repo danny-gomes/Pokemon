@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: instruct
+Category: STATUS
+Power: -1
+Powerpoints: 15
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: The target immediately uses its most recently-used move.  This is independent of the target's normal action for the turn (i.e.  it may end up moving twice)  but otherwise functions as usual  including deduction of PP.  This effect works for disabled moves and ignores torment.
+Target: SELECTED_POKEMON
+Type: Psychic
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

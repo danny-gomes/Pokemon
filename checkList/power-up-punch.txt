@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: power-up-punch
+Category: PHYSICAL
+Power: 40
+Powerpoints: 20
+Accuracy: 100
+Effect Chance: 100
+Priority: 0
+Description: Inflicts regular damage.  Raises the user's Attack by one stage.
+Target: SELECTED_POKEMON
+Type: Fighting
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE_RAISE        
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 100
+  Attack Change: +1
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

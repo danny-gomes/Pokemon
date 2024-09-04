@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: mist
+Category: STATUS
+Power: -1
+Powerpoints: 30
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: Pokémon on the user's side of the field are immune to stat-lowering effects for five turns.  guard swap  heart swap  and power swap may still be used.  defog used by an opponent will end this effect.
+Target: USERS_FIELD
+Type: Ice
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: FIELD_EFFECT        
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

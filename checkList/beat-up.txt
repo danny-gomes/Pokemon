@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: beat-up
+Category: PHYSICAL
+Power: -1
+Powerpoints: 10
+Accuracy: 100
+Effect Chance: -1
+Priority: 0
+Description: Inflicts typeless regular damage.  Every Pokémon in the user's party  excepting those that have fainted or have a major status effect  attacks the target.  Calculated stats are ignored; the base stats for the target and assorted attackers are used instead.  The random factor in the damage formula is not used.  dark Pokémon still get STAB.  This effect breaks through wonder guard.
+Target: SELECTED_POKEMON
+Type: Dark
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 6-6
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: strength-sap
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: 100
+Effect Chance: 100
+Priority: 0
+Description: Lowers the target's Attack by one stage.  Heals the user by the target's current Attack  including modifiers  but not including this move's Attack-lowering effect.  If the target's Attack is already at -6  this move will fail.  In any other situation that would prevent a stat modification  the healing will still succeed.
+Target: SELECTED_POKEMON
+Type: Grass
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 100
+  Attack Change: -1
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

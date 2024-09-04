@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: acid
+Category: SPECIAL
+Power: 40
+Powerpoints: 30
+Accuracy: 100
+Effect Chance: 10
+Priority: 0
+Description: Inflicts regular damage.  Has a 10% chance to lower the target's Special Defense by one stage.
+Target: ALL_OPPONENTS
+Type: Poison
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE_LOWER        
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 10
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: -1
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

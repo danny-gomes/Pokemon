@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: heal-block
+Category: STATUS
+Power: -1
+Powerpoints: 15
+Accuracy: 100
+Effect Chance: -1
+Priority: 0
+Description: For the next five turns  the target may not use any moves that only restore HP  and move effects that heal the target are disabled.  Moves that steal HP may still be used  but will only inflict damage and not heal the target.
+Target: ALL_OPPONENTS
+Type: Psychic
+------------------------------------------------
+Move Info:
+  Ailment: HEAL_BLOCK          
+  Move Category: AILMENT             
+  Hits: 0-0
+  Turns: 5-5
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

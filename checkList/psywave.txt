@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: psywave
+Category: SPECIAL
+Power: -1
+Powerpoints: 15
+Accuracy: 100
+Effect Chance: -1
+Priority: 0
+Description: Inflicts typeless damage between 50% and 150% of the user's level  selected at random in increments of 10%.
+Target: SELECTED_POKEMON
+Type: Psychic
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

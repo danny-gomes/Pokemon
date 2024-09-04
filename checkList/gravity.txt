@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: gravity
+Category: STATUS
+Power: -1
+Powerpoints: 5
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: For five turns (including this one)  all immunities to ground moves are disabled.  For the duration of this effect  the evasion of every Pokémon on the field is lowered by two stages.  Cancels the effects of bounce  fly  and sky drop.  Specifically  flying Pokémon and those with levitate or that have used magnet rise are no longer immune to ground attacks  arena trap  spikes  or toxic spikes.  bounce  fly  sky drop  high jump kick  jump kick  and splash cannot be used while this move is in effect.  *Bug*: If this move is used during a double or triple battle while Pokémon are under the effect of sky drop  Sky Drop's effect is not correctly canceled on its target  and it remains high in the air indefinitely.  As Sky Drop prevents the target from acting  the only way to subsequently remove it from the field is to faint it.
+Target: ENTIRE_FIELD
+Type: Psychic
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: WHOLE_FIELD_EFFECT  
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

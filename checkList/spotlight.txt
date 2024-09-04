@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: spotlight
+Category: STATUS
+Power: -1
+Powerpoints: 15
+Accuracy: -1
+Effect Chance: -1
+Priority: 3
+Description: For the duration of the turn  if the target is also a valid target for a move used by one of its opponents  that move will target it instead.
+Target: SELECTED_POKEMON
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

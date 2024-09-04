@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: psychic-terrain
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: Changes the terrain to Psychic Terrain for 5 turns.  Overrides electric terrain  grassy terrain  and misty terrain.  All Pokémon on the ground are immune to moves with priority greater than 0.  (Moves that target the field rather than individual Pokémon  such as spikes  are not affected.)  Additionally  when a Pokémon on the ground uses a psychic-type move  that move's power is increased to 1.5×.  If a Pokémon is holding a Terrain Extender when creating Psychic Terrain (by any means)  the effect lasts for 8 turns instead of 5.
+Target: ENTIRE_FIELD
+Type: Psychic
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: WHOLE_FIELD_EFFECT  
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

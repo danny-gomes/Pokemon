@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: torment
+Category: STATUS
+Power: -1
+Powerpoints: 15
+Accuracy: 100
+Effect Chance: -1
+Priority: 0
+Description: Prevents the target from attempting to use the same move twice in a row.  When the target leaves the field  this effect ends.  If the target is forced to attempt a repeated move due to choice band  choice scarf  choice specs  disable  encore  taunt  only having PP remaining for one move  or any other effect  the target will use struggle instead.  The target is then free to use the forced move next turn  as it didn't use that move this turn.
+Target: SELECTED_POKEMON
+Type: Dark
+------------------------------------------------
+Move Info:
+  Ailment: TORMENT             
+  Move Category: AILMENT             
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

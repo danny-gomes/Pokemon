@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: haze
+Category: STATUS
+Power: -1
+Powerpoints: 30
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: Removes stat  accuracy  and evasion modifiers from every Pokémon on the field.  This does not count as a stat reduction for the purposes of clear body or white smoke.
+Target: ENTIRE_FIELD
+Type: Ice
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: WHOLE_FIELD_EFFECT  
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

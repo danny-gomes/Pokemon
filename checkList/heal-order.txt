@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: heal-order
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: Heals the user for half its max HP.
+Target: USER
+Type: Bug
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: HEAL                
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 50
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: rock-tomb
+Category: PHYSICAL
+Power: 60
+Powerpoints: 15
+Accuracy: 95
+Effect Chance: 100
+Priority: 0
+Description: Inflicts regular damage.  Has a 100% chance to lower the target's Speed by one stage.
+Target: SELECTED_POKEMON
+Type: Rock
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE_LOWER        
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 100
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: -1
+  Accuracy Change: +0
+  Evasiness Change: +0

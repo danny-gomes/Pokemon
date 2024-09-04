@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: cosmic-power
+Category: STATUS
+Power: -1
+Powerpoints: 20
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: Raises the user's Defense and Special Defense by one stage.
+Target: USER
+Type: Psychic
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: NET_GOOD_STATS      
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +1
+  Sp. Attack Change: +0
+  Sp. Defense Change: +1
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

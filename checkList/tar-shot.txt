@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: tar-shot
+Category: STATUS
+Power: -1
+Powerpoints: 15
+Accuracy: 100
+Effect Chance: 100
+Priority: 0
+Description: None
+Target: SELECTED_POKEMON
+Type: Rock
+------------------------------------------------
+Move Info:
+  Ailment: TAR_SHOT            
+  Move Category: SWAGGER             
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 100
+  Flinch Chance: 0
+  Stat Chance: 100
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: -1
+  Accuracy Change: +0
+  Evasiness Change: +0

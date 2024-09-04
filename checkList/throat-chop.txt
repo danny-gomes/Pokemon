@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: throat-chop
+Category: PHYSICAL
+Power: 80
+Powerpoints: 15
+Accuracy: 100
+Effect Chance: 100
+Priority: 0
+Description: Inflicts regular damage.  Silences the target for two turns  preventing it from using any sound-based moves.
+Target: SELECTED_POKEMON
+Type: Dark
+------------------------------------------------
+Move Info:
+  Ailment: SILENCE             
+  Move Category: DAMAGE_AILMENT      
+  Hits: 0-0
+  Turns: 2-2
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 100
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

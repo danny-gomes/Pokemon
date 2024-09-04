@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: acid-spray
+Category: SPECIAL
+Power: 40
+Powerpoints: 20
+Accuracy: 100
+Effect Chance: 100
+Priority: 0
+Description: Inflicts regular damage.  Lowers the target's Special Defense by two stages.
+Target: SELECTED_POKEMON
+Type: Poison
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE_LOWER        
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 100
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: -2
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

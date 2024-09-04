@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: dynamic-punch
+Category: PHYSICAL
+Power: 100
+Powerpoints: 5
+Accuracy: 50
+Effect Chance: 100
+Priority: 0
+Description: Inflicts regular damage.  Has a 100% chance to confuse the target.
+Target: SELECTED_POKEMON
+Type: Fighting
+------------------------------------------------
+Move Info:
+  Ailment: CONFUSION           
+  Move Category: DAMAGE_AILMENT      
+  Hits: 0-0
+  Turns: 2-5
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 100
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

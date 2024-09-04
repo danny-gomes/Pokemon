@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: quick-guard
+Category: STATUS
+Power: -1
+Powerpoints: 15
+Accuracy: -1
+Effect Chance: -1
+Priority: 3
+Description: Moves with priority greater than 0 will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn  this move will fail.  This move cannot be selected by assist or metronome.
+Target: USERS_FIELD
+Type: Fighting
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: FIELD_EFFECT        
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

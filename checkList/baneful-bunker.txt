@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: baneful-bunker
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 4
+Description: Grants the user protection for the rest of the turn.  If a Pokémon attempts to use a move that makes contact with the user  that Pokémon will be poisoned.  This move's chance of success halves every time it's used consecutively with any other protection move.
+Target: USER
+Type: Poison
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

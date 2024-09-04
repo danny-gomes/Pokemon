@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: rest
+Category: STATUS
+Power: -1
+Powerpoints: 5
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: User falls to sleep and immediately regains all its HP.  If the user has another major status effect  sleep will replace it.  The user will always wake up after two turns  or one turn with early bird.  This move fails if the Pokémon cannot fall asleep due to uproar  insomnia  or vital spirit.  It also fails if the Pokémon is at full health or is already asleep.
+Target: USER
+Type: Psychic
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

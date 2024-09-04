@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: sleep-talk
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: Only usable if the user is sleeping.  Randomly selects and uses one of the user's other three moves.  Use of the selected move requires and costs 0 PP.  This move will not select assist  bide  bounce  chatter  copycat  dig  dive  fly  focus punch  me first  metronome  mirror move  shadow force  skull bash  sky attack  sky drop  sleep talk  solar beam  razor wind  or uproar.  If the selected move requires a recharge turn—i.e.  one of blast burn  frenzy plant  giga impact  hydro cannon  hyper beam  roar of time  or rock wrecker—and the user is still sleeping next turn  then it's forced to use this move again and pay another PP for the recharge turn.  This move cannot be copied by mirror move  nor selected by assist  metronome  or sleep talk.
+Target: USER
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

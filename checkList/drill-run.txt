@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: drill-run
+Category: PHYSICAL
+Power: 80
+Powerpoints: 10
+Accuracy: 95
+Effect Chance: -1
+Priority: 0
+Description: Inflicts regular damage.  User's critical hit rate is one level higher when using this move.
+Target: SELECTED_POKEMON
+Type: Ground
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 1
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

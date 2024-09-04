@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: scale-shot
+Category: PHYSICAL
+Power: 25
+Powerpoints: 20
+Accuracy: 90
+Effect Chance: -1
+Priority: 0
+Description: Inflicts regular damage two to five times in a row  raising the user's Speed and lowering the user's Defense by one stage each upon last hit.
+Target: SELECTED_POKEMON
+Type: Dragon
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 2-5
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

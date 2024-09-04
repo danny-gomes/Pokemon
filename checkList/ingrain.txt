@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: ingrain
+Category: STATUS
+Power: -1
+Powerpoints: 20
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: Prevents the user from switching out.  User regains 1/16 of its max HP at the end of every turn.  If the user was immune to ground attacks  it will now take normal damage from them.  roar and whirlwind will not affect the user.  The user cannot use magnet rise.  The user may still use u turn to leave the field.  This effect can be passed with baton pass.
+Target: USER
+Type: Grass
+------------------------------------------------
+Move Info:
+  Ailment: INGRAIN             
+  Move Category: AILMENT             
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

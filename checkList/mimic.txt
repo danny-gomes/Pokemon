@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: mimic
+Category: STATUS
+Power: -1
+Powerpoints: 10
+Accuracy: -1
+Effect Chance: -1
+Priority: 0
+Description: This move is replaced by the target's last successfully used move  and its PP changes to 5.  If the target hasn't used a move since entering the field  if it tried to use a move this turn and failed  or if the user already knows the targeted move  this move will fail.  This effect vanishes when the user leaves the field.  If chatter  metronome  mimic  sketch  or struggle is selected  this move will fail.  This move cannot be copied by mirror move  nor selected by assist or metronome  nor forced by encore.
+Target: SELECTED_POKEMON
+Type: Normal
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: UNIQUE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

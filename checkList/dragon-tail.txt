@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: dragon-tail
+Category: PHYSICAL
+Power: 60
+Powerpoints: 10
+Accuracy: 90
+Effect Chance: -1
+Priority: -6
+Description: Inflicts regular damage  then switches the target out for another of its trainer's Pokémon  selected at random.  If the target is under the effect of ingrain or suction cups  or it has a substitute  or its Trainer has no more usable Pokémon  it will not be switched out.  If the target is a wild Pokémon  the battle ends instead.
+Target: SELECTED_POKEMON
+Type: Dragon
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

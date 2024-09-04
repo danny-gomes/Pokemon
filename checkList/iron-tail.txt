@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: iron-tail
+Category: PHYSICAL
+Power: 100
+Powerpoints: 15
+Accuracy: 75
+Effect Chance: 30
+Priority: 0
+Description: Inflicts regular damage.  Has a 30% chance to lower the target's Defense by one stage.
+Target: SELECTED_POKEMON
+Type: Steel
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE_LOWER        
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 30
+  Attack Change: +0
+  Defense Change: -1
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

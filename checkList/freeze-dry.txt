@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: freeze-dry
+Category: SPECIAL
+Power: 70
+Powerpoints: 20
+Accuracy: 100
+Effect Chance: 10
+Priority: 0
+Description: Inflicts regular damage.  This move is super-effective against the water type.  The target's other type will affect damage as usual.  If this move's type is changed  it remains super-effective against Water regardless of its type.
+Target: SELECTED_POKEMON
+Type: Ice
+------------------------------------------------
+Move Info:
+  Ailment: FREEZE              
+  Move Category: DAMAGE_AILMENT      
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 10
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

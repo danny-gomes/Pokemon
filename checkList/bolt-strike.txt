@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: bolt-strike
+Category: PHYSICAL
+Power: 130
+Powerpoints: 5
+Accuracy: 85
+Effect Chance: 20
+Priority: 0
+Description: Inflicts regular damage.  Has a 20% chance to paralyze the target.
+Target: SELECTED_POKEMON
+Type: Electric
+------------------------------------------------
+Move Info:
+  Ailment: PARALYSIS           
+  Move Category: DAMAGE_AILMENT      
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 20
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

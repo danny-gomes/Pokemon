@@ -1,0 +1,30 @@
+==================== Move ====================
+Name: beak-blast
+Category: PHYSICAL
+Power: 100
+Powerpoints: 15
+Accuracy: 100
+Effect Chance: -1
+Priority: -3
+Description: Begins charging at the start of the turn  then attacks as normal.  Any Pokémon that makes contact with the user while charging is burned.  The charging is not affected by accuracy  sleep  paralysis  or any other effect that would interfere with a move.
+Target: SELECTED_POKEMON
+Type: Flying
+------------------------------------------------
+Move Info:
+  Ailment: NONE                
+  Move Category: DAMAGE              
+  Hits: 0-0
+  Turns: 0-0
+  Drain: 0
+  Healing: 0
+  Crit Rate: 0
+  Ailment Chance: 0
+  Flinch Chance: 0
+  Stat Chance: 0
+  Attack Change: +0
+  Defense Change: +0
+  Sp. Attack Change: +0
+  Sp. Defense Change: +0
+  Speed Change: +0
+  Accuracy Change: +0
+  Evasiness Change: +0

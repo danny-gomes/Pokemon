@@ -1,6 +1,9 @@
 package Entidades;
 
+import Entidades.FieldEffects.Barrier;
+import Entidades.FieldEffects.EntryHazard;
 import Entidades.FieldEffects.FieldEffect;
+import Entidades.FieldEffects.Weather;
 import Entidades.Moves.Move;
 import Enums.Ailment;
 import Enums.MoveCategory;
@@ -18,6 +21,7 @@ public class Battle {
     private int turnCount;
     private ArrayList<FieldEffect> playerFieldEffects;
     private ArrayList<FieldEffect> challengerFieldEffects;
+    private Weather weather;
 
 
     public Battle(Trainer player, Pokemon playerCurrentPokemon, Trainer challenger, Pokemon challengerCurrentPokemon, int turnCount) {
@@ -29,6 +33,7 @@ public class Battle {
 
         this.playerFieldEffects = new ArrayList<>();
         this.challengerFieldEffects = new ArrayList<>();
+        this.weather = new Weather("None", null, 0,0);
     }
 
     public int turn() throws InterruptedException {
@@ -72,7 +77,30 @@ public class Battle {
             }
         } while (hasNotSelected);
 
+        updateFieldEffects(player);
+        updateFieldEffects(challenger);
+
         return outcome;
+    }
+
+    private void updateFieldEffects(Trainer trainer) {
+        for(FieldEffect fe : getTrainerFieldEffects(trainer)){
+            if(fe instanceof Barrier b){
+                if(b.updateTurnsOnField()){
+                    removeBarrier(trainer, b);
+                }
+            }
+        }
+    }
+
+    private void removeBarrier(Trainer trainer, Barrier barrierToRemove) {
+        for(FieldEffect fe : this.getTrainerFieldEffects(trainer)){
+            if(fe.getName().equalsIgnoreCase(barrierToRemove.getName())){
+                this.getTrainerFieldEffects(trainer).remove(fe);
+                barrierToRemove.removeStats(trainer);
+                break;
+            }
+        }
     }
 
     private boolean switchOut() {
@@ -81,6 +109,7 @@ public class Battle {
             System.out.println("Player is trapped.");
             return false;
         }
+
         ArrayList<String> pokemonNames = new ArrayList<>();
         int count = 1;
         for (Pokemon p : player.nonFaintedPokemon()) {
@@ -104,8 +133,10 @@ public class Battle {
         if (pokemonOption != 0) {
             playerCurrentPokemon = player.getNonFaintedPokemon(pokemonNames.get(pokemonOption - 1));
             System.out.println("Go, " + playerCurrentPokemon.getName() + "!");
-            for(FieldEffect fe : playerFieldEffects){
-                fe.checkEntryHazards(playerCurrentPokemon, challengerCurrentPokemon);
+            for (FieldEffect fe : playerFieldEffects) {
+                if (fe instanceof EntryHazard eh) {
+                    eh.checkEntryHazards(playerCurrentPokemon, challengerCurrentPokemon);
+                }
             }
         } else {
             return false;
@@ -361,7 +392,9 @@ public class Battle {
                 }
             }
             case FIELD_EFFECT -> {
-                addFieldEffect(attacker, defender, moveUsed);
+                if(addFieldEffect(attacker, moveUsed)) {
+                    checkBarriers();
+                }
             }
             case UNIQUE -> {
                 executeUniqueMove(attackerPokemon, defenderPokemon, moveUsed);
@@ -369,6 +402,20 @@ public class Battle {
         }
 
         return damageDealt;
+    }
+
+    private void checkBarriers() {
+        for (FieldEffect fe : playerFieldEffects) {
+            if (fe instanceof Barrier b) {
+                b.checkBarriers(player, this);
+            }
+        }
+
+        for (FieldEffect fe : challengerFieldEffects) {
+            if (fe instanceof Barrier b) {
+                b.checkBarriers(player, this);
+            }
+        }
     }
 
     private void executeUniqueMove(Pokemon attacker, Pokemon defender, Move moveUsed) {
@@ -514,42 +561,134 @@ public class Battle {
     public String toString() {
         StringBuilder battleDisplay = new StringBuilder();
 
-        battleDisplay.append(String.format("Opponent: %s\n", challenger.getName()));
+        // Challenger's information
+        battleDisplay.append("~~~~~~~~~~~~~~ OPPONENT ~~~~~~~~~~~~~~\n");
+        battleDisplay.append(String.format("Trainer: %s\n", challenger.getName()));
         battleDisplay.append(String.format("Pokémon: %s\n", challengerCurrentPokemon.getName()));
         battleDisplay.append(String.format("Gender: %s\n", challengerCurrentPokemon.getGender()));
         battleDisplay.append(String.format("HP: %d/%d\n", challengerCurrentPokemon.getCurrentHp(), challengerCurrentPokemon.getCurrentMaxHp()));
+        battleDisplay.append("Current Stats:\n");
+        battleDisplay.append(String.format("%-15s %-15s\n", "Attack", "Defense"));
+        battleDisplay.append(String.format("%-15d %-15d\n", challengerCurrentPokemon.getCurrentAttack(), challengerCurrentPokemon.getCurrentDefense()));
+        battleDisplay.append(String.format("%-15s %-15s\n", "Special Attack", "Special Defense"));
+        battleDisplay.append(String.format("%-15d %-15d\n", challengerCurrentPokemon.getCurrentSpecialAttack(), challengerCurrentPokemon.getCurrentSpecialDefense()));
+        battleDisplay.append(String.format("%-15s %-15s\n", "Speed", "Accuracy"));
+        battleDisplay.append(String.format("%-15d %-15d\n", challengerCurrentPokemon.getCurrentSpeed(), challengerCurrentPokemon.getAccuracyModifier()));
+        battleDisplay.append(String.format("%-15s\n", "Evasiveness"));
+        battleDisplay.append(String.format("%-15d\n", challengerCurrentPokemon.getEvasivenessModifier()));
         battleDisplay.append(String.format("Status: %s\n", challengerCurrentPokemon.getAilmentsString()));
-        battleDisplay.append("\n");
+        battleDisplay.append("Field Effects:\n");
+        if (challengerFieldEffects.isEmpty()) {
+            battleDisplay.append("None\n");
+        } else {
+            for (FieldEffect effect : challengerFieldEffects) {
+                battleDisplay.append("- ").append(effect.getName()).append("\n");
+            }
+        }
+        battleDisplay.append("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
-        battleDisplay.append("----------------------------------------------------\n");
-        battleDisplay.append(String.format("Player: %s\n", player.getName()));
+        // Player's information
+        battleDisplay.append("~~~~~~~~~~~~~~~ PLAYER ~~~~~~~~~~~~~~~\n");
+        battleDisplay.append(String.format("Trainer: %s\n", player.getName()));
         battleDisplay.append(String.format("Pokémon: %s\n", playerCurrentPokemon.getName()));
         battleDisplay.append(String.format("Gender: %s\n", playerCurrentPokemon.getGender()));
         battleDisplay.append(String.format("HP: %d/%d\n", playerCurrentPokemon.getCurrentHp(), playerCurrentPokemon.getCurrentMaxHp()));
+        battleDisplay.append("Current Stats:\n");
+        battleDisplay.append(String.format("%-15s %-15s\n", "Attack", "Defense"));
+        battleDisplay.append(String.format("%-15d %-15d\n", playerCurrentPokemon.getCurrentAttack(), playerCurrentPokemon.getCurrentDefense()));
+        battleDisplay.append(String.format("%-15s %-15s\n", "Special Attack", "Special Defense"));
+        battleDisplay.append(String.format("%-15d %-15d\n", playerCurrentPokemon.getCurrentSpecialAttack(), playerCurrentPokemon.getCurrentSpecialDefense()));
+        battleDisplay.append(String.format("%-15s %-15s\n", "Speed", "Accuracy"));
+        battleDisplay.append(String.format("%-15d %-15d\n", playerCurrentPokemon.getCurrentSpeed(), playerCurrentPokemon.getAccuracyModifier()));
+        battleDisplay.append(String.format("%-15s\n", "Evasiveness"));
+        battleDisplay.append(String.format("%-15d\n", playerCurrentPokemon.getEvasivenessModifier()));
         battleDisplay.append(String.format("Status: %s\n", playerCurrentPokemon.getAilmentsString()));
-        battleDisplay.append("\n");
+        battleDisplay.append("Field Effects:\n");
+        if (playerFieldEffects.isEmpty()) {
+            battleDisplay.append("None\n");
+        } else {
+            for (FieldEffect effect : playerFieldEffects) {
+                battleDisplay.append("- ").append(effect.getName()).append("\n");
+            }
+        }
+        battleDisplay.append("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
+        // Weather and Turn Count
+        battleDisplay.append(String.format("Weather: %s\n", weather.getName()));
         battleDisplay.append(String.format("Turn: %d\n", turnCount));
-        battleDisplay.append("----------------------------------------------------\n");
+        battleDisplay.append("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 
         return battleDisplay.toString();
     }
 
 
-    public void addFieldEffect(Trainer attacker, Trainer defender, Move moveUsed) {
-        FieldEffect fe = new FieldEffect(moveUsed.getName(), 5, moveUsed);
-        if (moveUsed.getTarget().equals(Target.USERS_FIELD)) {
-            if (attacker.isPlayer()) {
-                playerFieldEffects.add(fe);
-            } else {
-                challengerFieldEffects.add(fe);
+
+
+    public boolean addFieldEffect(Trainer trainer, Move moveUsed) {
+        String moveName = moveUsed.getName();
+        FieldEffect fe = checkIfFieldEffectHasBeenAdded(trainer, moveUsed.getName());
+
+        switch (moveName) {
+            case "spikes", "toxic-spikes":
+                if (fe != null) {
+                    EntryHazard spikes = (EntryHazard) fe;
+                    spikes.addLayer();
+                } else {
+                    EntryHazard spikes = new EntryHazard(moveUsed.getName(), moveUsed);
+                    this.getTrainerFieldEffects(trainer).add(spikes);
+                }
+
+                break;
+            case "sticky-web":
+                if (fe != null) {
+                    System.out.println("But it failed.");
+                    return false;
+                } else {
+                    EntryHazard stickyWeb = new EntryHazard(moveUsed.getName(), moveUsed);
+                    this.getTrainerFieldEffects(trainer).add(stickyWeb);
+                }
+                break;
+            case "aurora-veil":
+                if (fe != null) {
+                    System.out.println("But it failed.");
+                    return false;
+                } else {
+                    if (this.weather.getName().equalsIgnoreCase("hail")) {
+                        FieldEffect reflect = checkIfFieldEffectHasBeenAdded(trainer, "reflect");
+                        FieldEffect lightScreen = checkIfFieldEffectHasBeenAdded(trainer, "light-screen");
+                        if(reflect == null && lightScreen == null){
+                            Barrier barrier = new Barrier(moveUsed.getName(), moveUsed, 0, 5);
+                            this.getTrainerFieldEffects(trainer).add(barrier);
+                            System.out.println("Aurora veil protects your team.");
+                        } else {
+                            System.out.println("But it failed.");
+
+                        }
+                    } else {
+                        System.out.println("But it failed.");
+                    }
+                }
+                break;
+        }
+
+        return true;
+    }
+
+    public FieldEffect checkIfFieldEffectHasBeenAdded(Trainer trainer, String moveName) {
+        for (FieldEffect fe : this.getTrainerFieldEffects(trainer)) {
+            if (fe.getName().equalsIgnoreCase(moveName)) {
+                return fe;
             }
-        } else if (moveUsed.getTarget().equals(Target.OPPONENTS_FIELD)) {
-            if (attacker.isPlayer()) {
-                challengerFieldEffects.add(fe);
-            } else {
-                playerFieldEffects.add(fe);
-            }
+        }
+
+        return null;
+    }
+
+    public ArrayList<FieldEffect> getTrainerFieldEffects(Trainer trainer) {
+        if (trainer.isPlayer()) {
+            return playerFieldEffects;
+        } else {
+            return challengerFieldEffects;
         }
     }
 }

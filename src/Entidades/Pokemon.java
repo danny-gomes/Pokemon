@@ -516,20 +516,25 @@ public class Pokemon {
     }
 
     private void updateStatModifier(int i, int change, String stat) {
-        if (change > 0) {
-            System.out.println(stat + " raised by " + change);
-        }
-
-        if (change < 0) {
-            System.out.println(stat + " lowered by " + change);
-        }
-
         if (statModifiers[i] + change > 7) {
-            System.out.println("Stat won't go higher!");
+            statModifiers[i] = 7;
+            System.out.println(stat + " maxed out!!!");
         } else if (statModifiers[i] + change < -5) {
-            System.out.println("Stat won't go lower!");
+            statModifiers[i] = -5;
+            System.out.println(stat + " is at it's lowest...");
+        } else if(statModifiers[i] + change == 7){
+            System.out.println("Stat won't go higher!");
+        } else if(statModifiers[i] + change == -5){
+            System.out.println("Stat won't go lower...");
         } else {
             statModifiers[i] = statModifiers[i] + change;
+            if (change > 0) {
+                System.out.println(stat + " raised by " + change);
+            }
+
+            if (change < 0) {
+                System.out.println(stat + " lowered by " + change);
+            }
         }
     }
 
@@ -813,5 +818,28 @@ public class Pokemon {
                 System.out.println(this.getCurrentHp() + "/" + this.getCurrentMaxHp() + " --> " + (this.getCurrentHp() - damageDealt) + "/" + this.getCurrentMaxHp());
             }
         }
+    }
+
+    public int getCurrentAttack() {
+        return attack;
+    }
+
+    public int getCurrentDefense() {
+        return defense;
+    }
+
+    public int getCurrentSpecialAttack() {
+        return specialAttack;
+    }
+
+    public int getCurrentSpecialDefense() {
+        return specialDefense;
+    }
+    public int getAccuracyModifier() {
+        return statModifiers[ACCURACY_INDEX] - 1;
+    }
+
+    public int getEvasivenessModifier() {
+        return statModifiers[EVASIVENESS_INDEX] - 1;
     }
 }

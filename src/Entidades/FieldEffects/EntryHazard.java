@@ -13,7 +13,7 @@ public class EntryHazard extends FieldEffect {
         this.layers = 0;
     }
 
-    public void checkEntryHazards(Pokemon switchedInPokemon, Pokemon opponentPokemon) {
+    public void checkEntryHazards(Pokemon switchedInPokemon) {
         String moveName = move.getName();
         int damageDealt = 0;
 
@@ -70,7 +70,7 @@ public class EntryHazard extends FieldEffect {
                 }
 
                 if (!(switchedInPokemon.getEffectiveness(PokemonType.POISON) == 0)) {
-                    switchedInPokemon.addAilment(opponentPokemon, isToxic ? Ailment.TOXIC : Ailment.POISON);
+                    switchedInPokemon.addAilment(switchedInPokemon, isToxic ? Ailment.TOXIC : Ailment.POISON);
                 }
                 break;
         }

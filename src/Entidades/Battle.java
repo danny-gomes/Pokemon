@@ -9,7 +9,9 @@ import Enums.Ailment;
 import Enums.MoveCategory;
 import Enums.Target;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -33,7 +35,7 @@ public class Battle {
 
         this.playerFieldEffects = new ArrayList<>();
         this.challengerFieldEffects = new ArrayList<>();
-        this.weather = new Weather("None", null, 0,0);
+        this.weather = new Weather("None", null, 0, 0);
     }
 
     public int turn() throws InterruptedException {
@@ -82,23 +84,17 @@ public class Battle {
 
         return outcome;
     }
+    // Had to use iterator because of concurrentModificationException, was removing element from array while using it in for loop above
 
     private void updateFieldEffects(Trainer trainer) {
-        for(FieldEffect fe : getTrainerFieldEffects(trainer)){
-            if(fe instanceof Barrier b){
-                if(b.updateTurnsOnField()){
-                    removeBarrier(trainer, b);
+        Iterator<FieldEffect> iterator = getTrainerFieldEffects(trainer).iterator();
+        while (iterator.hasNext()) {
+            FieldEffect fe = iterator.next();
+            if (fe instanceof Barrier b) {
+                if (b.updateTurnsOnField()) {
+                    iterator.remove();
+                    b.removeStats(trainer, this);
                 }
-            }
-        }
-    }
-
-    private void removeBarrier(Trainer trainer, Barrier barrierToRemove) {
-        for(FieldEffect fe : this.getTrainerFieldEffects(trainer)){
-            if(fe.getName().equalsIgnoreCase(barrierToRemove.getName())){
-                this.getTrainerFieldEffects(trainer).remove(fe);
-                barrierToRemove.removeStats(trainer);
-                break;
             }
         }
     }
@@ -131,11 +127,16 @@ public class Battle {
         }
 
         if (pokemonOption != 0) {
+            playerCurrentPokemon.clearStatModifiers();
             playerCurrentPokemon = player.getNonFaintedPokemon(pokemonNames.get(pokemonOption - 1));
             System.out.println("Go, " + playerCurrentPokemon.getName() + "!");
             for (FieldEffect fe : playerFieldEffects) {
                 if (fe instanceof EntryHazard eh) {
-                    eh.checkEntryHazards(playerCurrentPokemon, challengerCurrentPokemon);
+                    eh.checkEntryHazards(playerCurrentPokemon);
+                }
+
+                if (fe instanceof Barrier) {
+                    checkBarriers(player);
                 }
             }
         } else {
@@ -171,65 +172,87 @@ public class Battle {
 
         if (isPlayerFirst) {
             if (playerCurrentPokemon.checkAilments(true)) {
-                playerDamageDealt = executeMove(challenger, player, playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
+                playerDamageDealt = executeMove(player, challenger, playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
             }
-            playerCurrentPokemon.checkAilments(true);
-            challengerWin = checkPlayerFaint();
-            if (!challengerWin) {
-                playerWin = checkPlayerFaint();
-            }
-            Thread.sleep(2000);
-            if (!playerWin) {
-                if (playerDamageDealt > 0 && playerMove.getMoveInfo().isFlinch()) {
-                    System.out.println(challengerCurrentPokemon.getName() + " flinched!");
-                } else {
-                    if (challengerCurrentPokemon.checkAilments(true)) {
-                        executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
-                    }
-                    challengerCurrentPokemon.checkAilments(false);
-                    playerWin = checkChallengerFaint();
-                    if (!playerWin) {
-                        challengerWin = checkPlayerFaint();
 
-                    }
-                    Thread.sleep(2000);
-                }
+            playerWin = checkChallengerFaint();
+
+            if (playerWin) {
+                return 1;
             }
+
+            playerCurrentPokemon.checkAilments(false);
+            challengerWin = checkPlayerFaint();
+
+            if (challengerWin) {
+                return -1;
+            }
+
+            Thread.sleep(2000);
+
+            if (playerDamageDealt > 0 && playerMove.getMoveInfo().isFlinch()) {
+                System.out.println(challengerCurrentPokemon.getName() + " flinched!");
+            } else {
+                if (challengerCurrentPokemon.checkAilments(true)) {
+                    executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
+                }
+
+                challengerWin = checkPlayerFaint();
+
+                if (challengerWin) {
+                    return -1;
+                }
+
+                challengerCurrentPokemon.checkAilments(false);
+                playerWin = checkChallengerFaint();
+                if (playerWin) {
+                    return 1;
+                }
+                Thread.sleep(2000);
+            }
+
         } else {
             if (challengerCurrentPokemon.checkAilments(true)) {
                 challengerDamageDealt = executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
             }
+
+            challengerWin = checkPlayerFaint();
+
+            if (challengerWin) {
+                return -1;
+            }
+
             challengerCurrentPokemon.checkAilments(false);
             playerWin = checkChallengerFaint();
-            if (!playerWin) {
-                challengerWin = checkPlayerFaint();
-
+            if (playerWin) {
+                return 1;
             }
+
             Thread.sleep(2000);
-            if (!challengerWin) {
-                if (challengerDamageDealt > 0 && challengerMove.getMoveInfo().isFlinch()) {
-                    System.out.println(playerCurrentPokemon.getName() + " flinched!");
-                } else {
-                    if (playerCurrentPokemon.checkAilments(true)) {
-                        executeMove(challenger, player, playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
-                    }
-                    playerCurrentPokemon.checkAilments(true);
-                    challengerWin = checkPlayerFaint();
-                    if (!challengerWin) {
-                        playerWin = checkPlayerFaint();
-                    }
+
+
+            if (challengerDamageDealt > 0 && challengerMove.getMoveInfo().isFlinch()) {
+                System.out.println(playerCurrentPokemon.getName() + " flinched!");
+            } else {
+                if (playerCurrentPokemon.checkAilments(true)) {
+                    executeMove(player, challenger, playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
                 }
+                playerWin = checkChallengerFaint();
+                if(playerWin){
+                    return 1;
+                }
+
+                playerCurrentPokemon.checkAilments(true);
+                challengerWin = checkPlayerFaint();
+                if (challengerWin) {
+                    return -1;
+                }
+
                 Thread.sleep(2000);
             }
         }
 
-        if (!challengerWin && !playerWin) {
-            return 0;
-        } else if (challengerWin) {
-            return -1;
-        } else {
-            return 1;
-        }
+       return 0;
     }
 
     public boolean playerAttackFirst(Move playerMove, Move challengerMove) {
@@ -392,8 +415,8 @@ public class Battle {
                 }
             }
             case FIELD_EFFECT -> {
-                if(addFieldEffect(attacker, moveUsed)) {
-                    checkBarriers();
+                if (addFieldEffect(attacker, moveUsed)) {
+                    checkBarriers(attacker);
                 }
             }
             case UNIQUE -> {
@@ -404,16 +427,10 @@ public class Battle {
         return damageDealt;
     }
 
-    private void checkBarriers() {
-        for (FieldEffect fe : playerFieldEffects) {
+    private void checkBarriers(Trainer trainer) {
+        for (FieldEffect fe : getTrainerFieldEffects(trainer)) {
             if (fe instanceof Barrier b) {
-                b.checkBarriers(player, this);
-            }
-        }
-
-        for (FieldEffect fe : challengerFieldEffects) {
-            if (fe instanceof Barrier b) {
-                b.checkBarriers(player, this);
+                b.checkBarriers(trainer, this);
             }
         }
     }
@@ -622,8 +639,6 @@ public class Battle {
     }
 
 
-
-
     public boolean addFieldEffect(Trainer trainer, Move moveUsed) {
         String moveName = moveUsed.getName();
         FieldEffect fe = checkIfFieldEffectHasBeenAdded(trainer, moveUsed.getName());
@@ -656,7 +671,7 @@ public class Battle {
                     if (this.weather.getName().equalsIgnoreCase("hail")) {
                         FieldEffect reflect = checkIfFieldEffectHasBeenAdded(trainer, "reflect");
                         FieldEffect lightScreen = checkIfFieldEffectHasBeenAdded(trainer, "light-screen");
-                        if(reflect == null && lightScreen == null){
+                        if (reflect == null && lightScreen == null) {
                             Barrier barrier = new Barrier(moveUsed.getName(), moveUsed, 0, 5);
                             this.getTrainerFieldEffects(trainer).add(barrier);
                             System.out.println("Aurora veil protects your team.");
@@ -666,6 +681,22 @@ public class Battle {
                         }
                     } else {
                         System.out.println("But it failed.");
+                    }
+                }
+                break;
+            case "reflect", "light-screen":
+                if (fe != null) {
+                    System.out.println("But it failed.");
+                    return false;
+                } else {
+                    FieldEffect auroraVeil = checkIfFieldEffectHasBeenAdded(trainer, "aurora-veil");
+                    if (auroraVeil == null) {
+                        Barrier barrier = new Barrier(moveUsed.getName(), moveUsed, 0, 5);
+                        this.getTrainerFieldEffects(trainer).add(barrier);
+                        System.out.println("Reflect protects your team.");
+                    } else {
+                        System.out.println("But it failed.");
+                        return false;
                     }
                 }
                 break;
@@ -689,6 +720,14 @@ public class Battle {
             return playerFieldEffects;
         } else {
             return challengerFieldEffects;
+        }
+    }
+
+    public Pokemon getTrainerCurrentPokemon(Trainer trainer) {
+        if (trainer.isPlayer()) {
+            return playerCurrentPokemon;
+        } else {
+            return challengerCurrentPokemon;
         }
     }
 }

@@ -30,9 +30,13 @@ public class Main {
 
         int count = 0;
         for (Move m : allMoves) {
-            if (m.getName().equalsIgnoreCase("stealth-rock")) {
+            if (m.getName().equalsIgnoreCase("reflect")) {
+                turtwig.learnNewMove(m);
+            }
+            if (m.getName().equalsIgnoreCase("light-screen")) {
                 piplup.learnNewMove(m);
             }
+
             if (m.getMoveInfo().getMoveType().equals(MoveType.FIELD_EFFECT)) {
                //System.out.println(m);
             }
@@ -52,7 +56,7 @@ public class Main {
         while (battleOver == 0) {
 
             battleOver = battle.turn();
-            Thread.sleep(2000);
+            Thread.sleep(100);
 
             System.out.println(battle);
         }

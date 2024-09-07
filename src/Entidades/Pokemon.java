@@ -83,7 +83,7 @@ public class Pokemon {
 
         // 0- Attack 1- Defense 2- SpAttack 3- SpDef 4- Speed 5- Accuracy 6- Evassiveness
         this.statModifiers = new int[7];
-        Arrays.fill(statModifiers, 1);
+        Arrays.fill(statModifiers, 0);
 
         Nature[] natures = Nature.values();
         Random rd = new Random();
@@ -516,15 +516,15 @@ public class Pokemon {
     }
 
     private void updateStatModifier(int i, int change, String stat) {
-        if (statModifiers[i] + change > 7) {
-            statModifiers[i] = 7;
+        if (statModifiers[i] + change > 6) {
+            statModifiers[i] = 6;
             System.out.println(stat + " maxed out!!!");
-        } else if (statModifiers[i] + change < -5) {
-            statModifiers[i] = -5;
+        } else if (statModifiers[i] + change < -6) {
+            statModifiers[i] = -6;
             System.out.println(stat + " is at it's lowest...");
-        } else if(statModifiers[i] + change == 7){
+        } else if (statModifiers[i]  == 6) {
             System.out.println("Stat won't go higher!");
-        } else if(statModifiers[i] + change == -5){
+        } else if (statModifiers[i] == -6) {
             System.out.println("Stat won't go lower...");
         } else {
             statModifiers[i] = statModifiers[i] + change;
@@ -535,6 +535,12 @@ public class Pokemon {
             if (change < 0) {
                 System.out.println(stat + " lowered by " + change);
             }
+        }
+    }
+
+    public void clearStatModifiers() {
+        for (int i = 0; i < statModifiers.length; i++) {
+            statModifiers[i] = 0;
         }
     }
 
@@ -571,34 +577,34 @@ public class Pokemon {
 
     private double getStatMultiplier(int statModifier) {
         switch (statModifier) {
-            case -5:
+            case -6:
                 return (double) 1 / 4;
-            case -4:
+            case -5:
                 return 1 / 3.5;
-            case -3:
+            case -4:
                 return 1 / 3;
-            case -2:
+            case -3:
                 return 1 / 2.5;
-            case -1:
+            case -2:
                 return (double) 1 / 2;
-            case 0:
+            case -1:
                 return 1 / 1.5;
-            case 1:
+            case 0:
                 return 1;
-            case 2:
+            case 1:
                 return 1.5;
-            case 3:
+            case 2:
                 return 2;
-            case 4:
+            case 3:
                 return 2.5;
-            case 5:
+            case 4:
                 return 3;
-            case 6:
+            case 5:
                 return 3.5;
-            case 7:
+            case 6:
                 return 4;
             default:
-                return 1;
+                return 0;
         }
     }
 
@@ -612,6 +618,14 @@ public class Pokemon {
                 if (isPrimaryStatusAilment(a)) {
                     return false;
                 }
+            }
+
+            if (ailment.equals(Ailment.PARALYSIS)) {
+                this.updateStatModifiers(0,0,0,0,-2,0,0);
+            }
+
+            if (ailment.equals(Ailment.BURN)) {
+                this.updateStatModifiers(-2,0,0,0,0,0,0);
             }
         } else {
             ailments.remove(ailment);
@@ -654,7 +668,6 @@ public class Pokemon {
             for (Ailment ailment : ailments) {
                 switch (ailment) {
                     case PARALYSIS:
-                        this.speed /= 2;
                         if (Math.random() < 0.5) {
                             return true;
                         } else {
@@ -811,8 +824,8 @@ public class Pokemon {
     }
 
     public void displayDamageDealt(int damageDealt) {
-        if(damageDealt > 0){
-            if(this.getCurrentHp() - damageDealt < 0){
+        if (damageDealt > 0) {
+            if (this.getCurrentHp() - damageDealt < 0) {
                 System.out.println(this.getCurrentHp() + "/" + this.getCurrentMaxHp() + " --> " + 0 + "/" + this.getCurrentMaxHp());
             } else {
                 System.out.println(this.getCurrentHp() + "/" + this.getCurrentMaxHp() + " --> " + (this.getCurrentHp() - damageDealt) + "/" + this.getCurrentMaxHp());
@@ -821,25 +834,26 @@ public class Pokemon {
     }
 
     public int getCurrentAttack() {
-        return attack;
+        return (int) Math.round(this.attack * getStatMultiplier(statModifiers[ATTACK_INDEX]));
     }
 
     public int getCurrentDefense() {
-        return defense;
+        return (int) Math.round(this.defense * getStatMultiplier(statModifiers[DEFENSE_INDEX]));
     }
 
     public int getCurrentSpecialAttack() {
-        return specialAttack;
+        return (int) Math.round(this.specialAttack * getStatMultiplier(statModifiers[SPECIAL_ATTACK_INDEX]));
     }
 
     public int getCurrentSpecialDefense() {
-        return specialDefense;
+        return (int) Math.round(this.specialDefense * getStatMultiplier(statModifiers[SPECIAL_DEFENSE_INDEX]));
     }
+
     public int getAccuracyModifier() {
-        return statModifiers[ACCURACY_INDEX] - 1;
+        return statModifiers[ACCURACY_INDEX];
     }
 
     public int getEvasivenessModifier() {
-        return statModifiers[EVASIVENESS_INDEX] - 1;
+        return statModifiers[EVASIVENESS_INDEX];
     }
 }

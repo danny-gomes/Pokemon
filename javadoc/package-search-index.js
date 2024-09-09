@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Entidades"},{"l":"Entidades.AbilitiesStructure"},{"l":"Entidades.AbilitiesStructure.Abilities"},{"l":"Entidades.FieldEffects"},{"l":"Entidades.Items"},{"l":"Entidades.Moves"},{"l":"Enums"},{"l":"Ficheiros"}];updateSearchResults();

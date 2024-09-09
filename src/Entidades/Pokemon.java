@@ -1063,4 +1063,8 @@ public class Pokemon {
     public int getEvasivenessModifier() {
         return statModifiers[EVASIVENESS_INDEX];
     }
+
+    public void changeEntireMoveSet(Move[] moves){
+        System.arraycopy(moves, 0, this.currentMoves, 0, moves.length);
+    }
 }

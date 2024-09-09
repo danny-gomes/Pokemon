@@ -10,7 +10,7 @@ public class Trainer {
     ArrayList<Pokemon> pc;
     protected int money;
     private boolean isPlayer;
-`
+
 
     /**
      * Method that creates a trainer only with one starter.

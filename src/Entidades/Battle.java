@@ -203,6 +203,9 @@ public class Battle {
         boolean isPlayerFirst = playerAttackFirst(playerMove, challengerMove);
         int playerDamageDealt = 0;
         int challengerDamageDealt = 0;
+        Pokemon playerPokStartTurn = playerCurrentPokemon;
+        Pokemon challengerPokStartTrun = challengerCurrentPokemon;
+
 
         if (playerMove == null) {
             if (challengerCurrentPokemon.checkAilments(true)) {
@@ -244,7 +247,7 @@ public class Battle {
             if (playerDamageDealt > 0 && playerMove.getMoveInfo().isFlinch()) {
                 System.out.println(challengerCurrentPokemon.getName() + " flinched!");
             } else {
-                if (challengerCurrentPokemon.checkAilments(true)) {
+                if (challengerCurrentPokemon.checkAilments(true) && challengerPokStartTrun.getCurrentHp() > 0) {
                     executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
                 }
 
@@ -285,7 +288,7 @@ public class Battle {
             if (challengerDamageDealt > 0 && challengerMove.getMoveInfo().isFlinch()) {
                 System.out.println(playerCurrentPokemon.getName() + " flinched!");
             } else {
-                if (playerCurrentPokemon.checkAilments(true)) {
+                if (playerCurrentPokemon.checkAilments(true) && playerPokStartTurn.getCurrentHp() > 0) {
                     executeMove(player, challenger, playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
                 }
                 playerWin = checkChallengerFaint();
@@ -293,7 +296,7 @@ public class Battle {
                     return 1;
                 }
 
-                playerCurrentPokemon.checkAilments(true);
+                playerCurrentPokemon.checkAilments(false);
                 challengerWin = checkPlayerFaint();
                 if (challengerWin) {
                     return -1;
@@ -377,6 +380,11 @@ public class Battle {
     private Pokemon pokemonFaint(Trainer trainer) {
         if (trainer.nonFaintedPokemon().size() > 0) {
             int i = 1;
+            if(!trainer.isPlayer()){
+                Random random = new Random();
+                Pokemon challengerRandomPokemon = trainer.nonFaintedPokemon().get(random.nextInt(trainer.nonFaintedPokemon().size()));
+                return challengerRandomPokemon;
+            }
             for (Pokemon p : trainer.nonFaintedPokemon()) {
                 System.out.println(i + ".\n");
                 System.out.println(p.pokemonBattleInfo());
@@ -391,7 +399,7 @@ public class Battle {
                 selection = in.nextInt();
             }
 
-            return trainer.nonFaintedPokemon().get(selection);
+            return trainer.nonFaintedPokemon().get(selection - 1);
         }
 
         return null;

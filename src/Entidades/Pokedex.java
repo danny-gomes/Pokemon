@@ -54,4 +54,14 @@ public class Pokedex {
     public ArrayList<Move> getAllMoves() {
         return allMoves;
     }
+
+    public Move getMoveByName(String moveName){
+        for(Move m : allMoves){
+            if(m.getName().equalsIgnoreCase(moveName)){
+                return m;
+            }
+        }
+        System.out.println("Could not find move " + moveName);
+        return null;
+    }
 }

@@ -16,16 +16,47 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Battle {
+    /**
+     * The players Trainer object will be store here.
+     */
     private Trainer player;
+    /**
+     * The players current Pokemon in battle.
+     */
     private Pokemon playerCurrentPokemon;
+    /**
+     * The challengers Trainer object.
+     */
     private Trainer challenger;
+    /**
+     * The challengers current Pokemon.
+     */
     private Pokemon challengerCurrentPokemon;
+    /**
+     * The battles turn count.
+     */
     private int turnCount;
+    /**
+     *
+     */
     private ArrayList<FieldEffect> playerFieldEffects;
+    /**
+     * The list of the challengers field effects.
+     */
     private ArrayList<FieldEffect> challengerFieldEffects;
+    /**
+     * The battles current weather.
+     */
     private Weather weather;
 
-
+    /**
+     * Constructor to initialize a battle.
+     * @param player The players Trainer object will be store here.
+     * @param playerCurrentPokemon The players starting pokemon in battle.
+     * @param challenger The challengers Trainer object.
+     * @param challengerCurrentPokemon The challengers starting Pokemon in battle.
+     * @param turnCount The list with the players field effects.
+     */
     public Battle(Trainer player, Pokemon playerCurrentPokemon, Trainer challenger, Pokemon challengerCurrentPokemon, int turnCount) {
         this.player = player;
         this.playerCurrentPokemon = playerCurrentPokemon;
@@ -38,6 +69,11 @@ public class Battle {
         this.weather = new Weather("None", null, 0, 0);
     }
 
+    /**
+     * Method that starts a battle turn, player can select one of 4 options.
+     * @return 0 if battle should continue, -1 if challenger wins, 1 if player wins.
+     * @throws InterruptedException Exception needed to use thread.sleep
+     */
     public int turn() throws InterruptedException {
         this.turnCount = this.turnCount + 1;
 
@@ -86,6 +122,10 @@ public class Battle {
     }
     // Had to use iterator because of concurrentModificationException, was removing element from array while using it in for loop above
 
+    /**
+     * Method that updates a given trainers field effects.
+     * @param trainer The trainer to have its field effects updated.
+     */
     private void updateFieldEffects(Trainer trainer) {
         Iterator<FieldEffect> iterator = getTrainerFieldEffects(trainer).iterator();
         while (iterator.hasNext()) {
@@ -99,6 +139,10 @@ public class Battle {
         }
     }
 
+    /**
+     * Method to handle the players switch out mechanic.
+     * @return false if player could not switch out or if they ended up choosing not to switch out, true if switch out successful.
+     */
     private boolean switchOut() {
         Scanner in = new Scanner(System.in);
         if (playerCurrentPokemon.isTrapped()) {
@@ -146,6 +190,13 @@ public class Battle {
         return true;
     }
 
+    /**
+     * Method that handles the actual turn of the fight.
+     * @param playerMove The move selected by the player.
+     * @param challengerMove The move selected by the challenger.
+     * @return 0 if no one lost, -1 if challenger wins, 1 if player wins.
+     * @throws InterruptedException Exception to use thread.sleep
+     */
     private int battleTurn(Move playerMove, Move challengerMove) throws InterruptedException {
         boolean playerWin = false;
         boolean challengerWin = false;
@@ -255,6 +306,12 @@ public class Battle {
        return 0;
     }
 
+    /**
+     * Method that checks if the player should attack first.
+     * @param playerMove The move selected by the player.
+     * @param challengerMove The move selected by the challenger.
+     * @return true if player should attack first.
+     */
     public boolean playerAttackFirst(Move playerMove, Move challengerMove) {
         if (playerMove == null) {
             return false;
@@ -278,6 +335,10 @@ public class Battle {
         }
     }
 
+    /**
+     * Move that checks if the player lost after having a pokemon faint.
+     * @return true if player has no more pokemons to switch in, false if they do.
+     */
     private boolean checkPlayerFaint() {
         if (playerCurrentPokemon.getCurrentHp() <= 0) {
             Pokemon sentOutPokemon = pokemonFaint(player);
@@ -291,6 +352,10 @@ public class Battle {
         return false;
     }
 
+    /**
+     * Method that checks if the challenger has more pokemon to switch in after one faints.
+     * @return true if challenger has no more pokemon to swithc in, false if they do.
+     */
     private boolean checkChallengerFaint() {
         if (challengerCurrentPokemon.getCurrentHp() <= 0) {
             Pokemon sentOutPokemon = pokemonFaint(challenger);
@@ -304,6 +369,11 @@ public class Battle {
         return false;
     }
 
+    /**
+     * Method that handles the pokemon to switch in for the a player when one faints.
+     * @param trainer the trainer to have pokemon switched in.
+     * @return the pokemon to switch in or null if no more pokemon.
+     */
     private Pokemon pokemonFaint(Trainer trainer) {
         if (trainer.nonFaintedPokemon().size() > 0) {
             int i = 1;
@@ -327,6 +397,17 @@ public class Battle {
         return null;
     }
 
+    /**
+     * method that handles a moves execution for a Trainer.
+     * @param attacker the trainer that is attacking.
+     * @param defender the trainer that is defending.
+     * @param attackerPokemon the attacker pokemon.
+     * @param defenderPokemon the defending pokemon.
+     * @param moveUsed the move used by the attacker.
+     * @param opponentsMove the move used by the defender.
+     * @return the damage dealt by the move.
+     * @throws InterruptedException exception to use thread.sleep.
+     */
     private int executeMove(Trainer attacker, Trainer defender, Pokemon attackerPokemon, Pokemon defenderPokemon, Move moveUsed, Move opponentsMove) throws InterruptedException {
         String effectivenessString = "";
         double effectiveness = defenderPokemon.getEffectiveness(moveUsed.getType());
@@ -427,6 +508,10 @@ public class Battle {
         return damageDealt;
     }
 
+    /**
+     * Method that checks for a players barriers.
+     * @param trainer the trainer to have its barriers checked.
+     */
     private void checkBarriers(Trainer trainer) {
         for (FieldEffect fe : getTrainerFieldEffects(trainer)) {
             if (fe instanceof Barrier b) {
@@ -435,6 +520,12 @@ public class Battle {
         }
     }
 
+    /**
+     * Method to execute Unique moves with very specific behaviours.
+     * @param attacker the attaciking pokemon.
+     * @param defender the defending pokemon.
+     * @param moveUsed the move used by the attacker.
+     */
     private void executeUniqueMove(Pokemon attacker, Pokemon defender, Move moveUsed) {
         switch (moveUsed.getName()) {
             case "acupressure":
@@ -453,6 +544,12 @@ public class Battle {
         }
     }
 
+    /**
+     * Method that handles moves that have a drain to them recoil or healing.
+     * @param attacker the attacking pokemon.
+     * @param moveUsed the move used by the attacker.
+     * @param damageDealt the damage dealt by the move.
+     */
     private void drainMove(Pokemon attacker, Move moveUsed, int damageDealt) {
         double drain = ((double) moveUsed.getDrain() / 100) * damageDealt;
         if (drain > 0) {
@@ -464,6 +561,15 @@ public class Battle {
         }
     }
 
+    /**
+     * Method that handles moves that deal damage.
+     * @param attacker the attacking pokemon.
+     * @param defender the defending pokemon.
+     * @param moveUsed the move used by the attacker.
+     * @param opponentsMove the move used by the opponent.
+     * @return the damage dealt.
+     * @throws InterruptedException exception to use thread.sleep
+     */
     private int executeDamageMove(Pokemon attacker, Pokemon defender, Move moveUsed, Move opponentsMove) throws InterruptedException {
         int damageDealt = 0;
 
@@ -499,6 +605,13 @@ public class Battle {
         return damageDealt;
     }
 
+    /**
+     * Method that calulates damage dealt by moves that deal damage.
+     * @param attacker the attacking pokemon.
+     * @param defender the defending pokemon.
+     * @param moveUsed the move used by the attacker.
+     * @return the damage dealt.
+     */
     private int calculateDamage(Pokemon attacker, Pokemon defender, Move moveUsed) {
         Random rand = new Random();
         int crit = moveUsed.getCrit();
@@ -506,7 +619,6 @@ public class Battle {
         double attackerAccuracy = attacker.getAccuracy();
         double defenderEvasiness = defender.getEvasiness();
 
-        // Determine if the attack hits
         boolean hits = true;
         if (baseAccuracy != -1) {
             double effectiveAccuracy = calculateEffectiveAccuracy(baseAccuracy, attackerAccuracy, defenderEvasiness);
@@ -518,7 +630,6 @@ public class Battle {
             return 0;
         }
 
-        // Calculate base damage
         double randomMultiplier = (rand.nextInt(16) + 85) / 100.0;
         double baseDamage = ((((double) (((2 * attacker.getLevel() * crit / 5) + 2) * moveUsed.getPower() * attacker.getStatForAttackMove(defender, moveUsed)) / defender.getStatForDefense(attacker, moveUsed) / 50) + 2) * attacker.getStab(moveUsed) * defender.getEffectiveness(moveUsed.getType()) * randomMultiplier);
 
@@ -531,6 +642,13 @@ public class Battle {
         return finalDamage;
     }
 
+    /**
+     * Method that calulates the chances of a move hitting taking into account the moves base accuracy and accuracy modifiers.
+     * @param baseAccuracy
+     * @param attackerAccuracy
+     * @param defenderEvasiness
+     * @return
+     */
     private double calculateEffectiveAccuracy(int baseAccuracy, double attackerAccuracy, double defenderEvasiness) {
         double accuracyModifier = (0.1 * (attackerAccuracy + 6)) / (0.1 * (defenderEvasiness + 6));
         double effectiveAccuracy = baseAccuracy * accuracyModifier;
@@ -541,12 +659,21 @@ public class Battle {
         return effectiveAccuracy;
     }
 
+    /**
+     * Method that checks if a move hits.
+     * @param effectiveAccuracy the effective accuracy of a move hitting.
+     * @return true if move hits, false if not.
+     */
     private boolean isHit(double effectiveAccuracy) {
         Random rand = new Random();
-        int roll = rand.nextInt(101); // Roll between 0 and 100
+        int roll = rand.nextInt(101);
         return roll <= effectiveAccuracy;
     }
 
+    /**
+     * Method that selects a move for the challenger.
+     * @return The move selected by the challenger.
+     */
     private Move selectChallengerMove() {
         Move[] moves = challengerCurrentPokemon.getMoves();
         Move selectedMove = null;
@@ -560,6 +687,10 @@ public class Battle {
         return selectedMove;
     }
 
+    /**
+     * Method that handles move selection for the player.
+     * @return The move selected by the player, or null if player decided to go back.
+     */
     private Move selectPlayerMove() {
         Scanner in = new Scanner(System.in);
         Move[] moves = playerCurrentPokemon.getMoves();
@@ -574,6 +705,10 @@ public class Battle {
         return moveSelection == 4 ? null : moves[moveSelection];
     }
 
+    /**
+     * Method that converts battle info into a string.
+     * @return the battle info as a String.
+     */
     @Override
     public String toString() {
         StringBuilder battleDisplay = new StringBuilder();
@@ -639,6 +774,12 @@ public class Battle {
     }
 
 
+    /**
+     * Method that adds a field effect to a given trainer.
+     * @param trainer The trainer that used the field effect.
+     * @param moveUsed The move associated with the field effect.
+     * @return true if field effect added successfully false if not.
+     */
     public boolean addFieldEffect(Trainer trainer, Move moveUsed) {
         String moveName = moveUsed.getName();
         FieldEffect fe = checkIfFieldEffectHasBeenAdded(trainer, moveUsed.getName());
@@ -672,7 +813,7 @@ public class Battle {
                         FieldEffect reflect = checkIfFieldEffectHasBeenAdded(trainer, "reflect");
                         FieldEffect lightScreen = checkIfFieldEffectHasBeenAdded(trainer, "light-screen");
                         if (reflect == null && lightScreen == null) {
-                            Barrier barrier = new Barrier(moveUsed.getName(), moveUsed, 0, 5);
+                            Barrier barrier = new Barrier(moveUsed.getName(), moveUsed, 5);
                             this.getTrainerFieldEffects(trainer).add(barrier);
                             System.out.println("Aurora veil protects your team.");
                         } else {
@@ -691,9 +832,9 @@ public class Battle {
                 } else {
                     FieldEffect auroraVeil = checkIfFieldEffectHasBeenAdded(trainer, "aurora-veil");
                     if (auroraVeil == null) {
-                        Barrier barrier = new Barrier(moveUsed.getName(), moveUsed, 0, 5);
+                        Barrier barrier = new Barrier(moveUsed.getName(), moveUsed, 5);
                         this.getTrainerFieldEffects(trainer).add(barrier);
-                        System.out.println("Reflect protects your team.");
+                        System.out.println("Barrier protects your team.");
                     } else {
                         System.out.println("But it failed.");
                         return false;
@@ -705,6 +846,12 @@ public class Battle {
         return true;
     }
 
+    /**
+     * Method that checks if field effect has been added before.
+     * @param trainer The trainer to have their field effects checked.
+     * @param moveName The name of the field effect.
+     * @return null if it has not been added, or the field effect if it has been added.
+     */
     public FieldEffect checkIfFieldEffectHasBeenAdded(Trainer trainer, String moveName) {
         for (FieldEffect fe : this.getTrainerFieldEffects(trainer)) {
             if (fe.getName().equalsIgnoreCase(moveName)) {
@@ -715,6 +862,11 @@ public class Battle {
         return null;
     }
 
+    /**
+     * Method that returns a trainers field effects.
+     * @param trainer The trainer to have its field effects returned.
+     * @return the list of a trainers field effects.
+     */
     public ArrayList<FieldEffect> getTrainerFieldEffects(Trainer trainer) {
         if (trainer.isPlayer()) {
             return playerFieldEffects;
@@ -723,6 +875,11 @@ public class Battle {
         }
     }
 
+    /**
+     * Method that returns a trainers current pokemon.
+     * @param trainer the trainer to have their current pokemon returned.
+     * @return the trainers current pokemon.
+     */
     public Pokemon getTrainerCurrentPokemon(Trainer trainer) {
         if (trainer.isPlayer()) {
             return playerCurrentPokemon;

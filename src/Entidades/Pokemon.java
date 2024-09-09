@@ -58,6 +58,27 @@ public class Pokemon {
     private int sleepTurns;
     private int toxicCounter;
 
+    /**
+     * Method that creates Pokemon instance.
+     * @param dexNumber the pokemons pokedex number.
+     * @param name the name of the pokemon.
+     * @param type1 the first type of the pokemon.
+     * @param type2 the second type of the pokemon if they have one.
+     * @param level the pokemons level.
+     * @param baseHp the pokemons base HP.
+     * @param baseAttack the pokemons base attack.
+     * @param baseDefense the pokemons base defense.
+     * @param baseSpecialAttack the pokemons base special attack.
+     * @param baseSpecialDefense the pokemons base special defense.
+     * @param baseSpeed the pokemons base speed.
+     * @param possibleAbilitiesString the pokemons list of possible abilities.
+     * @param hiddenAbilityString the pokemons hidden ability.
+     * @param height the pokemons height.
+     * @param weight the pokemons weight.
+     * @param evolvesAt the level the pokemon evolves at if it does.
+     * @param moves the pokemons current learnt moves.
+     * @param learnSet all the moves the pokemon can learn.
+     */
     public Pokemon(int dexNumber, String name, PokemonType type1, PokemonType type2, int level, int baseHp, int baseAttack, int baseDefense, int baseSpecialAttack, int baseSpecialDefense, int baseSpeed, ArrayList<String> possibleAbilitiesString, String hiddenAbilityString, double height, double weight, int evolvesAt, Move[] moves, ArrayList<Move> learnSet) {
         this.dexNumber = dexNumber;
         this.name = name;
@@ -103,6 +124,9 @@ public class Pokemon {
         this.ailments = new ArrayList<>();
     }
 
+    /**
+     * Method that calculates the pokemons current stats based on nature and base stats, IVs and EVs not implemented.
+     */
     private void calculateCurrentStats() {
         //Other Stats = (floor(0.01 x (2 x Base + IV + floor(0.25 x EV)) x Level) + 5) x Nature.
         this.currentMaxHp = (int) Math.floor(0.01 * (2 * this.baseHp) * this.level) + this.level + 10;
@@ -114,26 +138,50 @@ public class Pokemon {
         this.speed = (int) ((Math.floor(0.01 * (2 * this.baseSpeed) * this.level) + 5) * this.nature.getSpeedMultiplier());
     }
 
+    /**
+     * Method that checks if a pokemon has a held item.
+     * @return true if the pokemon has a held item.
+     */
     public boolean hasHeldItem() {
         return heldItem != null;
     }
 
+    /**
+     * Method that adds a possible evolution to the pokemon.
+     * @param evo The pokemon this pokemon will evolve to.
+     */
     public void addPossibleEvolution(Pokemon evo) {
         this.possibleEvolutions.add(evo);
     }
 
+    /**
+     * Method that returns the pokemons name.
+     * @return the pokemons name.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Method that returns the list of all moves that the pokemon can learn.
+     * @return the list of all moves the pokemon can learn.
+     */
     public ArrayList<Move> getLearnSet() {
         return learnSet;
     }
 
+    /**
+     * Method that sets the level this pokemon evolves at.
+     * @param evolvesAt the level the pokemon will evolve at.
+     */
     public void setEvolvesAt(int evolvesAt) {
         this.evolvesAt = evolvesAt;
     }
 
+    /**
+     * Method that heals a pokemons current HP.
+     * @param hpToHeal the amount of hp to heal.
+     */
     public void healCurrentHP(int hpToHeal) {
         if (this.currentHp + hpToHeal > this.currentMaxHp) {
             this.currentHp = this.currentMaxHp;
@@ -142,10 +190,18 @@ public class Pokemon {
         }
     }
 
+    /**
+     * Method that returns the array with the moves that the pokemon currently knows.
+     * @return the list of currently learnt moves.
+     */
     public Move[] getMoves() {
         return this.currentMoves;
     }
 
+    /**
+     * Return the moves learn in string format.
+     * @return the String with the names of the current learnt moves.
+     */
     public String getMovesString() {
         String moves = "";
         for (int i = 0; i < currentMoves.length; i++) {
@@ -157,10 +213,18 @@ public class Pokemon {
         return moves;
     }
 
+    /**
+     * Gets a pokemons current hp.
+     * @return the pokemons current hp.
+     */
     public int getCurrentHp() {
         return this.currentHp;
     }
 
+    /**
+     * Converts the pokemons info into string format.
+     * @return the pokemon moves info in String.
+     */
     @Override
     public String toString() {
         String shinyStatus = isShiny ? "Yes" : "No";
@@ -214,6 +278,10 @@ public class Pokemon {
         );
     }
 
+    /**
+     * Returns pokemons info that is more relevant to a battle in string format.
+     * @return the pokemons info that is more relevant to battle in string format.
+     */
     public String pokemonBattleInfo() {
         String typeInfo = type2 != null ? type1 + " / " + type2 : type1.toString();
 
@@ -266,6 +334,10 @@ public class Pokemon {
         );
     }
 
+    /**
+     * Method that returns a pokemons current ailments as a String.
+     * @return the pokemons current ailments as string.
+     */
     public String getAilmentsString() {
         StringBuilder sb = new StringBuilder();
 
@@ -281,15 +353,29 @@ public class Pokemon {
         return sb.length() > 0 ? sb.toString() : "No Ailments";
     }
 
+    /**
+     * Method that returns a pokemons current max hp.
+     * @return the pokemons current max hp.
+     */
     public int getCurrentMaxHp() {
         return currentMaxHp;
     }
 
+    /**
+     * Method that returns the pokemons current leve.
+     * @return the pokemons level.
+     */
     public int getLevel() {
         return this.level;
     }
 
-    public int getStatForAttackMove(Pokemon attacker, Move move) {
+    /**
+     * Method that returns the stat that will be used to calculate damage dealt
+     * @param defender the pokemon is defending from the move.
+     * @param move the move used.
+     * @return the stat that will be used to calculate damage.
+     */
+    public int getStatForAttackMove(Pokemon defender, Move move) {
         if (move.getName().equalsIgnoreCase("body-press")) {
             return (int) (this.defense * getStatMultiplier(statModifiers[DEFENSE_INDEX]));
         }
@@ -305,6 +391,12 @@ public class Pokemon {
         }
     }
 
+    /**
+     * Method that returns the defense stat to be used to calculate damage received.
+     * @param attacker the pokemon that attacked.
+     * @param moveUsed the move used by the attacker.
+     * @return the stat to be used to calculate damage taken.
+     */
     public int getStatForDefense(Pokemon attacker, Move moveUsed) {
         if (moveUsed.getName().equalsIgnoreCase("secret-sword")) {
             return (int) (this.defense * getStatMultiplier(statModifiers[DEFENSE_INDEX]));
@@ -318,6 +410,11 @@ public class Pokemon {
     }
 
 
+    /**
+     * Method that checks if a pokemon will have the STAB boost (Same Type Attack Bonus)
+     * @param moveUsed the move used.
+     * @return true if move used is the same as the pokemon type using it.
+     */
     public double getStab(Move moveUsed) {
         PokemonType moveType = moveUsed.getType();
         if (moveType.equals(this.type1) || moveType.equals(this.type2)) {
@@ -327,6 +424,11 @@ public class Pokemon {
         return 1;
     }
 
+    /**
+     * Method that checks how effective a move is against this pokemons types.
+     * @param moveType the move type to check effectivess
+     * @return the effectiveness of the move on that pokemon.
+     */
     public double getEffectiveness(PokemonType moveType) {
 
         double effectiveness = getEffectivenessAgainstType(moveType, this.type1);
@@ -338,6 +440,12 @@ public class Pokemon {
         return effectiveness;
     }
 
+    /**
+     * Method that checks the effectiveness from one type to another.
+     * @param moveType The attacking moveType
+     * @param targetType the type that is receiving the attack.
+     * @return the effectivess for this combo of moves.
+     */
     public double getEffectivenessAgainstType(PokemonType moveType, PokemonType targetType) {
         switch (moveType) {
             case NORMAL:
@@ -445,10 +553,13 @@ public class Pokemon {
                 break;
         }
 
-        // If the move is neutral
         return 1.0;
     }
 
+    /**
+     * Method that deals damage to a pokemon.
+     * @param finalDamage that damage to be dealt to a pokemon.
+     */
     public void takeDamage(int finalDamage) {
         this.currentHp = this.currentHp - finalDamage;
         if (this.currentHp < 0) {
@@ -456,6 +567,10 @@ public class Pokemon {
         }
     }
 
+    /**
+     * Method that teaches a pokemon a new move.
+     * @param m the move to learn.
+     */
     public void learnNewMove(Move m) {
         Scanner in = new Scanner(System.in);
         String learntMoves = "";
@@ -479,14 +594,32 @@ public class Pokemon {
         currentMoves[moveToReplace] = m;
     }
 
+    /**
+     * Method that returns the pokemons current evasioness modifier.
+     * @return
+     */
     public double getEvasiness() {
         return statModifiers[EVASIVENESS_INDEX];
     }
 
+    /**
+     * Method that returns the current accuracy modifier.
+     * @return the current accuracy modifier.
+     */
     public double getAccuracy() {
         return statModifiers[ACCURACY_INDEX];
     }
 
+    /**
+     * Method that updates a pokemons stats based on the change recieved as parameter.
+     * @param attackChange the attackChange to be implemented, 0 if should be unchanged.
+     * @param defenseChange the defenseChange to be implemented, 0 if should be unchanged.
+     * @param spAttackChange the spAttackChange to be implemented, 0 if should be unchanged.
+     * @param spDefChange the spDefChange to be implemented, 0 if should be unchanged.
+     * @param speedChange the speedChange to be implemented, 0 if should be unchanged.
+     * @param accuracyChange the accuracyChange to be implemented, 0 if should be unchanged.
+     * @param evasionChange the evasionChange to be implemented, 0 if should be unchanged.
+     */
     public void updateStatModifiers(int attackChange, int defenseChange, int spAttackChange, int spDefChange, int speedChange, int accuracyChange, int evasionChange) {
         for (int i = 0; i < statModifiers.length; i++) {
             switch (i) {
@@ -515,6 +648,12 @@ public class Pokemon {
         }
     }
 
+    /**
+     * Method that updates the array with the current stat modifiers and makes sure they dont go higher or lower than the max or min amount.
+     * @param i the index of the stat to be changed 0 - attack, 1 - defense etc...
+     * @param change the change the stat is going to be updated.
+     * @param stat the name of the stat being changed.
+     */
     private void updateStatModifier(int i, int change, String stat) {
         if (statModifiers[i] + change > 6) {
             statModifiers[i] = 6;
@@ -538,12 +677,19 @@ public class Pokemon {
         }
     }
 
+    /**
+     * Method that clears all stat modifiers and sets them back to neutral.
+     */
     public void clearStatModifiers() {
         for (int i = 0; i < statModifiers.length; i++) {
             statModifiers[i] = 0;
         }
     }
 
+    /**
+     * Method that gets the current stat modifiers as a String.
+     * @return the current stat modifiers as a String.
+     */
     public String getCurrentStatsString() {
         return String.format(
                 "╔═══════════════════════════════════════════╗\n" +
@@ -571,10 +717,19 @@ public class Pokemon {
         );
     }
 
+    /**
+     * Method that return the current speed of a pokemon including stat modifiers.
+     * @return the current speed of a pokemon.
+     */
     public int getCurrentSpeed() {
         return (int) Math.round(this.speed * getStatMultiplier(statModifiers[SPEED_INDEX]));
     }
 
+    /**
+     * Method that returns the nerf or boost for a stat taking into account the stat modifiers a stat has on it.
+     * @param statModifier the stat to be changed by a modifier.
+     * @return the amount a stat should be changed.
+     */
     private double getStatMultiplier(int statModifier) {
         switch (statModifier) {
             case -6:
@@ -608,6 +763,12 @@ public class Pokemon {
         }
     }
 
+    /**
+     * Method that adds an ailment to a pokemon.
+     * @param attacker the pokemon that attacked to check for infatuation.
+     * @param ailment the ailment to be added.
+     * @return true if ailment was added successfully.
+     */
     public boolean addAilment(Pokemon attacker, Ailment ailment) {
         if (ailment == Ailment.NONE || ailment == Ailment.UNKNOWN) {
             return false;
@@ -633,7 +794,7 @@ public class Pokemon {
 
         if (ailment.equals(Ailment.INGRAIN)) {
             ailments.add(ailment);
-            this.addAilment(attacker, Ailment.TRAP);
+            this.addAilment(this, Ailment.TRAP);
         } else {
             if (ailments.contains(Ailment.INFATUATION)) {
                 System.out.println("Pokemon is already infatuated.");
@@ -658,11 +819,21 @@ public class Pokemon {
         return true;
     }
 
+    /**
+     * Method that checks if the ailment is a primary status ailment (pokemon can only have one of these at a time).
+     * @param ailment the ailment to be checked.
+     * @return true if it is a primayStatus ailment.
+     */
     private boolean isPrimaryStatusAilment(Ailment ailment) {
         return ailment == Ailment.PARALYSIS || ailment == Ailment.SLEEP || ailment == Ailment.FREEZE ||
                 ailment == Ailment.BURN || ailment == Ailment.POISON || ailment == Ailment.TOXIC;
     }
 
+    /**
+     * Method that checks ailments and applies their effects.
+     * @param beforeMove this paramater defines if the ailments are ailments that are applied before a move, true to check ailments before a move is done.
+     * @return true if pokemon can attack, false if not.
+     */
     public boolean checkAilments(boolean beforeMove) {
         if (beforeMove) {
             for (Ailment ailment : ailments) {
@@ -809,6 +980,10 @@ public class Pokemon {
         return true;
     }
 
+    /**
+     * Method that checks if a pokemon has the TRAP ailment.
+     * @return true if the pokemon is trapped.
+     */
     public boolean isTrapped() {
         for (Ailment a : ailments) {
             if (a.equals(Ailment.TRAP)) {
@@ -819,10 +994,18 @@ public class Pokemon {
         return false;
     }
 
+    /**
+     * Method that returns the gender of a pokemon.
+     * @return the gender of a pokemon.
+     */
     public String getGender() {
         return gender;
     }
 
+    /**
+     * Method that displays damage dealt to a pokemon.
+     * @param damageDealt the damage dealt to a pokemon.
+     */
     public void displayDamageDealt(int damageDealt) {
         if (damageDealt > 0) {
             if (this.getCurrentHp() - damageDealt < 0) {
@@ -833,26 +1016,50 @@ public class Pokemon {
         }
     }
 
+    /**
+     * Method that gets the pokemons current attack stat including boosts.
+     * @return the pokemons current attack stat.
+     */
     public int getCurrentAttack() {
         return (int) Math.round(this.attack * getStatMultiplier(statModifiers[ATTACK_INDEX]));
     }
 
+    /**
+     * Method that gets the pokemons current defense stat including boosts.
+     * @return the pokemons current defense stat.
+     */
     public int getCurrentDefense() {
         return (int) Math.round(this.defense * getStatMultiplier(statModifiers[DEFENSE_INDEX]));
     }
 
+    /**
+     * Method that gets the pokemons current special attack stat including boosts.
+     * @return the pokemons current special attack stat.
+     */
     public int getCurrentSpecialAttack() {
         return (int) Math.round(this.specialAttack * getStatMultiplier(statModifiers[SPECIAL_ATTACK_INDEX]));
     }
 
+    /**
+     * Method that gets the pokemons current special defense stat including boosts.
+     * @return the pokemons current special defense stat.
+     */
     public int getCurrentSpecialDefense() {
         return (int) Math.round(this.specialDefense * getStatMultiplier(statModifiers[SPECIAL_DEFENSE_INDEX]));
     }
 
+    /**
+     * Method that gets the pokemons current accuracy modifier.
+     * @return the pokemons current accuracy modifier.
+     */
     public int getAccuracyModifier() {
         return statModifiers[ACCURACY_INDEX];
     }
 
+    /**
+     * Method that gets the pokemons current evasioness modifier.
+     * @return the pokemons current evasioness modifier.
+     */
     public int getEvasivenessModifier() {
         return statModifiers[EVASIVENESS_INDEX];
     }

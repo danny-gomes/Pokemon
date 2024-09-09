@@ -6,13 +6,25 @@ import Enums.Ailment;
 import Enums.PokemonType;
 
 public class EntryHazard extends FieldEffect {
+    /**
+     * The layers of a specific instance of Entry Hazard.
+     */
     private int layers;
 
+    /**
+     * Constructor to initialize an Entry Hazard.
+     * @param name The name of the Entry Hazard.
+     * @param moveUsed The move associated with the specific Entry Hazard.
+     */
     public EntryHazard(String name, Move moveUsed) {
         super(name, moveUsed);
         this.layers = 0;
     }
 
+    /**
+     * Method that checks for Entry Hazards on switch in and applies its effects on the switched in Pokemon.
+     * @param switchedInPokemon The Pokemon that is switched in.
+     */
     public void checkEntryHazards(Pokemon switchedInPokemon) {
         String moveName = move.getName();
         int damageDealt = 0;
@@ -76,6 +88,9 @@ public class EntryHazard extends FieldEffect {
         }
     }
 
+    /**
+     * Method that adds a layer of a given entry Hazard.
+     */
     public void addLayer() {
         this.layers++;
     }

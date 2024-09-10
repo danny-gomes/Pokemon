@@ -51,11 +51,12 @@ public class Battle {
 
     /**
      * Constructor to initialize a battle.
-     * @param player The players Trainer object will be store here.
-     * @param playerCurrentPokemon The players starting pokemon in battle.
-     * @param challenger The challengers Trainer object.
+     *
+     * @param player                   The players Trainer object will be store here.
+     * @param playerCurrentPokemon     The players starting pokemon in battle.
+     * @param challenger               The challengers Trainer object.
      * @param challengerCurrentPokemon The challengers starting Pokemon in battle.
-     * @param turnCount The list with the players field effects.
+     * @param turnCount                The list with the players field effects.
      */
     public Battle(Trainer player, Pokemon playerCurrentPokemon, Trainer challenger, Pokemon challengerCurrentPokemon, int turnCount) {
         this.player = player;
@@ -71,6 +72,7 @@ public class Battle {
 
     /**
      * Method that starts a battle turn, player can select one of 4 options.
+     *
      * @return 0 if battle should continue, -1 if challenger wins, 1 if player wins.
      * @throws InterruptedException Exception needed to use thread.sleep
      */
@@ -101,6 +103,7 @@ public class Battle {
                     break;
                 case 3:
                     boolean switched = switchOut();
+
                     if (switched) {
                         hasNotSelected = false;
                         Move challengerMove = selectChallengerMove();
@@ -124,6 +127,7 @@ public class Battle {
 
     /**
      * Method that updates a given trainers field effects.
+     *
      * @param trainer The trainer to have its field effects updated.
      */
     private void updateFieldEffects(Trainer trainer) {
@@ -141,6 +145,7 @@ public class Battle {
 
     /**
      * Method to handle the players switch out mechanic.
+     *
      * @return false if player could not switch out or if they ended up choosing not to switch out, true if switch out successful.
      */
     private boolean switchOut() {
@@ -173,6 +178,7 @@ public class Battle {
         if (pokemonOption != 0) {
             playerCurrentPokemon.clearStatModifiers();
             playerCurrentPokemon = player.getNonFaintedPokemon(pokemonNames.get(pokemonOption - 1));
+
             System.out.println("Go, " + playerCurrentPokemon.getName() + "!");
             for (FieldEffect fe : playerFieldEffects) {
                 if (fe instanceof EntryHazard eh) {
@@ -192,7 +198,8 @@ public class Battle {
 
     /**
      * Method that handles the actual turn of the fight.
-     * @param playerMove The move selected by the player.
+     *
+     * @param playerMove     The move selected by the player.
      * @param challengerMove The move selected by the challenger.
      * @return 0 if no one lost, -1 if challenger wins, 1 if player wins.
      * @throws InterruptedException Exception to use thread.sleep
@@ -201,8 +208,6 @@ public class Battle {
         boolean isPlayerFirst = playerAttackFirst(playerMove, challengerMove);
         int playerDamageDealt = 0;
         int challengerDamageDealt = 0;
-        Pokemon playerPokStartTurn = playerCurrentPokemon;
-        Pokemon challengerPokStartTrun = challengerCurrentPokemon;
 
 
         if (playerMove == null) {
@@ -210,25 +215,24 @@ public class Battle {
                 executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
             }
 
-            this.playerCurrentPokemon = checkTrainerFaint(player);
+            this.playerCurrentPokemon = checkTrainerFaint(player, playerCurrentPokemon);
+
             if (this.playerCurrentPokemon == null) {
                 return -1;
             }
 
             challengerCurrentPokemon.checkAilments(false);
 
-            this.challengerCurrentPokemon = checkTrainerFaint(challenger);
-            if(this.challengerCurrentPokemon == null){
+            this.challengerCurrentPokemon = checkTrainerFaint(challenger, challengerCurrentPokemon);
+            if (this.challengerCurrentPokemon == null) {
                 return 1;
             }
-        }
-
-        if (isPlayerFirst) {
+        } else if (isPlayerFirst) {
             if (playerCurrentPokemon.checkAilments(true)) {
                 playerDamageDealt = executeMove(player, challenger, playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
             }
 
-            this.challengerCurrentPokemon = checkTrainerFaint(challenger);
+            this.challengerCurrentPokemon = checkTrainerFaint(challenger, challengerCurrentPokemon);
 
             if (this.challengerCurrentPokemon == null) {
                 return 1;
@@ -241,7 +245,7 @@ public class Battle {
                     executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
                 }
 
-                this.playerCurrentPokemon = checkTrainerFaint(player);
+                this.playerCurrentPokemon = checkTrainerFaint(player, playerCurrentPokemon);
 
                 if (this.playerCurrentPokemon == null) {
                     return -1;
@@ -249,14 +253,14 @@ public class Battle {
 
                 playerCurrentPokemon.checkAilments(false);
                 challengerCurrentPokemon.checkAilments(false);
-                playerCurrentPokemon = checkTrainerFaint(player);
-                challengerCurrentPokemon = checkTrainerFaint(challenger);
+                playerCurrentPokemon = checkTrainerFaint(player, playerCurrentPokemon);
+                challengerCurrentPokemon = checkTrainerFaint(challenger, challengerCurrentPokemon);
 
                 if (playerCurrentPokemon == null && challengerCurrentPokemon == null) {
                     return -1;
-                } else if(playerCurrentPokemon == null){
+                } else if (playerCurrentPokemon == null) {
                     return -1;
-                } else if(challengerCurrentPokemon == null){
+                } else if (challengerCurrentPokemon == null) {
                     return 1;
                 }
             }
@@ -266,7 +270,7 @@ public class Battle {
                 challengerDamageDealt = executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
             }
 
-            playerCurrentPokemon = checkTrainerFaint(player);
+            playerCurrentPokemon = checkTrainerFaint(player, playerCurrentPokemon);
 
             if (playerCurrentPokemon == null) {
                 return -1;
@@ -279,21 +283,21 @@ public class Battle {
                     executeMove(player, challenger, playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
                 }
 
-                challengerCurrentPokemon = checkTrainerFaint(challenger);
-                if(challengerCurrentPokemon == null){
+                challengerCurrentPokemon = checkTrainerFaint(challenger, challengerCurrentPokemon);
+                if (challengerCurrentPokemon == null) {
                     return 1;
                 }
 
                 challengerCurrentPokemon.checkAilments(false);
                 playerCurrentPokemon.checkAilments(false);
-                challengerCurrentPokemon = checkTrainerFaint(player);
-                playerCurrentPokemon = checkTrainerFaint(challenger);
+                challengerCurrentPokemon = checkTrainerFaint(player, playerCurrentPokemon);
+                playerCurrentPokemon = checkTrainerFaint(challenger, challengerCurrentPokemon);
 
                 if (playerCurrentPokemon == null && challengerCurrentPokemon == null) {
                     return -1;
-                } else if(playerCurrentPokemon == null){
+                } else if (playerCurrentPokemon == null) {
                     return -1;
-                } else if(challengerCurrentPokemon == null){
+                } else if (challengerCurrentPokemon == null) {
                     return 1;
                 }
 
@@ -301,12 +305,13 @@ public class Battle {
             }
         }
 
-       return 0;
+        return 0;
     }
 
     /**
      * Method that checks if the player should attack first.
-     * @param playerMove The move selected by the player.
+     *
+     * @param playerMove     The move selected by the player.
      * @param challengerMove The move selected by the challenger.
      * @return true if player should attack first.
      */
@@ -335,18 +340,19 @@ public class Battle {
 
     /**
      * Method that checks if a trainer pokemon has fainted and calls method to switch in pokemon.
+     *
      * @param trainer the trainer to check for faint.
      * @return the sentOutPokemon if the trainer has pokemon available or null if not.
      */
-    private Pokemon checkTrainerFaint(Trainer trainer){
-        Pokemon sentOutPokemon = null;
+    private Pokemon checkTrainerFaint(Trainer trainer, Pokemon currentPokemon) {
+        Pokemon sentOutPokemon = currentPokemon;
 
-        if(trainer.isPlayer()){
-            if(playerCurrentPokemon.getCurrentHp() <= 0){
+        if (trainer.isPlayer()) {
+            if (playerCurrentPokemon.getCurrentHp() <= 0) {
                 sentOutPokemon = pokemonFaint(trainer);
             }
         } else {
-            if(challengerCurrentPokemon.getCurrentHp() <= 0){
+            if (challengerCurrentPokemon.getCurrentHp() <= 0) {
                 sentOutPokemon = pokemonFaint(trainer);
             }
         }
@@ -356,13 +362,14 @@ public class Battle {
 
     /**
      * Method that handles the pokemon to switch in for the a player when one faints.
+     *
      * @param trainer the trainer to have pokemon switched in.
      * @return the pokemon to switch in or null if no more pokemon.
      */
     private Pokemon pokemonFaint(Trainer trainer) {
         if (trainer.nonFaintedPokemon().size() > 0) {
             int i = 1;
-            if(!trainer.isPlayer()){
+            if (!trainer.isPlayer()) {
                 Random random = new Random();
                 Pokemon challengerRandomPokemon = trainer.nonFaintedPokemon().get(random.nextInt(trainer.nonFaintedPokemon().size()));
                 return challengerRandomPokemon;
@@ -389,12 +396,13 @@ public class Battle {
 
     /**
      * method that handles a moves execution for a Trainer.
-     * @param attacker the trainer that is attacking.
-     * @param defender the trainer that is defending.
+     *
+     * @param attacker        the trainer that is attacking.
+     * @param defender        the trainer that is defending.
      * @param attackerPokemon the attacker pokemon.
      * @param defenderPokemon the defending pokemon.
-     * @param moveUsed the move used by the attacker.
-     * @param opponentsMove the move used by the defender.
+     * @param moveUsed        the move used by the attacker.
+     * @param opponentsMove   the move used by the defender.
      * @return the damage dealt by the move.
      * @throws InterruptedException exception to use thread.sleep.
      */
@@ -500,6 +508,7 @@ public class Battle {
 
     /**
      * Method that checks for a players barriers.
+     *
      * @param trainer the trainer to have its barriers checked.
      */
     private void checkBarriers(Trainer trainer) {
@@ -512,6 +521,7 @@ public class Battle {
 
     /**
      * Method to execute Unique moves with very specific behaviours.
+     *
      * @param attacker the attaciking pokemon.
      * @param defender the defending pokemon.
      * @param moveUsed the move used by the attacker.
@@ -536,8 +546,9 @@ public class Battle {
 
     /**
      * Method that handles moves that have a drain to them recoil or healing.
-     * @param attacker the attacking pokemon.
-     * @param moveUsed the move used by the attacker.
+     *
+     * @param attacker    the attacking pokemon.
+     * @param moveUsed    the move used by the attacker.
      * @param damageDealt the damage dealt by the move.
      */
     private void drainMove(Pokemon attacker, Move moveUsed, int damageDealt) {
@@ -553,9 +564,10 @@ public class Battle {
 
     /**
      * Method that handles moves that deal damage.
-     * @param attacker the attacking pokemon.
-     * @param defender the defending pokemon.
-     * @param moveUsed the move used by the attacker.
+     *
+     * @param attacker      the attacking pokemon.
+     * @param defender      the defending pokemon.
+     * @param moveUsed      the move used by the attacker.
      * @param opponentsMove the move used by the opponent.
      * @return the damage dealt.
      * @throws InterruptedException exception to use thread.sleep
@@ -597,6 +609,7 @@ public class Battle {
 
     /**
      * Method that calulates damage dealt by moves that deal damage.
+     *
      * @param attacker the attacking pokemon.
      * @param defender the defending pokemon.
      * @param moveUsed the move used by the attacker.
@@ -634,6 +647,7 @@ public class Battle {
 
     /**
      * Method that calulates the chances of a move hitting taking into account the moves base accuracy and accuracy modifiers.
+     *
      * @param baseAccuracy
      * @param attackerAccuracy
      * @param defenderEvasiness
@@ -651,6 +665,7 @@ public class Battle {
 
     /**
      * Method that checks if a move hits.
+     *
      * @param effectiveAccuracy the effective accuracy of a move hitting.
      * @return true if move hits, false if not.
      */
@@ -662,6 +677,7 @@ public class Battle {
 
     /**
      * Method that selects a move for the challenger.
+     *
      * @return The move selected by the challenger.
      */
     private Move selectChallengerMove() {
@@ -679,6 +695,7 @@ public class Battle {
 
     /**
      * Method that handles move selection for the player.
+     *
      * @return The move selected by the player, or null if player decided to go back.
      */
     private Move selectPlayerMove() {
@@ -697,6 +714,7 @@ public class Battle {
 
     /**
      * Method that converts battle info into a string.
+     *
      * @return the battle info as a String.
      */
     @Override
@@ -766,7 +784,8 @@ public class Battle {
 
     /**
      * Method that adds a field effect to a given trainer.
-     * @param trainer The trainer that used the field effect.
+     *
+     * @param trainer  The trainer that used the field effect.
      * @param moveUsed The move associated with the field effect.
      * @return true if field effect added successfully false if not.
      */
@@ -838,7 +857,8 @@ public class Battle {
 
     /**
      * Method that checks if field effect has been added before.
-     * @param trainer The trainer to have their field effects checked.
+     *
+     * @param trainer  The trainer to have their field effects checked.
      * @param moveName The name of the field effect.
      * @return null if it has not been added, or the field effect if it has been added.
      */
@@ -854,6 +874,7 @@ public class Battle {
 
     /**
      * Method that returns a trainers field effects.
+     *
      * @param trainer The trainer to have its field effects returned.
      * @return the list of a trainers field effects.
      */
@@ -867,6 +888,7 @@ public class Battle {
 
     /**
      * Method that returns a trainers current pokemon.
+     *
      * @param trainer the trainer to have their current pokemon returned.
      * @return the trainers current pokemon.
      */
@@ -876,5 +898,9 @@ public class Battle {
         } else {
             return challengerCurrentPokemon;
         }
+    }
+
+    public Pokemon getPlayerCurrentPokemon() {
+        return playerCurrentPokemon;
     }
 }

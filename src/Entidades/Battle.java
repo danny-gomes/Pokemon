@@ -198,8 +198,6 @@ public class Battle {
      * @throws InterruptedException Exception to use thread.sleep
      */
     private int battleTurn(Move playerMove, Move challengerMove) throws InterruptedException {
-        boolean playerWin = false;
-        boolean challengerWin = false;
         boolean isPlayerFirst = playerAttackFirst(playerMove, challengerMove);
         int playerDamageDealt = 0;
         int challengerDamageDealt = 0;
@@ -211,16 +209,17 @@ public class Battle {
             if (challengerCurrentPokemon.checkAilments(true)) {
                 executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
             }
-            challengerCurrentPokemon.checkAilments(false);
-            playerWin = checkChallengerFaint();
-            if (!playerWin) {
-                challengerWin = checkPlayerFaint();
 
-            }
-            if (challengerWin) {
+            this.playerCurrentPokemon = checkTrainerFaint(player);
+            if (this.playerCurrentPokemon == null) {
                 return -1;
-            } else {
-                return 0;
+            }
+
+            challengerCurrentPokemon.checkAilments(false);
+
+            this.challengerCurrentPokemon = checkTrainerFaint(challenger);
+            if(this.challengerCurrentPokemon == null){
+                return 1;
             }
         }
 
@@ -229,40 +228,37 @@ public class Battle {
                 playerDamageDealt = executeMove(player, challenger, playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
             }
 
-            playerWin = checkChallengerFaint();
+            this.challengerCurrentPokemon = checkTrainerFaint(challenger);
 
-            if (playerWin) {
+            if (this.challengerCurrentPokemon == null) {
                 return 1;
             }
-
-            playerCurrentPokemon.checkAilments(false);
-            challengerWin = checkPlayerFaint();
-
-            if (challengerWin) {
-                return -1;
-            }
-
-            Thread.sleep(2000);
 
             if (playerDamageDealt > 0 && playerMove.getMoveInfo().isFlinch()) {
                 System.out.println(challengerCurrentPokemon.getName() + " flinched!");
             } else {
-                if (challengerCurrentPokemon.checkAilments(true) && challengerPokStartTrun.getCurrentHp() > 0) {
+                if (challengerCurrentPokemon.checkAilments(true)) {
                     executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
                 }
 
-                challengerWin = checkPlayerFaint();
+                this.playerCurrentPokemon = checkTrainerFaint(player);
 
-                if (challengerWin) {
+                if (this.playerCurrentPokemon == null) {
                     return -1;
                 }
 
+                playerCurrentPokemon.checkAilments(false);
                 challengerCurrentPokemon.checkAilments(false);
-                playerWin = checkChallengerFaint();
-                if (playerWin) {
+                playerCurrentPokemon = checkTrainerFaint(player);
+                challengerCurrentPokemon = checkTrainerFaint(challenger);
+
+                if (playerCurrentPokemon == null && challengerCurrentPokemon == null) {
+                    return -1;
+                } else if(playerCurrentPokemon == null){
+                    return -1;
+                } else if(challengerCurrentPokemon == null){
                     return 1;
                 }
-                Thread.sleep(2000);
             }
 
         } else {
@@ -270,36 +266,35 @@ public class Battle {
                 challengerDamageDealt = executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
             }
 
-            challengerWin = checkPlayerFaint();
+            playerCurrentPokemon = checkTrainerFaint(player);
 
-            if (challengerWin) {
+            if (playerCurrentPokemon == null) {
                 return -1;
             }
-
-            challengerCurrentPokemon.checkAilments(false);
-            playerWin = checkChallengerFaint();
-            if (playerWin) {
-                return 1;
-            }
-
-            Thread.sleep(2000);
-
 
             if (challengerDamageDealt > 0 && challengerMove.getMoveInfo().isFlinch()) {
                 System.out.println(playerCurrentPokemon.getName() + " flinched!");
             } else {
-                if (playerCurrentPokemon.checkAilments(true) && playerPokStartTurn.getCurrentHp() > 0) {
+                if (playerCurrentPokemon.checkAilments(true)) {
                     executeMove(player, challenger, playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
                 }
-                playerWin = checkChallengerFaint();
-                if(playerWin){
+
+                challengerCurrentPokemon = checkTrainerFaint(challenger);
+                if(challengerCurrentPokemon == null){
                     return 1;
                 }
 
+                challengerCurrentPokemon.checkAilments(false);
                 playerCurrentPokemon.checkAilments(false);
-                challengerWin = checkPlayerFaint();
-                if (challengerWin) {
+                challengerCurrentPokemon = checkTrainerFaint(player);
+                playerCurrentPokemon = checkTrainerFaint(challenger);
+
+                if (playerCurrentPokemon == null && challengerCurrentPokemon == null) {
                     return -1;
+                } else if(playerCurrentPokemon == null){
+                    return -1;
+                } else if(challengerCurrentPokemon == null){
+                    return 1;
                 }
 
                 Thread.sleep(2000);
@@ -339,37 +334,24 @@ public class Battle {
     }
 
     /**
-     * Move that checks if the player lost after having a pokemon faint.
-     * @return true if player has no more pokemons to switch in, false if they do.
+     * Method that checks if a trainer pokemon has fainted and calls method to switch in pokemon.
+     * @param trainer the trainer to check for faint.
+     * @return the sentOutPokemon if the trainer has pokemon available or null if not.
      */
-    private boolean checkPlayerFaint() {
-        if (playerCurrentPokemon.getCurrentHp() <= 0) {
-            Pokemon sentOutPokemon = pokemonFaint(player);
-            if (sentOutPokemon == null) {
-                return true;
-            } else {
-                playerCurrentPokemon = sentOutPokemon;
+    private Pokemon checkTrainerFaint(Trainer trainer){
+        Pokemon sentOutPokemon = null;
+
+        if(trainer.isPlayer()){
+            if(playerCurrentPokemon.getCurrentHp() <= 0){
+                sentOutPokemon = pokemonFaint(trainer);
+            }
+        } else {
+            if(challengerCurrentPokemon.getCurrentHp() <= 0){
+                sentOutPokemon = pokemonFaint(trainer);
             }
         }
 
-        return false;
-    }
-
-    /**
-     * Method that checks if the challenger has more pokemon to switch in after one faints.
-     * @return true if challenger has no more pokemon to swithc in, false if they do.
-     */
-    private boolean checkChallengerFaint() {
-        if (challengerCurrentPokemon.getCurrentHp() <= 0) {
-            Pokemon sentOutPokemon = pokemonFaint(challenger);
-            if (sentOutPokemon == null) {
-                return true;
-            } else {
-                challengerCurrentPokemon = sentOutPokemon;
-            }
-        }
-
-        return false;
+        return sentOutPokemon;
     }
 
     /**

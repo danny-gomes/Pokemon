@@ -208,7 +208,8 @@ public class Battle {
         boolean isPlayerFirst = playerAttackFirst(playerMove, challengerMove);
         int playerDamageDealt = 0;
         int challengerDamageDealt = 0;
-
+        String playerPokBeginTurn = this.playerCurrentPokemon.getName();
+        String challengerPokBeginTurn = this.challengerCurrentPokemon.getName();
 
         if (playerMove == null) {
             if (challengerCurrentPokemon.checkAilments(true)) {
@@ -241,7 +242,7 @@ public class Battle {
             if (playerDamageDealt > 0 && playerMove.getMoveInfo().isFlinch()) {
                 System.out.println(challengerCurrentPokemon.getName() + " flinched!");
             } else {
-                if (challengerCurrentPokemon.checkAilments(true)) {
+                if (challengerCurrentPokemon.checkAilments(true) && !challengerCurrentPokemon.getName().equalsIgnoreCase(challengerPokBeginTurn)) {
                     executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
                 }
 
@@ -279,7 +280,7 @@ public class Battle {
             if (challengerDamageDealt > 0 && challengerMove.getMoveInfo().isFlinch()) {
                 System.out.println(playerCurrentPokemon.getName() + " flinched!");
             } else {
-                if (playerCurrentPokemon.checkAilments(true)) {
+                if (playerCurrentPokemon.checkAilments(true) && playerCurrentPokemon.getName().equalsIgnoreCase(playerPokBeginTurn)) {
                     executeMove(player, challenger, playerCurrentPokemon, challengerCurrentPokemon, playerMove, challengerMove);
                 }
 
@@ -290,8 +291,8 @@ public class Battle {
 
                 challengerCurrentPokemon.checkAilments(false);
                 playerCurrentPokemon.checkAilments(false);
-                challengerCurrentPokemon = checkTrainerFaint(player, playerCurrentPokemon);
-                playerCurrentPokemon = checkTrainerFaint(challenger, challengerCurrentPokemon);
+                challengerCurrentPokemon = checkTrainerFaint(challenger, challengerCurrentPokemon);
+                playerCurrentPokemon = checkTrainerFaint(player, playerCurrentPokemon);
 
                 if (playerCurrentPokemon == null && challengerCurrentPokemon == null) {
                     return -1;

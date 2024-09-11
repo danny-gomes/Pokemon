@@ -242,7 +242,7 @@ public class Battle {
             if (playerDamageDealt > 0 && playerMove.getMoveInfo().isFlinch()) {
                 System.out.println(challengerCurrentPokemon.getName() + " flinched!");
             } else {
-                if (challengerCurrentPokemon.checkAilments(true) && !challengerCurrentPokemon.getName().equalsIgnoreCase(challengerPokBeginTurn)) {
+                if (challengerCurrentPokemon.checkAilments(true) && challengerCurrentPokemon.getName().equalsIgnoreCase(challengerPokBeginTurn)) {
                     executeMove(challenger, player, challengerCurrentPokemon, playerCurrentPokemon, challengerMove, playerMove);
                 }
 
@@ -286,19 +286,6 @@ public class Battle {
 
                 challengerCurrentPokemon = checkTrainerFaint(challenger, challengerCurrentPokemon);
                 if (challengerCurrentPokemon == null) {
-                    return 1;
-                }
-
-                challengerCurrentPokemon.checkAilments(false);
-                playerCurrentPokemon.checkAilments(false);
-                challengerCurrentPokemon = checkTrainerFaint(challenger, challengerCurrentPokemon);
-                playerCurrentPokemon = checkTrainerFaint(player, playerCurrentPokemon);
-
-                if (playerCurrentPokemon == null && challengerCurrentPokemon == null) {
-                    return -1;
-                } else if (playerCurrentPokemon == null) {
-                    return -1;
-                } else if (challengerCurrentPokemon == null) {
                     return 1;
                 }
 

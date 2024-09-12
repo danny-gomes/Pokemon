@@ -113,7 +113,7 @@ public class Main {
         glalie.changeEntireMoveSet(new Move[]{
                 pokedex.getMoveByName("spikes"),
                 pokedex.getMoveByName("ice-beam"),
-                pokedex.getMoveByName("explosion"),
+                pokedex.getMoveByName("aurora-veil"),
                 pokedex.getMoveByName("hail")
         });
 

@@ -25,9 +25,9 @@ public class Main {
         Pokemon milotic = pokedex.getPokemonByName("milotic");
 
         ArrayList<Pokemon> cynthiaParty = new ArrayList<>();
+        cynthiaParty.add(togekiss);
         cynthiaParty.add(garchomp);
         cynthiaParty.add(spiritomb);
-        cynthiaParty.add(togekiss);
         cynthiaParty.add(lucario);
         cynthiaParty.add(roserade);
         cynthiaParty.add(milotic);
@@ -35,15 +35,15 @@ public class Main {
         Pokemon pikachu = pokedex.getPokemonByName("pikachu");
         Pokemon charizard = pokedex.getPokemonByName("charizard");
         Pokemon snorlax = pokedex.getPokemonByName("snorlax");
-        Pokemon sceptile = pokedex.getPokemonByName("sceptile");
+        Pokemon glalie = pokedex.getPokemonByName("glalie");
         Pokemon infernape = pokedex.getPokemonByName("infernape");
         Pokemon greninja = pokedex.getPokemonByName("greninja");
 
         ArrayList<Pokemon> ashParty = new ArrayList<>();
+        ashParty.add(glalie);
         ashParty.add(pikachu);
         ashParty.add(charizard);
         ashParty.add(snorlax);
-        ashParty.add(sceptile);
         ashParty.add(infernape);
         ashParty.add(greninja);
 
@@ -110,11 +110,11 @@ public class Main {
                 pokedex.getMoveByName("earthquake")
         });
 
-        sceptile.changeEntireMoveSet(new Move[]{
-                pokedex.getMoveByName("leaf-blade"),
-                pokedex.getMoveByName("dragon-claw"),
-                pokedex.getMoveByName("earthquake"),
-                pokedex.getMoveByName("swords-dance")
+        glalie.changeEntireMoveSet(new Move[]{
+                pokedex.getMoveByName("spikes"),
+                pokedex.getMoveByName("ice-beam"),
+                pokedex.getMoveByName("explosion"),
+                pokedex.getMoveByName("hail")
         });
 
         infernape.changeEntireMoveSet(new Move[]{

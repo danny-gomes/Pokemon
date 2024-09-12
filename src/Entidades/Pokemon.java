@@ -1064,6 +1064,16 @@ public class Pokemon {
         return statModifiers[EVASIVENESS_INDEX];
     }
 
+    public ArrayList<PokemonType> getTypes(){
+        ArrayList<PokemonType> types = new ArrayList<>();
+        types.add(this.type1);
+        if(this.type2 != null){
+            types.add(this.type2);
+        }
+
+        return types;
+    }
+
     public void changeEntireMoveSet(Move[] moves){
         System.arraycopy(moves, 0, this.currentMoves, 0, moves.length);
     }

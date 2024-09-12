@@ -1,6 +1,6 @@
 package Enums;
 
-public enum Weather {
+public enum WeatherEffect {
     NONE("None", "No weather effect"),
     SUNLIGHT("Sunlight", "Sunlight intensifies the power of Fire-type moves and weakens Water-type moves"),
     RAIN("Rain", "Rain increases the power of Water-type moves and weakens Fire-type moves"),
@@ -10,7 +10,7 @@ public enum Weather {
     private final String name;
     private final String description;
 
-    Weather(String name, String description) {
+    WeatherEffect(String name, String description) {
         this.name = name;
         this.description = description;
     }

@@ -8,6 +8,7 @@ import Entidades.Moves.Move;
 import Enums.Ailment;
 import Enums.MoveCategory;
 import Enums.Target;
+import Enums.WeatherEffect;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public class Battle {
 
         this.playerFieldEffects = new ArrayList<>();
         this.challengerFieldEffects = new ArrayList<>();
-        this.weather = new Weather("None", null, 0, 0);
+        this.weather = new Weather(WeatherEffect.NONE, null, -1);
     }
 
     /**
@@ -120,6 +121,7 @@ public class Battle {
 
         updateFieldEffects(player);
         updateFieldEffects(challenger);
+        this.weather.checkWeatherEffects(this,true);
 
         return outcome;
     }
@@ -486,12 +488,31 @@ public class Battle {
                     checkBarriers(attacker);
                 }
             }
+            case WHOLE_FIELD_EFFECT -> {
+                if(addWholeFieldEffect(attacker,moveUsed)){
+                    this.weather.checkWeatherEffects(this, false);
+                }
+            }
             case UNIQUE -> {
                 executeUniqueMove(attackerPokemon, defenderPokemon, moveUsed);
             }
         }
 
         return damageDealt;
+    }
+
+    private boolean addWholeFieldEffect(Trainer attacker, Move moveUsed) {
+        switch (moveUsed.getName()) {
+            case "hail":
+                if(this.weather.getName().equalsIgnoreCase("hail")){
+                    System.out.println("Hail is already up.");
+                    return false;
+                }
+
+                this.weather = new Weather(WeatherEffect.HAIL,moveUsed,5);
+        }
+
+        return true;
     }
 
     /**
@@ -890,5 +911,13 @@ public class Battle {
 
     public Pokemon getPlayerCurrentPokemon() {
         return playerCurrentPokemon;
+    }
+
+    public Pokemon getChallengerCurrentPokemon() {
+        return challengerCurrentPokemon;
+    }
+
+    public void setWeather(Weather weather) {
+        this.weather = weather;
     }
 }
